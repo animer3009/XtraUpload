@@ -26,7 +26,7 @@
 					</td>
 					<td width="100%">
 						<center>
-							<h1 style="color:#009900">XtraUpload was installed successfully!</h3>
+							<h1 style="color:#009900">XtraUpload was installed successfully!</h1>
 							<h3 style="color:#FF0000">YOU MUST DELETE THE SETUP FOLDER FROM YOUR SERVER BEFORE XTRAUPLOAD WILL WORK!</h3>
 							<p><strong>The admin login information is:</strong></p>
 							<p>

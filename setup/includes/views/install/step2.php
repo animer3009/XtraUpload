@@ -23,14 +23,14 @@
 		</tr>
 		<?php
 		$chmod = array();
-		$chmod['../system/application/config/config.php'] = "0666";
-		$chmod['../system/application/config/database.php'] = "0666";
+		$chmod['../application/config/config.php'] = "0666";
+		$chmod['../application/config/database.php'] = "0666";
 		$chmod['../setup/includes/config/database.php'] = "0666";
 		$chmod['../filestore'] = "0777";
 		$chmod['../temp'] = "0777";
-		$chmod['../system/cache'] = "0777";
+		$chmod['../application/cache'] = "0777";
 		$chmod['../thumbstore'] = "0777";
-		$chmod['../system/logs'] = "0777";
+		$chmod['../application/logs'] = "0777";
 		$is_chmod = true;
 		foreach($chmod as $file => $perm)
 		{

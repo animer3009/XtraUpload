@@ -1,13 +1,13 @@
 <?php
 
-class Welcome extends Controller {
+class Welcome extends CI_Controller {
 
-	function Welcome()
+	public function __construct()
 	{
-		parent::Controller();	
+		parent::__construct();
 	}
 	
-	function index()
+	public function index()
 	{
 		$this->load->view('header');
 		$this->load->view('home');
@@ -16,4 +16,4 @@ class Welcome extends Controller {
 }
 
 /* End of file welcome.php */
-/* Location: ./system/application/controllers/welcome.php */
+/* Location: ./setup/includes/controllers/welcome.php */

@@ -13,4 +13,4 @@
 
 
 /* End of file hooks.php */
-/* Location: ./system/application/config/hooks.php */
+/* Location: ./setup/includes/config/hooks.php */

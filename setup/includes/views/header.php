@@ -1,5 +1,5 @@
-
-<html>
+<!DOCTYPE html>
+<html lang="en">
 	<head>
 		<title>XtraUpload v2 Installer</title>
 		<style type='text/css'>
