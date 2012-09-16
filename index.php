@@ -1,9 +1,34 @@
 <?php
-/** * XtraUpload * * A turn-key open source web 2.0 PHP file uploading package requiring PHP v5 * * @package		XtraUpload * @author		Matthew Glinski * @copyright	Copyright (c) 2006, XtraFile.com * @license		http://xtrafile.com/docs/license * @link		http://xtrafile.com * @since		Version 2.0 * @filesource */// ------------------------------------------------------------------------/** * XtraUpload Front-Conroller * * @package		CodeIgniter * @author		Matthew Glinski - Codeigniter Dev Team */// ------------------------------------------------------------------------
+/**
+ * XtraUpload
+ *
+ * A turn-key open source web 2.0 PHP file uploading package requiring PHP v5
+ *
+ * @package		XtraUpload
+ * @author		Matthew Glinski
+ * @copyright	Copyright (c) 2006, XtraFile.com
+ * @license		http://xtrafile.com/docs/license
+ * @link		http://xtrafile.com
+ * @since		Version 2.0
+ * @filesource
+ */
+
+// ------------------------------------------------------------------------
+
+/**
+ * XtraUpload Front-Conroller
+ *
+ * @package		CodeIgniter
+ * @author		Matthew Glinski - Codeigniter Dev Team
+ */
+
+// ------------------------------------------------------------------------
 
 // Make sure errors are reported!
+// TODO: Errors should be turned off in Production.
 ini_set('display_errors', '1');
 
+// TODO: Move PHP version check to installer. No need for every page load.
 // define PHP version ID for versions less then 5.2.7
 if(!defined('PHP_VERSION_ID'))
 {
@@ -25,10 +50,12 @@ if(PHP_VERSION_ID < 50201)
     exit;
 }
 
+// TODO: Move this to admin panel. No need for it to happen here.
 // Check for setup/upgrade folders and stop running if found
 $setup_exists = file_exists('./setup');
 $upgrade_exists = file_exists('./upgrade');
 
+// TODO: Move this to a later point in the bootstrap.
 // Send user to setup folder to configure script, if exists
 if(($setup_exists or $upgrade_exists) and ($_SERVER['HTTP_HOST'] != 'localhost' and substr($_SERVER['HTTP_HOST'], 0, 7) != '192.168'))
 {
