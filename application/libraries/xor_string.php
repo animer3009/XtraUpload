@@ -67,5 +67,3 @@ class Xor_string
 	
 	} // End function decryptPassword	
 }
-
-?>
