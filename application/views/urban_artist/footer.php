@@ -3,10 +3,9 @@
 		</div>
 		
 		<!-- sidebar starts -->
-		<div id="sidebar">	
-		
+		<div id="sidebar">
 			<?php
-			if(stristr($this->uri->uri_string(),'/admin'))
+			if($this->uri->segment(1) === 'admin')
 			{
 				$this->load->view($skin.'/admin/menu');
 			}
@@ -15,8 +14,7 @@
 				$this->load->view($skin.'/menu');
 			}
 			?>
-		
-		<!-- sidebar ends -->		
+            <!-- sidebar ends -->
 		</div>
 		
 	<!-- content-wrap ends-->	
