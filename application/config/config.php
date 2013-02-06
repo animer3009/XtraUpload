@@ -14,7 +14,7 @@
 | path to your installation.
 |
 */
-$config['base_url']	= 'http://xtraupload.localhost/';
+$config['base_url']	= 'http://localhost/xu2/';
 
 /*
 |--------------------------------------------------------------------------
@@ -106,7 +106,7 @@ $config['enable_hooks'] = FALSE;
 | http://codeigniter.com/user_guide/general/creating_libraries.html
 |
 */
-$config['subclass_prefix'] = 'XU_';
+$config['subclass_prefix'] = 'MY_';
 
 
 /*
@@ -224,7 +224,7 @@ $config['cache_path'] = '';
 | MUST set an encryption key.  See the user guide for info.
 |
 */
-$config['encryption_key'] = 'cf82af800e9cf002675a5524e2a808d35055619fc33c4';
+$config['encryption_key'] = 's4cdv5fb6gn7hmoi7dv4s';
 
 /*
 |--------------------------------------------------------------------------
@@ -265,7 +265,7 @@ $config['sess_time_to_update']	= 300;
 | 'cookie_secure' =  Cookies will only be set if a secure HTTPS connection exists.
 |
 */
-$config['cookie_prefix']	= 'e6d04d1270e44e48ed57b9d31ce63';
+$config['cookie_prefix']	= '091431fbba42197b22e460c407da7';
 $config['cookie_domain']	= "";
 $config['cookie_path']		= "/";
 $config['cookie_secure']	= FALSE;

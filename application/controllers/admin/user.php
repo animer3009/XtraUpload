@@ -177,16 +177,26 @@ class User extends CI_Controller
 	public function edit($id)
 	{
 		$this->load->library('form_validation');
-		
-		$rules['email'] = "trim|valid_email";
-		$rules['username'] = "trim|_checkUser";
-		$rules['password'] = "trim|min_length[5]|max_length[70]";
+
+		// form validation rules
+		$rules = array(
+			array(
+				'field'   => 'email',
+				'label'   => 'Email',
+				'rules'   => 'trim|valid_email'
+			),
+			array(
+				'field'   => 'username',
+				'label'   => 'Username',
+				'rules'   => 'trim|_checkUser'
+			),
+			array(
+				'field'   => 'password',
+				'label'   => 'Password',
+				'rules'   => 'trim|min_length[5]|max_length[70]'
+			),
+		);
 		$this->form_validation->set_rules($rules);
-		
-		$fields['email'] = "Email";
-		$fields['username'] = "Username";
-		$fields['password'] = "Password";
-		$this->form_validation->set_rules($fields);
 			
 		if ($this->form_validation->run() == FALSE)
 		{
@@ -218,16 +228,26 @@ class User extends CI_Controller
 	public function add()
 	{
 		$this->load->library('form_validation');
-		
-		$rules['email'] = "trim|valid_email";
-		$rules['username'] = "trim|_checkUser";
-		$rules['password'] = "trim|min_length[5]|max_length[70]";
+
+		// form validation rules
+		$rules = array(
+			array(
+				'field'   => 'email',
+				'label'   => 'Email',
+				'rules'   => 'trim|valid_email'
+			),
+			array(
+				'field'   => 'username',
+				'label'   => 'Username',
+				'rules'   => 'trim|_checkUser'
+			),
+			array(
+				'field'   => 'password',
+				'label'   => 'Password',
+				'rules'   => 'trim|min_length[5]|max_length[70]'
+			),
+		);
 		$this->form_validation->set_rules($rules);
-		
-		$fields['email'] = "Email";
-		$fields['username'] = "Username";
-		$fields['password'] = "Password";
-		$this->form_validation->set_rules($fields);
 			
 		if ($this->form_validation->run() == FALSE)
 		{

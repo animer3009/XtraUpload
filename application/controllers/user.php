@@ -96,24 +96,37 @@ class User extends CI_Controller
 		$data['captcha'] = $this->_getCaptcha();
 		$data['groups'] = $this->db->get_where('groups', array('status' => '1'));
 		$data['gates'] = $this->db->get_where('gateways', array('status' => '1'));
-			
-		$rules['username'] = "trim|required|strtolower|min_length[5]|max_length[12]|xss_clean|callback__username_check";
-		$rules['password'] = "trim|required|min_length[4]|matches[passconf]";
-		$rules['passconf'] = "trim|required";
-		$rules['email'] = "trim|required|valid_email|max_length[255]|matches[emailConf]|callback__email_check";
-		$rules['emailConf'] = "trim|required";
-		
-		//echo serialize(array('email' => 'text'));
-		
+
+		// form validation rules
+		$rules = array(
+			array(
+				'field'   => 'username',
+				'label'   => $this->lang->line('user_controller_3'),
+				'rules'   => 'trim|required|strtolower|min_length[5]|max_length[12]|xss_clean|callback__username_check'
+			),
+			array(
+				'field'   => 'password',
+				'label'   => $this->lang->line('user_controller_4'),
+				'rules'   => 'trim|required|min_length[4]|matches[passconf]'
+			),
+			array(
+				'field'   => 'passconf',
+				'label'   => $this->lang->line('user_controller_5'),
+				'rules'   => 'trim|required'
+			),
+			array(
+				'field'   => 'email',
+				'label'   => $this->lang->line('user_controller_6'),
+				'rules'   => 'trim|required|valid_email|max_length[255]|matches[emailConf]|callback__email_check'
+			),
+			array(
+				'field'   => 'emailConf',
+				'label'   => $this->lang->line('user_controller_7'),
+				'rules'   => 'trim|required'
+			)
+		);
 		$this->form_validation->set_rules($rules);
-		
-		$fields['username']		= $this->lang->line('user_controller_3');
-		$fields['password']		= $this->lang->line('user_controller_4');
-		$fields['passconf']		= $this->lang->line('user_controller_5');
-		$fields['email']		= $this->lang->line('user_controller_6');
-		$fields['emailConf']	= $this->lang->line('user_controller_7');
-	
-		$this->form_validation->set_rules($fields);
+
 		if($this->input->post('posted'))
 		{
 			$run = $this->form_validation->run();
@@ -157,15 +170,20 @@ class User extends CI_Controller
 	public function login()
 	{
 		//$this->output->cache(60);
-		$rules['username'] = "trim|required|min_length[4]|max_length[32]|xss_clean|strtolower";
-		$rules['password'] = "trim|required|min_length[6]";
-		
+
+		$rules = array(
+           array(
+                 'field'   => 'username', 
+                 'label'   => 'Username', 
+                 'rules'   => 'trim|required|min_length[4]|max_length[32]|xss_clean|strtolower'
+              ),
+           array(
+                 'field'   => 'password', 
+                 'label'   => 'Password', 
+                 'rules'   => 'trim|required|min_length[6]'
+              )
+        );
 		$this->form_validation->set_rules($rules);
-		
-		$fields['username']	= $this->lang->line('user_controller_3');
-		$fields['password']	= $this->lang->line('user_controller_4');
-	
-		$this->form_validation->set_rules($fields);
 		
 		if ($this->form_validation->run() == FALSE)
 		{
@@ -445,17 +463,28 @@ class User extends CI_Controller
 		{
 			redirect('/user/login');
 		}
-		$rules['oldpassword'] = "trim|required|min_length[4]|callback__password_check";
-		$rules['newpassword'] = "trim|required|min_length[4]|matches[newpassconf]";
-		$rules['newpassconf'] = "trim|required";
-		
+
+		// form validation rules
+		$rules = array(
+			array(
+				'field'   => 'oldpassword',
+				'label'   => $this->lang->line('user_controller_17'),
+				'rules'   => 'trim|required|min_length[4]|callback__password_check'
+			),
+			array(
+				'field'   => 'newpassword',
+				'label'   => $this->lang->line('user_controller_18'),
+				'rules'   => 'trim|required|min_length[4]|matches[newpassconf]'
+			),
+			array(
+				'field'   => 'newpassconf',
+				'label'   => $this->lang->line('user_controller_19'),
+				'rules'   => 'trim|required'
+			),
+		);
 		$this->form_validation->set_rules($rules);
-		
-		$fields['oldpassword']	= $this->lang->line('user_controller_17');
-		$fields['newpassword']	= $this->lang->line('user_controller_18');
-		$fields['newpassconf']	= $this->lang->line('user_controller_19');
-	
-		$this->form_validation->set_rules($fields);
+
+
 		$run = $this->form_validation->run();
 
 		if ($run == FALSE and $this->input->post('username'))
@@ -494,17 +523,22 @@ class User extends CI_Controller
 	
 	public function forgotPassword()
 	{
-		$rules['username'] 	= "trim|required|min_length[4]|callback__username_check_forgot";
-		$rules['email'] 	= "trim|required|valid_email|callback__email_check_forgot";
-		
+		// form validation rules
+		$rules = array(
+			array(
+				'field'   => 'username',
+				'label'   => $this->lang->line('user_controller_3'),
+				'rules'   => 'trim|required|min_length[4]|callback__username_check_forgot'
+			),
+			array(
+				'field'   => 'email',
+				'label'   => $this->lang->line('user_controller_6'),
+				'rules'   => 'trim|required|valid_email|callback__email_check_forgot'
+			),
+		);
 		$this->form_validation->set_rules($rules);
-		
-		$fields['username']	= $this->lang->line('user_controller_3');
-		$fields['email']	= $this->lang->line('user_controller_6');
-	
-		$this->form_validation->set_rules($fields);
-		$run = $this->form_validation->run();
 
+		$run = $this->form_validation->run();
 		$res = $this->_checkUser();
 		
 		if(!$res)
