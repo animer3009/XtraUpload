@@ -45,14 +45,14 @@ function renameINIResult($r, $n)
 
 ?>
 <ul id="php_ini_list" style="font-size:1.2em;">
-	<?
+	<?php
 	$is_not_good = false;
 	foreach($ini_list as $k => $v)
 	{
 		?>
 		<li>
 			<a href="javascript:;" onclick="$('#php_<?=$k?>').slideToggle('normal')">
-				<strong><?=$ini_name[$k]?></strong> - <?
+				<strong><?=$ini_name[$k]?></strong> - <?php
 				if($k == 'upload_max_filesize' or $k == 'post_max_size' or $k == 'memory_limit')
 				{
 					echo ini_get($k).'B';
@@ -74,7 +74,7 @@ function renameINIResult($r, $n)
 				}
 				?>
 			</a>
-			<?
+			<?php
 			if(intval(ini_get($k)) < intval($ini_rec[$k]))
 			{
 				$is_not_good = true;
@@ -103,14 +103,14 @@ function renameINIResult($r, $n)
 				<strong style="padding-left:12px; text-decoration:underline"><?=str_replace('{$}', renameINIResult(ini_get($k), $k),$v )?></strong>
 			</span>
 		</li>
-		<?
+		<?php
 	}
 	?>
 </ul>
-<?
+<?php
 if($is_not_good)
 {
-	?><span class="alert"><?php echo $this->lang->line('admin_settings_alert'); ?></span><?
+	?><span class="alert"><?php echo $this->lang->line('admin_settings_alert'); ?></span><?php
 }
 else
 {
@@ -121,7 +121,7 @@ else
 			$('#php_ini_list, #php_ini_header').hide();
 		});
 		</script>
-	<?
+	<?php
 }
 ?>
 
@@ -239,11 +239,11 @@ if($this->startup->site_config['allow_version_check'])
 				
 				if ($log->valid == 1) 
 				{
-					?><img src="<?php echo base_url().'img/icons/ok_16.png'?>" class="nb" alt="" /><?
+					?><img src="<?php echo base_url().'img/icons/ok_16.png'?>" class="nb" alt="" /><?php
 				} 
 				else 
 				{
-					?><img src="<?php echo base_url().'img/icons/cancel_16.png'?>" class="nb" alt="" /><?
+					?><img src="<?php echo base_url().'img/icons/cancel_16.png'?>" class="nb" alt="" /><?php
 				}
 				?>
 	        </td>

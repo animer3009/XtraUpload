@@ -8,7 +8,7 @@
 		
 		if($num_rows <= 0)
 		{
-		    ?><span class="alert">No Config Settings for this plugin.</span><?
+		    ?><span class="alert">No Config Settings for this plugin.</span><?php
 		}
 		else
 		foreach($configs->result() as $config)
@@ -66,7 +66,7 @@
 		?>
 	</table>
 	<input type="hidden" name="valid" value="yes" />
-	<?
+	<?php
 	if($num_rows > 0)
 	{
 	    echo generateSubmitButton('Update', base_url().'img/icons/ok_16.png', 'green');

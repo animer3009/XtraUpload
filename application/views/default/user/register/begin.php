@@ -50,7 +50,7 @@
 		<?php foreach($script as $id => $paid)
 		{
 		?>groups[<?=$id?>] = <?=$paid?>;
-		<?
+		<?php
 		}
 		?>
 		if(groups[id])

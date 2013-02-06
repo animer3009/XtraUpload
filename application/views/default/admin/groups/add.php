@@ -32,12 +32,12 @@
 			{
 				?>
 				<select name="<?=$name?>">
-					<?
+					<?php
 					foreach($real_type[$name] as $a_key => $a_val)
 					{
 						?>
 						<option value="<?=$a_key?>"><?=$a_val?></option>
-						<?
+						<?php
 					}
 					?>
 				</select>

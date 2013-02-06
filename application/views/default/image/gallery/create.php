@@ -1,8 +1,8 @@
 <h2><img src="<?=base_url().'img/other/images_32.png'?>" class="nb" alt="" /> <?php echo $this->lang->line('image_gallys_create_header')?></h2>
-<?
+<?php
 if($files->num_rows() == 0)
 {
-	?><span class="alert"><?php echo $this->lang->line('image_gallys_create_8')?><a style="background:none;" href="<?=site_url('home')?>"><?php echo $this->lang->line('image_gallys_create_9')?></a></span><?
+	?><span class="alert"><?php echo $this->lang->line('image_gallys_create_8')?><a style="background:none;" href="<?=site_url('home')?>"><?php echo $this->lang->line('image_gallys_create_9')?></a></span><?php
 }
 else
 {

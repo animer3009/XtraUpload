@@ -1,4 +1,4 @@
-<?
+<?php
 // load and run the automated testing suite for XU
 
 $fp = opendir('./tests');

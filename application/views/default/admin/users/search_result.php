@@ -71,13 +71,13 @@
 					    {
 					        ?><a href="<?php echo site_url('admin/user/turn_on/'.$user->id)?>">
 							<img src="<?php echo base_url()?>img/icons/off_16.png" class="nb" alt="Activate User" title="Activate User" />
-						</a><?
+						</a><?php
 					    }
 					    else if($user->id != 1)
 					    {
 					        ?><a href="<?php echo site_url('admin/user/turn_off/'.$user->id)?>">
 							<img src="<?php echo base_url()?>img/icons/on_16.png" class="nb" alt="Deactivate User" title="Deactivate User" />
-						</a><?
+						</a><?php
 					    }
 					    ?>
 						<a href="<?php echo site_url('admin/user/edit/'.$user->id)?>">

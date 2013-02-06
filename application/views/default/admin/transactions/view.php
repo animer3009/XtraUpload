@@ -50,24 +50,24 @@
 				<?=unix_to_small($transaction->time)?>
 			</td>
 			<td>
-				<?
+				<?php
 				if($transaction->status)
 				{
-					?><img src="<?=$base_url?>img/icons/ok_16.png" alt="" class="nb" /><?
+					?><img src="<?=$base_url?>img/icons/ok_16.png" alt="" class="nb" /><?php
 				}
 				else
 				{
-					?><img src="<?=$base_url?>img/icons/cancel_16.png" alt="" class="nb" /><?
+					?><img src="<?=$base_url?>img/icons/cancel_16.png" alt="" class="nb" /><?php
 				}
 				?>
 			</td>
 			<td>
-			<?
+			<?php
 				if(!$transaction->status)
 				{
 					?>
 					<a title="Approve Transaction" href="<?=site_url('admin/transactions/approve/'.$transaction->id)?>"><img src="<?=base_url()?>img/icons/ok_16.png" class="nb" alt="Edit" /></a>
-					<?
+					<?php
 					
 				}
 				?>

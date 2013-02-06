@@ -34,14 +34,14 @@
 					</a>
 				</td>
 				<td>
-				<?
+				<?php
 					if($shortcut->status == 1)
 					{
-						?><a title="Turn Off Shortcut" href="<?=site_url('admin/menu_shortcuts/turn_off/'.$shortcut->id)?>"><img src="<?=base_url()?>img/icons/on_16.png" class="nb" alt="Edit" /></a><?
+						?><a title="Turn Off Shortcut" href="<?=site_url('admin/menu_shortcuts/turn_off/'.$shortcut->id)?>"><img src="<?=base_url()?>img/icons/on_16.png" class="nb" alt="Edit" /></a><?php
 					}
 					else
 					{
-						?><a title="Turn On Shortcut" href="<?=site_url('admin/menu_shortcuts/turn_on/'.$shortcut->id)?>"><img src="<?=base_url()?>img/icons/off_16.png" class="nb" alt="Edit" /></a><?
+						?><a title="Turn On Shortcut" href="<?=site_url('admin/menu_shortcuts/turn_on/'.$shortcut->id)?>"><img src="<?=base_url()?>img/icons/off_16.png" class="nb" alt="Edit" /></a><?php
 					}
 					?>
 					<a title="Edit This Shortcut" href="<?=site_url('admin/menu_shortcuts/edit/'.$shortcut->id)?>"><img src="<?=base_url()?>img/icons/edit_16.png" class="nb" alt="Edit" /></a>

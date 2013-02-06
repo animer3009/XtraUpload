@@ -52,11 +52,11 @@ function getSortArrow($item, $sort, $dir)
 	{
 		if($dir == 'asc')
 		{
-			?><img src="<?=base_url()?>img/order/arrow_up.png" alt="" class="nb" /><?
+			?><img src="<?=base_url()?>img/order/arrow_up.png" alt="" class="nb" /><?php
 		}
 		else
 		{
-			?><img src="<?=base_url()?>img/order/arrow_down.png" alt="" class="nb" /><?
+			?><img src="<?=base_url()?>img/order/arrow_down.png" alt="" class="nb" /><?php
 		}
 	}
 }

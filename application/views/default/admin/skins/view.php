@@ -83,7 +83,7 @@ $(document).ready(function(){
 				{
 					?>
 					<img src="<?=$base_url.'img/icons/colors_16.png'?>" class="nb" alt="" /> 
-					<?
+					<?php
 				}
 				?>
 				<a href="<?=$base_url?>system/application/views/<?=$skin->name?>/<?=$skin->name?>.png" onclick="return false;" target="_blank" class="preview">
@@ -113,7 +113,7 @@ $(document).ready(function(){
 				<a title="Delete This Skin" href="<?=site_url('admin/skin/delete/'.$skin->name)?>">
 					<img src="<?=$base_url?>img/icons/close_16.png" class="nb" alt="delete" />
 				</a>
-				<?
+				<?php
 			}
 			?>
 			</td>

@@ -64,10 +64,10 @@ $this->load->helper('string');
 		<td colspan="5" id="<?php echo $file->file_id?>-details-inner">
 		<?php echo $this->lang->line('files_manage_table_7') ?>: <input class="down_link" readonly="readonly" type="text" size="65" value="<?php echo $link['down']?>" onfocus="this.select()" onclick="this.select()" ondblclick="this.select()" /><br />
 		<?php echo $this->lang->line('files_manage_table_8')?>: <a href="<?php echo $link['del']?>"><?php echo $link['del']?></a>
-		<?
+		<?php
 		if(isset($link['img']))
 		{
-			?><br /><?php echo $this->lang->line('files_manage_table_9') ?><a href="<?php echo $link['img']?>"><?php echo $link['img']?></a><?
+			?><br /><?php echo $this->lang->line('files_manage_table_9') ?><a href="<?php echo $link['img']?>"><?php echo $link['img']?></a><?php
 		}
 		?>
 		</td>

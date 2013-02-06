@@ -42,7 +42,7 @@
 								<a href="<?php echo site_url('admin/group/turn_off/'.$group->id)?>">
 									<img src="<?php echo base_url()?>img/icons/on_16.png" class="nb" alt="public" title="Make Private" />
 								</a>
-							<?
+							<?php
 						}
 						else
 						{
@@ -50,7 +50,7 @@
 								<a href="<?php echo site_url('admin/group/turn_on/'.$group->id)?>">
 									<img src="<?php echo base_url()?>img/icons/off_16.png" class="nb" alt="private" title="Make Public" />
 								</a>
-							<?
+							<?php
 						}
 					}
 					?>

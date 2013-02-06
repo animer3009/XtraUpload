@@ -37,12 +37,12 @@
 			{
 				?>
 				<select name="<?=$name?>">
-					<?
+					<?php
 					foreach($real_type[$name] as $a_key => $a_val)
 					{
 						?>
 						<option <?php if($value == $a_key){?> selected="selected" <? }?>value="<?=$a_key?>"><?=$a_val?></option>
-						<?
+						<?php
 					}
 					?>
 				</select><br />

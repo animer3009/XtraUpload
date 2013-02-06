@@ -133,7 +133,7 @@
 			<input style="display:none" id="<?php echo $file->type?>_embed_code" type="text" size="60" onclick="this.select();" onfocus="this.select()" value='<iframe src="<?php echo site_url('files/embed/'.$file->type.'/'.$file->file_id)?>" width="<?php echo $embed['width']?>" height="<?php echo $embed['height']?>" scrolling="no" frameborder="0"></iframe>' />
 	</p>
 	 
-	<?
+	<?php
 }
 ?>
 
