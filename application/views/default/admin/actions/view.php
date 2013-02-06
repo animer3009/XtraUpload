@@ -1,4 +1,4 @@
-<h2 style="vertical-align:middle"><img src="<?php echo base_url().'img/icons/tools_32.png'?>" class="nb" alt="" /> Site Maintenance </h2>
+<h2 style="vertical-align:middle"><img src="<?=base_url().'img/icons/tools_32.png'?>" class="nb" alt="" /> Site Maintenance </h2>
 <?=$flashMessage?>
 
 <h3>View PHPINFO Debug/Settings Output</h3>

@@ -4,7 +4,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="language" content="Japanese">
-<title><?php echo $page_title; ?></title>
+<title><?=$page_title; ?></title>
 <!--
 <link rel=stylesheet href="/static/style.css" type="text/css" /><style type="text/css">
 -->
@@ -40,7 +40,7 @@ td { padding: 0.2em }
 <div id="content">
 
 
-<h1><?php echo $page_title ?></h1>
+<h1><?=$page_title ?></h1>
 
 <p><a href="?">Translator home</a></p>
 

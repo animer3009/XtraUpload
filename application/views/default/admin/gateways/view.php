@@ -1,4 +1,4 @@
-<h2 style="vertical-align:middle"><img src="<?php echo base_url().'img/icons/credit_card_32.png'?>" class="nb" alt="" /> Payment Gateways </h2>
+<h2 style="vertical-align:middle"><img src="<?=base_url().'img/icons/credit_card_32.png'?>" class="nb" alt="" /> Payment Gateways </h2>
 <?=$flashMessage?>
 <table class="special" border="0" id="gateway_list_table" cellspacing="0" style="width:98%">
 	<tr>

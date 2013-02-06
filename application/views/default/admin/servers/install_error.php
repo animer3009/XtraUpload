@@ -6,8 +6,8 @@
 </div>
 <p><br /></p>
 <h3 style="padding-top:0">
-	<img src="<?php echo $base_url?>/img/icons/warning_24.png" class="nb" alt="" /><span style="color:#FF0000; text-decoration:underline">Important Information</span>
-	<img src="<?php echo $base_url?>/img/icons/warning_24.png" class="nb" alt="" />
+	<img src="<?=$base_url?>/img/icons/warning_24.png" class="nb" alt="" /><span style="color:#FF0000; text-decoration:underline">Important Information</span>
+	<img src="<?=$base_url?>/img/icons/warning_24.png" class="nb" alt="" />
 </h3>
 <p>
 	<span style="font-weight:bold; text-decoration:underline; color:#FF0000">You do not have the server package downloaded!</span><br />

@@ -1,4 +1,4 @@
-<script type="text/javascript" src="<?php echo $base_url?>/js/charts.js"></script>
+<script type="text/javascript" src="<?=$base_url?>/js/charts.js"></script>
 <h2 style="vertical-align:middle"><img src="<?=base_url().'img/icons/chart_32.png'?>" class="nb" alt="" /> Site Stats</h2>
 <h3>Information</h3>
 <p>
@@ -6,7 +6,7 @@ Here you can view a graphical representation of many site stats including weekly
 </p>
 
 <div>
-	<select onchange="getChart('<?php echo site_url('api/charts/')?>/'+this.value+'/600/300')">
+	<select onchange="getChart('<?=site_url('api/charts/')?>/'+this.value+'/600/300')">
 		<option value="null" selected="selected">Select a Chart</option>
 		<optgroup label="Uploads">
 			<option value="all_uploads">All Uploads</option>
@@ -41,7 +41,7 @@ Here you can view a graphical representation of many site stats including weekly
 <script type="text/javascript">
 function getChart(chartUrl)
 {
-	$('#chart_data').html('<img src="<?php echo $base_url?>images/loading.gif" class="nb" />');
+	$('#chart_data').html('<img src="<?=$base_url?>images/loading.gif" class="nb" />');
 	$.ajax({type: 'GET', url: chartUrl+'/r_'+rand(1,999999999), cache: true, dataType: 'script'}); 
 	$('#chart_name').html('Your Requested Chart');
 }

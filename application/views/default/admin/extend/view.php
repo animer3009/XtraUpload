@@ -12,10 +12,10 @@
 		?>			
 		<tr <?=alternator('class="odd"', 'class="even"')?>>
 			<td>
-				<a href="<?php echo $plugin->link?>" rel="external"><?php echo $plugin->name?></a> v<?php echo $this->functions->parseVersion($plugin->version->local, false)?><br />
-				By: <a href="<?php echo $plugin->author->link?>" rel="external"><?php echo $plugin->author->name?></a>
+				<a href="<?=$plugin->link?>" rel="external"><?=$plugin->name?></a> v<?=$this->functions->parseVersion($plugin->version->local, false)?><br />
+				By: <a href="<?=$plugin->author->link?>" rel="external"><?=$plugin->author->name?></a>
 			</td>
-			<td><?php echo str_replace("\n", '<br />', word_wrap($plugin->description, 60))?></td>
+			<td><?=str_replace("\n", '<br />', word_wrap($plugin->description, 60))?></td>
 			<td class="align-right">
 			
 				<?php 
@@ -23,16 +23,16 @@
 				if($active == 1)
 				{
 					?>
-					<a href="<?php echo site_url('admin/extend/turn_off/'.$name)?>">
-						<img src="<?php echo $base_url?>img/icons/on_16.png" alt="" class="nb" />
+					<a href="<?=site_url('admin/extend/turn_off/'.$name)?>">
+						<img src="<?=$base_url?>img/icons/on_16.png" alt="" class="nb" />
 					</a>
 					<?php
 				}
 				else
 				{
 					?>
-					<a href="<?php echo site_url('admin/extend/turn_on/'.$name)?>">
-						<img src="<?php echo $base_url?>img/icons/off_16.png" alt="" class="nb" />
+					<a href="<?=site_url('admin/extend/turn_on/'.$name)?>">
+						<img src="<?=$base_url?>img/icons/off_16.png" alt="" class="nb" />
 					</a>
 					<?php
 				}
@@ -45,16 +45,16 @@
 					if($plugin->version->local < $latest_version and $latest_version != false)
 					{
 						?>
-						<a href="<?php echo $plugin->version->download_link?>" rel="external">
-							<img src="<?php echo $base_url?>img/icons/certificate_16.png" alt="" class="nb" title="New Version Available: v<?php echo $this->functions->parseVersion($latest_version, false)?>" />
+						<a href="<?=$plugin->version->download_link?>" rel="external">
+							<img src="<?=$base_url?>img/icons/certificate_16.png" alt="" class="nb" title="New Version Available: v<?=$this->functions->parseVersion($latest_version, false)?>" />
 						</a>
 						<?php
 					}
 				}
 				?>
 				
-				<a href="<?php echo site_url('admin/extend/remove/'.$name)?>">
-					<img src="<?php echo $base_url?>img/icons/trash_16.png" alt="" class="nb" />
+				<a href="<?=site_url('admin/extend/remove/'.$name)?>">
+					<img src="<?=$base_url?>img/icons/trash_16.png" alt="" class="nb" />
 				</a>
 				
 			</td>
@@ -76,16 +76,16 @@
 		?>			
 		<tr <?=alternator('class="odd"', 'class="even"')?>>
 			<td>
-				<a href="<?php echo $plugin->link?>" rel="external"><?php echo $plugin->name?></a> v<?php echo $this->functions->parseVersion($plugin->version->local, false)?><br />
-				By: <a href="<?php echo $plugin->author->link?>" rel="external"><?php echo $plugin->author->name?></a>
+				<a href="<?=$plugin->link?>" rel="external"><?=$plugin->name?></a> v<?=$this->functions->parseVersion($plugin->version->local, false)?><br />
+				By: <a href="<?=$plugin->author->link?>" rel="external"><?=$plugin->author->name?></a>
 			</td>
-			<td><?php echo str_replace("\n", '<br />', word_wrap($plugin->description, 60))?></td>
+			<td><?=str_replace("\n", '<br />', word_wrap($plugin->description, 60))?></td>
 			<td class="align-right">
-				<a href="<?php echo $plugin->link?>" rel="external" title="Visit Plugin Home Page">
-					<img src="<?php echo $base_url?>img/icons/link_16.png" alt="" class="nb" />
+				<a href="<?=$plugin->link?>" rel="external" title="Visit Plugin Home Page">
+					<img src="<?=$base_url?>img/icons/link_16.png" alt="" class="nb" />
 				</a>
-				<a href="<?php echo site_url('admin/extend/install/'.$name)?>" title="Install Plugin">
-					<img src="<?php echo $base_url?>img/icons/wizard_16.png" alt="" class="nb" />
+				<a href="<?=site_url('admin/extend/install/'.$name)?>" title="Install Plugin">
+					<img src="<?=$base_url?>img/icons/wizard_16.png" alt="" class="nb" />
 				</a>
 			</td>
 		</tr>

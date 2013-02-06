@@ -18,10 +18,10 @@
 		?>			
 		<tr <?=alternator('class="odd"', 'class="even"')?>>
 			<td style="font-size:12px; font-weight:bold; color:#006600">
-				<?php echo $server->name?>
+				<?=$server->name?>
 			</td>
 			<td style="font-size:12px; font-weight:bold; color:#006600">
-				<?php echo $server->url?>
+				<?=$server->url?>
 			</td>
 			<td style="font-size:12px; font-weight:bold; color:#006600">
 				<?php

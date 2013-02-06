@@ -1,4 +1,4 @@
-<h2 style="vertical-align:middle"><img src="<?=base_url().'img/icons/documents_32.png'?>" class="nb" alt="" /> <?php echo $this->lang->line('files_result_headertitle'); ?></h2>
+<h2 style="vertical-align:middle"><img src="<?=base_url().'img/icons/documents_32.png'?>" class="nb" alt="" /> <?=$this->lang->line('files_result_headertitle'); ?></h2>
 <?=$flashMessage?>
 <form action="<?=site_url('admin/files/')?>" id="userAdmin" method="post" style="padding:0; margin:0; border:0;">
 	<div id="massActions" style="clear:both; padding-top:4px;">
@@ -12,8 +12,8 @@
 		</div>
 	</div>
 	<h3 style="clear:both">
-		Search Query: "<?php echo $query?>" <br />
-		Number of results: <?php echo $res_num?>
+		Search Query: "<?=$query?>" <br />
+		Number of results: <?=$res_num?>
 	</h3>
 	<table class="special" border="0" id="file_list_table"cellspacing="0" style="width:98%">
 		<tr>
@@ -48,12 +48,12 @@
 			<tr <?=alternator('class="odd"', 'class="even"')?>>
 				<td>
 					<div align="center">
-						<input type="checkbox" id="check-<?php echo $file->id?>" name="files[]" value="<?=$file->file_id?>" />
+						<input type="checkbox" id="check-<?=$file->id?>" name="files[]" value="<?=$file->file_id?>" />
 					</div>
 				</td>
 				<td>
 					<a href='<?=$links['down']?>' rel="external">
-						<img src="<?php echo base_url().'img/files/'.$this->functions->getFileTypeIcon($file->type);?>" class="nb" alt="" />
+						<img src="<?=base_url().'img/files/'.$this->functions->getFileTypeIcon($file->type);?>" class="nb" alt="" />
 						<?=$this->functions->elipsis($file->o_filename, 10);?>
 					</a>
 				</td>
@@ -81,10 +81,10 @@
 <br />
 <div style="float:right">
 	<form action="<?=site_url('admin/files/search_count/'.$query)?>" method="post" style="padding:0; margin:0; border:0;">
-		Results: <input type="text" size="6" maxlength="6" name="fileCount" value="<?php echo $perPage?>" />
+		Results: <input type="text" size="6" maxlength="6" name="fileCount" value="<?=$perPage?>" />
 	</form>
 </div>
-<?php echo $pagination?>
+<?=$pagination?>
 
 <form style="display:none" method="post" id="sortForm" action="<?=site_url('admin/files/sort')?>">
 <input type="hidden" id="formS" name="sort" />

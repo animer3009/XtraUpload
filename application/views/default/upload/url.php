@@ -2,30 +2,30 @@
 if(!$this->startup->group_config->can_url_upload)
 {
 	?>
-	<h2 style="vertical-align:middle"><img src="<?php echo base_url().'img/icons/connect_32.png'?>" class="nb" alt="" /><?php echo $this->lang->line('upload_url_header')?></h2>
-	<span class="alert"><?php echo $this->lang->line('upload_url_error_1'); ?><a href="<?=site_url('user/login')?>"><?php echo $this->lang->line('upload_url_error_1_1'); ?></a><?php echo $this->lang->line('upload_url_error_1_2'); ?></span>
+	<h2 style="vertical-align:middle"><img src="<?=base_url().'img/icons/connect_32.png'?>" class="nb" alt="" /><?=$this->lang->line('upload_url_header')?></h2>
+	<span class="alert"><?=$this->lang->line('upload_url_error_1'); ?><a href="<?=site_url('user/login')?>"><?=$this->lang->line('upload_url_error_1_1'); ?></a><?=$this->lang->line('upload_url_error_1_2'); ?></span>
 	<?php
 }
 else
 {
 ?>
-	<h2 style="vertical-align:middle"><img src="<?php echo base_url().'img/icons/connect_32.png'?>" class="nb" alt="" /><?php echo $this->lang->line('upload_url_header')?></h2>
-	<p><?php echo $this->lang->line('upload_url_1')?><span style="color:#FF0000"><?php echo $this->lang->line('upload_url_2')?></span><?php echo $this->lang->line('upload_url_3')?><br />
+	<h2 style="vertical-align:middle"><img src="<?=base_url().'img/icons/connect_32.png'?>" class="nb" alt="" /><?=$this->lang->line('upload_url_header')?></h2>
+	<p><?=$this->lang->line('upload_url_1')?><span style="color:#FF0000"><?=$this->lang->line('upload_url_2')?></span><?=$this->lang->line('upload_url_3')?><br />
 		<br />
 	</p>
 	
 	<p>
 		<label for="linkBlock">
 			<a href="javascript:;" style="cursor:pointer" onclick="toggleUploadBlock()">
-				<img alt="" id="uploadImgSwitch" src="<?php echo $base_url?>img/other/remove_16.png" class="nb"/> 
-				<?php echo $this->lang->line('upload_url_4')?>
+				<img alt="" id="uploadImgSwitch" src="<?=$base_url?>img/other/remove_16.png" class="nb"/>
+				<?=$this->lang->line('upload_url_4')?>
 			</a>
 		</label>
 		<span id="uploadTextBlock">
 			<textarea id="linkBlock" name="linkBlock" cols="65" rows="15"></textarea><br />
 			<span class="cssButton" style="display:block">
 				<a onclick="addToQueue();" class="buttonGreen" href="javascript:;"> 
-					<img alt="" src="<?php echo $base_url?>img/icons/add_16.png"/><?php echo $this->lang->line('upload_url_5')?>
+					<img alt="" src="<?=$base_url?>img/icons/add_16.png"/><?=$this->lang->line('upload_url_5')?>
 				</a>
 			</span><br />
 		</span>
@@ -33,23 +33,23 @@ else
 	
 	
 	<div id="files" style="display:">
-		<h3><?php echo $this->lang->line('upload_url_6')?></h3>
+		<h3><?=$this->lang->line('upload_url_6')?></h3>
 		<div id="file_list">
 			<p>
-				<?php echo $this->lang->line('upload_url_7')?>(<span id="summary">0</span><?php echo $this->lang->line('upload_url_8')?>).<br />
+				<?=$this->lang->line('upload_url_7')?>(<span id="summary">0</span><?=$this->lang->line('upload_url_8')?>).<br />
 				<span class="alert" id="alert1" style="display:none"></span>
 				<span class="alert" id="alert2" style="display:none"></span>
-				<span class="float-right"><?php echo generateLinkButton($this->lang->line('upload_url_9'), 'javascript:startUploadQueue();', $base_url.'img/icons/up_16.png', 'green')?><br /><br /></span>
+				<span class="float-right"><?=generateLinkButton($this->lang->line('upload_url_9'), 'javascript:startUploadQueue();', $base_url.'img/icons/up_16.png', 'green')?><br /><br /></span>
 			</p>
 			<div style="clear:both"></div>
 			<table border="0" style="width:98%" id="file_list_table">
 				<tr>
-					<th style="width:470px" class="align-left"><?php echo $this->lang->line('upload_url_10')?></th>
-					<th style="width:85px"><?php echo $this->lang->line('upload_url_11')?> <img title="<?php echo $this->lang->line('upload_url_12')?>" src="<?php echo $base_url?>img/icons/delete_16.png" onclick="clearUploadQueue()" alt="<?php echo $this->lang->line('upload_url_12')?>" style="cursor:pointer" class="nb" /></th>
+					<th style="width:470px" class="align-left"><?=$this->lang->line('upload_url_10')?></th>
+					<th style="width:85px"><?=$this->lang->line('upload_url_11')?> <img title="<?=$this->lang->line('upload_url_12')?>" src="<?=$base_url?>img/icons/delete_16.png" onclick="clearUploadQueue()" alt="<?=$this->lang->line('upload_url_12')?>" style="cursor:pointer" class="nb" /></th>
 				</tr>
 			</table>
 			<p>
-				<span class="float-right"><?php echo generateLinkButton($this->lang->line('upload_url_9'), 'javascript:startUploadQueue();', $base_url.'img/icons/up_16.png', 'green')?><br /><br /></span>
+				<span class="float-right"><?=generateLinkButton($this->lang->line('upload_url_9'), 'javascript:startUploadQueue();', $base_url.'img/icons/up_16.png', 'green')?><br /><br /></span>
 			</p>
 		</div>
 	</div>
@@ -60,7 +60,7 @@ else
 			<input type="hidden" name="link" id="link" value="" />
 			<input type="hidden" name="descr" id="descr" value="" />
 			<input type="hidden" name="pass" id="pass" value="" />
-			<input type="hidden" name="user" id="pass" value="<?php echo $this->session->userdata('id')?>" />
+			<input type="hidden" name="user" id="pass" value="<?=$this->session->userdata('id')?>" />
 		</p>
 	</form>
 	
@@ -71,22 +71,22 @@ else
 		var currentFileId;
 		var allowCheckProgress=false;
 		var filePropsObj = new Array();
-		var fileIcons = new Array(<?php echo $file_icons?>);
+		var fileIcons = new Array(<?=$file_icons?>);
 		
 		function ___upLang(key)
 		{
 			<? $this->lang->load('home');?>
 			var lang = new Array();
-			lang['pc' ] 	= '<?php echo $this->lang->line('home_js_1')?>';
-			lang['kbr'] 	= '<?php echo $this->lang->line('home_js_2')?>';
-			lang['remain']	= '<?php echo $this->lang->line('home_js_3')?>';
-			lang['desc']	= '<?php echo $this->lang->line('home_js_4')?>';
-			lang['fp']  	= '<?php echo $this->lang->line('home_js_5')?>';
-			lang['sc']  	= '<?php echo $this->lang->line('home_js_6')?>';
-			lang['efd'] 	= '<?php echo $this->lang->line('home_js_7')?>';
-			lang['rm']  	= '<?php echo $this->lang->line('home_js_8')?>';
-			lang['ff1']  	= '<?php echo $this->lang->line('home_js_10')?>';
-			lang['ff2']  	= '<?php echo $this->lang->line('home_js_11')?>';
+			lang['pc' ] 	= '<?=$this->lang->line('home_js_1')?>';
+			lang['kbr'] 	= '<?=$this->lang->line('home_js_2')?>';
+			lang['remain']	= '<?=$this->lang->line('home_js_3')?>';
+			lang['desc']	= '<?=$this->lang->line('home_js_4')?>';
+			lang['fp']  	= '<?=$this->lang->line('home_js_5')?>';
+			lang['sc']  	= '<?=$this->lang->line('home_js_6')?>';
+			lang['efd'] 	= '<?=$this->lang->line('home_js_7')?>';
+			lang['rm']  	= '<?=$this->lang->line('home_js_8')?>';
+			lang['ff1']  	= '<?=$this->lang->line('home_js_10')?>';
+			lang['ff2']  	= '<?=$this->lang->line('home_js_11')?>';
 			
 			return lang[key];
 		}
@@ -96,12 +96,12 @@ else
 			if($('#uploadTextBlock').css('display') != 'none')
 			{
 				$('#uploadTextBlock').slideUp('fast');
-				$('#uploadImgSwitch').attr('src', '<?php echo $base_url?>/img/icons/add_16.png');
+				$('#uploadImgSwitch').attr('src', '<?=$base_url?>/img/icons/add_16.png');
 			}
 			else
 			{
 				$('#uploadTextBlock').slideDown('fast');
-				$('#uploadImgSwitch').attr('src', '<?php echo $base_url?>/img/other/remove_16.png');
+				$('#uploadImgSwitch').attr('src', '<?=$base_url?>/img/other/remove_16.png');
 			}
 		}
 		
@@ -213,7 +213,7 @@ else
 		
 		function ___progressURL()
 		{
-			return "<?php echo site_url('upload/get_progress')?>";
+			return "<?=site_url('upload/get_progress')?>";
 		}
 	</script>
 <?php

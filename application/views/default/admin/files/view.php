@@ -44,12 +44,12 @@
 			<tr <?=alternator('class="odd"', 'class="even"')?>>
 				<td>
 					<div align="center">
-						<input type="checkbox" id="check-<?php echo $file->id?>" name="files[]" value="<?=$file->file_id?>" />
+						<input type="checkbox" id="check-<?=$file->id?>" name="files[]" value="<?=$file->file_id?>" />
 					</div>
 				</td>
 				<td>
 					<a href='<?=$links['down']?>' rel="external">
-						<img src="<?php echo base_url().'img/files/'.$this->functions->getFileTypeIcon($file->type);?>" class="nb" alt="" />
+						<img src="<?=base_url().'img/files/'.$this->functions->getFileTypeIcon($file->type);?>" class="nb" alt="" />
 						<?=$this->functions->elipsis($file->o_filename, 10);?>
 					</a>
 				</td>
@@ -75,7 +75,7 @@
 <br />
 <div style="float:right">
 	<form action="<?=site_url('admin/files/count')?>" method="post" style="padding:0; margin:0; border:0;">
-		Results: <input type="text" size="6" maxlength="6" name="fileCount" value="<?php echo $perPage?>" />
+		Results: <input type="text" size="6" maxlength="6" name="fileCount" value="<?=$perPage?>" />
 	</form>
 </div>
 <?=$pagination?>

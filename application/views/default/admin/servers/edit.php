@@ -5,7 +5,7 @@
 	</div>
 </div>
 <div style="clear:both"></div>
-<form action="<?php echo site_url('/admin/server/edit/'.$id)?>" method="post"> 
+<form action="<?=site_url('/admin/server/edit/'.$id)?>" method="post">
 	<input type="hidden" name="valid" value="true" size="50" />
 	<h3>Server Details</h3>
 	<p>

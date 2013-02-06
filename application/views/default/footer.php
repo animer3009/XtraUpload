@@ -24,7 +24,7 @@
 	
 		<div class="col float-left space-sep">
 			<? if($this->startup->site_config['show_recent_uploads']){?>
-			<h3><?php echo $this->lang->line('global_recently_uploaded_files')?></h3>
+			<h3><?=$this->lang->line('global_recently_uploaded_files')?></h3>
 			<ul class="col-list">
 			<?php 
 			$query = $this->files_db->getRecentFiles(5);
@@ -32,9 +32,9 @@
 			{
 				$links = $this->files_db->getLinks('', $file);
 				?>	<li>
-						<a href="<?php echo $links['down'];?>">
-							<img src="<?php echo base_url().'img/files/'.$this->functions->getFileTypeIcon($file->type);?>" class="nb" alt="" />
-							<?php echo $this->functions->elipsis($file->o_filename, 10);?>
+						<a href="<?=$links['down'];?>">
+							<img src="<?=base_url().'img/files/'.$this->functions->getFileTypeIcon($file->type);?>" class="nb" alt="" />
+							<?=$this->functions->elipsis($file->o_filename, 10);?>
 						</a>
 					</li>
 				<?php
@@ -50,28 +50,28 @@
 	
 		<div class="col2 float-right">
 		
-			<h3><?php echo $this->lang->line('global_footer_about')?></h3>			
+			<h3><?=$this->lang->line('global_footer_about')?></h3>
 			
 			<p>
 			<a href="http://xtrafile.com"><img src="<?=$base_url?>images/thumb.gif" width="50" height="50" alt="icon" class="float-left" /></a>
-			<a href="http://xtrafile.com/products/xtraupload-v2/"><?php echo $this->lang->line('global_xtraupload_v2')?></a> 
-			<?php echo $this->lang->line('global_footer_about_text1')?> <a href="http://xtrafile.com/products/xtraupload-v2/"><?php echo $this->lang->line('global_xtraupload_v2')?></a> <?php echo $this->lang->line('global_footer_about_text2')?> <a href="http://www.codeigniter.com"><?php echo $this->lang->line('global_codeigniter')?></a> <?php echo $this->lang->line('global_footer_about_text3')?></p>
+			<a href="http://xtrafile.com/products/xtraupload-v2/"><?=$this->lang->line('global_xtraupload_v2')?></a>
+			<?=$this->lang->line('global_footer_about_text1')?> <a href="http://xtrafile.com/products/xtraupload-v2/"><?=$this->lang->line('global_xtraupload_v2')?></a> <?=$this->lang->line('global_footer_about_text2')?> <a href="http://www.codeigniter.com"><?=$this->lang->line('global_codeigniter')?></a> <?=$this->lang->line('global_footer_about_text3')?></p>
 			
 			<p>
-			<?php echo $this->lang->line('global_copyright')?> 2006 - <?=date('Y')?> <a href="http://xtrafile.com"><strong><?php echo $this->lang->line('global_xtrafile')?></strong></a><br /> 
+			<?=$this->lang->line('global_copyright')?> 2006 - <?=date('Y')?> <a href="http://xtrafile.com"><strong><?=$this->lang->line('global_xtrafile')?></strong></a><br />
 			
 			
-			<?php echo $this->lang->line('global_design')?> <a href="http://styleshout.com">styleshout</a><br />
+			<?=$this->lang->line('global_design')?> <a href="http://styleshout.com">styleshout</a><br />
 			
 			<a href="<?=site_url('legal/tos')?>">Terms Of Service</a> | 
 			<a href="<?=site_url('legal/privacy')?>">Privacy Policy</a><br />
 			
-			<?php echo $this->lang->line('global_valid')?> <a href="http://jigsaw.w3.org/css-validator/check/referer">CSS</a> | 
+			<?=$this->lang->line('global_valid')?> <a href="http://jigsaw.w3.org/css-validator/check/referer">CSS</a> |
 		   	   <a href="http://validator.w3.org/check/referer">XHTML</a> - 
-			   <a href="javascript:;" onclick="$('#debug').toggle('fast')"><?php echo $this->lang->line('global_debug')?></a> 
+			   <a href="javascript:;" onclick="$('#debug').toggle('fast')"><?=$this->lang->line('global_debug')?></a>
 			   <span style="color:#FF0000; display:none" id="debug">
-			       <?php echo $this->lang->line('global_execution')?> <?=$this->benchmark->elapsed_time()?><br />
-				   <?php echo $this->lang->line('global_memory')?> <?=round(memory_get_usage() / 1024)?>KB
+			       <?=$this->lang->line('global_execution')?> <?=$this->benchmark->elapsed_time()?><br />
+				   <?=$this->lang->line('global_memory')?> <?=round(memory_get_usage() / 1024)?>KB
 			   </span>
 			</p> 
 		</div>		

@@ -1,8 +1,8 @@
 <h2 style="vertical-align:middle">
-	<img src="<?=$base_url.'img/icons/user_32.png'?>" class="nb" alt="" /> <?php echo $this->lang->line('user_register_pay_header')?>
+	<img src="<?=$base_url.'img/icons/user_32.png'?>" class="nb" alt="" /> <?=$this->lang->line('user_register_pay_header')?>
 </h2>
 
-<?php echo $form;?>
+<?=$form;?>
 <script type="text/javascript">
 function submitPayForm()
 {

@@ -1,6 +1,6 @@
 <h2 style="vertical-align:middle"><img src="<?=base_url().'img/icons/user_group_32.png'?>" class="nb" alt="" /> Group - Add</h2><br />
 <?=generateLinkButton('Manage Groups', site_url('admin/group/view'), base_url().'img/icons/back_16.png')?><br />
-<form action='<?php echo site_url('admin/group/add')?>' id="user_group" method="post">
+<form action='<?=site_url('admin/group/add')?>' id="user_group" method="post">
 	<h3>Add New Group</h3>
     <p>
 		<?php 
@@ -10,7 +10,7 @@
 			?>
 				<label style="font-weight:bold" for="<?=$name?>">
 					<?=$real_name[$name]?> 
-					<img src="<?php echo $base_url?>/img/icons/about_16.png" style="cursor:pointer" onclick="$('#d_<?php echo $name?>').slideToggle()" class="nb" /> 
+					<img src="<?=$base_url?>/img/icons/about_16.png" style="cursor:pointer" onclick="$('#d_<?=$name?>').slideToggle()" class="nb" />
 				</label>
 			<?php
 				
@@ -56,7 +56,7 @@
 				<?php
 			}
 			?>
-			<span style="display:none; text-decoration:underline; font-weight:bold" id="d_<?php echo $name?>"><?php echo $real_descr[$name]?></span><br />
+			<span style="display:none; text-decoration:underline; font-weight:bold" id="d_<?=$name?>"><?=$real_descr[$name]?></span><br />
 			<?php
 		}
 		echo '<br />';

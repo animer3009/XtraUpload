@@ -1,5 +1,5 @@
 <h2 style="vertical-align:middle"><img src="<?=base_url().'img/icons/sticky_32.png'?>" class="nb" alt="" /> Admin Shortcuts</h2>
-<form action="<?php echo site_url('admin/menu_shortcuts/edit/'.$shortcut->id)?>" method="post">
+<form action="<?=site_url('admin/menu_shortcuts/edit/'.$shortcut->id)?>" method="post">
 	<input type="hidden" name="status" value="1" />
 	<h3>Edit Shortcut</h3>
 	<p>

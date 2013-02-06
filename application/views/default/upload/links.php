@@ -7,14 +7,14 @@ if(isset($link['failed']) and $link['failed'] == true)
 elseif($link)
 {
 	?>
-	<?php echo $this->lang->line('upload_links_1')?><input readonly="readonly" type="text" id="dl_<?php echo rand()?>" size="50" value="<?php echo $link['down']?>" onfocus="this.select()" onclick="this.select()" />
+	<?=$this->lang->line('upload_links_1')?><input readonly="readonly" type="text" id="dl_<?=rand()?>" size="50" value="<?=$link['down']?>" onfocus="this.select()" onclick="this.select()" />
 	<?php
 	
 	if(!$this->session->userdata('id'))
 	{
 	?>
 	<br />
-	<?php echo $this->lang->line('upload_links_2')?><input readonly="readonly" type="text" id="del_<?php echo rand()?>" size="50" value="<?php echo $link['del']?>" onfocus="this.select()" onclick="this.select()" />
+	<?=$this->lang->line('upload_links_2')?><input readonly="readonly" type="text" id="del_<?=rand()?>" size="50" value="<?=$link['del']?>" onfocus="this.select()" onclick="this.select()" />
 	<?php
 	}
 	
@@ -22,7 +22,7 @@ elseif($link)
 	{
 		?>
 		<br />
-		<?php echo $this->lang->line('upload_links_3')?><a href="<?php echo $link['img']?>"><?php echo $link['img']?></a>
+		<?=$this->lang->line('upload_links_3')?><a href="<?=$link['img']?>"><?=$link['img']?></a>
 		<?php
 	}
 }

@@ -29,8 +29,8 @@
 	{
 	?>
 		<tr <?=alternator('class="odd"', 'class="even"')?>>
-			<td><div align="center"><?php echo ucwords($group->name)?></div></td>
-			<td><div align="center"><?php echo $group->descr?></div></td>
+			<td><div align="center"><?=ucwords($group->name)?></div></td>
+			<td><div align="center"><?=$group->descr?></div></td>
 			<td>
 				<div align="center"> 
 					<?php
@@ -39,31 +39,31 @@
 						if($group->status)
 						{
 							?>
-								<a href="<?php echo site_url('admin/group/turn_off/'.$group->id)?>">
-									<img src="<?php echo base_url()?>img/icons/on_16.png" class="nb" alt="public" title="Make Private" />
+								<a href="<?=site_url('admin/group/turn_off/'.$group->id)?>">
+									<img src="<?=base_url()?>img/icons/on_16.png" class="nb" alt="public" title="Make Private" />
 								</a>
 							<?php
 						}
 						else
 						{
 							?>
-								<a href="<?php echo site_url('admin/group/turn_on/'.$group->id)?>">
-									<img src="<?php echo base_url()?>img/icons/off_16.png" class="nb" alt="private" title="Make Public" />
+								<a href="<?=site_url('admin/group/turn_on/'.$group->id)?>">
+									<img src="<?=base_url()?>img/icons/off_16.png" class="nb" alt="private" title="Make Public" />
 								</a>
 							<?php
 						}
 					}
 					?>
-					<a href="<?php echo site_url('admin/group/edit/'.$group->id)?>">
-						<img src="<?php echo base_url()?>img/icons/edit_16.png" class="nb" alt=" Edit" title="Edit" />
+					<a href="<?=site_url('admin/group/edit/'.$group->id)?>">
+						<img src="<?=base_url()?>img/icons/edit_16.png" class="nb" alt=" Edit" title="Edit" />
 					</a>
 					
 					<?php
 					if($group->id > 2)
 					{
 						?>
-						<a href="<?php echo site_url('admin/group/delete/'.$group->id)?>"> 
-							<img src="<?php echo base_url()?>img/icons/close_16.png" class="nb" alt="Delete" title="Delete" />
+						<a href="<?=site_url('admin/group/delete/'.$group->id)?>">
+							<img src="<?=base_url()?>img/icons/close_16.png" class="nb" alt="Delete" title="Delete" />
 						</a>
 						<?php
 					}

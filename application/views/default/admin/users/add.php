@@ -1,7 +1,7 @@
 <h2 style="vertical-align:middle"><img src="<?=base_url().'img/icons/user_32.png'?>" class="nb" alt="" /> User - Add</h2><br />
 <?=$error?>
 <?=generateLinkButton('Manage Users', site_url('admin/user/home'), base_url().'img/icons/back_16.png')?><br />
-<form action='<?php echo site_url('admin/user/add')?>' method="post">
+<form action='<?=site_url('admin/user/add')?>' method="post">
 	<h3>Add New User</h3>
     <p>
         <label style="font-weight:bold" for="username">Username</label>
@@ -16,7 +16,7 @@
 			foreach($groups->result() as $group)
 			{
 				?>
-				<option value="<?php echo $group->id?>"><?php echo ucwords($group->name)?></option>
+				<option value="<?=$group->id?>"><?=ucwords($group->name)?></option>
 				<?php
 			}
 			?>

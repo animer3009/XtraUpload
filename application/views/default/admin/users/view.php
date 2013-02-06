@@ -52,37 +52,37 @@
 		{
 		?>
 			<tr <?=alternator('class="odd"', 'class="even"')?>>
-				<td><div align="center"><input type="checkbox" id="check-<?php echo $user->id?>" name="users[]" value="<?php echo $user->id?>" /></div></td>
-				<td><div align="center"><?php echo $user->id?></div></td>
-				<td><div align="center"><?php echo $user->username?></div></td>
-				<td><div align="center"><?php echo $user->email?></div></td>
-				<td><div align="center"><?php echo $this->functions->getFilesizePrefix($this->files_db->getFilesUseageSpace($user->id))?></div></td>
+				<td><div align="center"><input type="checkbox" id="check-<?=$user->id?>" name="users[]" value="<?=$user->id?>" /></div></td>
+				<td><div align="center"><?=$user->id?></div></td>
+				<td><div align="center"><?=$user->username?></div></td>
+				<td><div align="center"><?=$user->email?></div></td>
+				<td><div align="center"><?=$this->functions->getFilesizePrefix($this->files_db->getFilesUseageSpace($user->id))?></div></td>
 				<td>
 					<div align="center">
 					    <?php
 					    if($user->status == 0 and $user->id != 1)
 					    {
-					        ?><a href="<?php echo site_url('admin/user/turn_on/'.$user->id)?>">
-							<img src="<?php echo base_url()?>img/icons/off_16.png" class="nb" alt="Activate User" title="Activate User" />
+					        ?><a href="<?=site_url('admin/user/turn_on/'.$user->id)?>">
+							<img src="<?=base_url()?>img/icons/off_16.png" class="nb" alt="Activate User" title="Activate User" />
 						</a><?php
 					    }
 					    else if($user->id != 1)
 					    {
-					        ?><a href="<?php echo site_url('admin/user/turn_off/'.$user->id)?>">
-							<img src="<?php echo base_url()?>img/icons/on_16.png" class="nb" alt="Deactivate User" title="Deactivate User" />
+					        ?><a href="<?=site_url('admin/user/turn_off/'.$user->id)?>">
+							<img src="<?=base_url()?>img/icons/on_16.png" class="nb" alt="Deactivate User" title="Deactivate User" />
 						</a><?php
 					    }
 					    ?>
-						<a href="<?php echo site_url('admin/user/edit/'.$user->id)?>">
-							<img src="<?php echo base_url()?>img/icons/edit_16.png" class="nb" alt=" Edit" title="Edit" />
+						<a href="<?=site_url('admin/user/edit/'.$user->id)?>">
+							<img src="<?=base_url()?>img/icons/edit_16.png" class="nb" alt=" Edit" title="Edit" />
 						</a>
 						
 						
 						<?php if($user->id != 1)
 						{
 							?>
-							<a href="<?php echo site_url('admin/user/delete/'.$user->id)?>" onclick="return confirm('Are you sure you want to delete this user?')">
-								<img src="<?php echo base_url()?>img/icons/close_16.png" class="nb" alt="Delete" title="Delete" />
+							<a href="<?=site_url('admin/user/delete/'.$user->id)?>" onclick="return confirm('Are you sure you want to delete this user?')">
+								<img src="<?=base_url()?>img/icons/close_16.png" class="nb" alt="Delete" title="Delete" />
 							</a>
 							<?php
 						}
@@ -97,7 +97,7 @@
 	</form>
 	<div style="float:right">
 		<form action="<?=site_url('admin/user/count')?>" method="post" style="padding:0; margin:0; border:0;">
-			Results: <input type="text" size="6" maxlength="6" name="userCount" value="<?php echo $perPage?>" />
+			Results: <input type="text" size="6" maxlength="6" name="userCount" value="<?=$perPage?>" />
 		</form>
 	</div>
 	<?=$pagination?>

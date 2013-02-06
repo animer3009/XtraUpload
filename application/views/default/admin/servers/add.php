@@ -5,7 +5,7 @@
 	</div>
 </div>
 <p></p>
-<form action="<?php echo site_url('/admin/server/add')?>" method="post"> 
+<form action="<?=site_url('/admin/server/add')?>" method="post">
 	<input type="hidden" name="valid" value="true" size="50" />
 	<h3>Add New Server</h3>
 	<p>

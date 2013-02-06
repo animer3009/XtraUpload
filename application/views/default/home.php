@@ -2,8 +2,8 @@
 {
 	?>
 
-	<h2 style="vertical-align:middle"><img src="<?php echo $base_url.'img/other/home2_32.png'?>" class="nb" alt="" /> <?php echo $this->lang->line('home_title')?></h2>
-	<span class="alert"><?php echo $this->lang->line('home_not_logged_in', '<a href="'.site_url('user/login').'">'.$this->lang->line('home_login_text').'</a>'); ?></span>
+	<h2 style="vertical-align:middle"><img src="<?=$base_url.'img/other/home2_32.png'?>" class="nb" alt="" /> <?=$this->lang->line('home_title')?></h2>
+	<span class="alert"><?=$this->lang->line('home_not_logged_in', '<a href="'.site_url('user/login').'">'.$this->lang->line('home_login_text').'</a>'); ?></span>
 
 	<?php 
 }
@@ -11,32 +11,32 @@ else
 {
 	?>
 
-	<h2 style="vertical-align:middle"><img src="<?php echo $base_url.'img/other/home2_32.png'?>" class="nb" alt="" /> <?php echo $this->lang->line('home_title')?></h2>
+	<h2 style="vertical-align:middle"><img src="<?=$base_url.'img/other/home2_32.png'?>" class="nb" alt="" /> <?=$this->lang->line('home_title')?></h2>
 	<?php if(!empty($flashMessage)){ echo '<p>'.$flashMessage.'</p>';}?>
 	<?php if(!empty($this->startup->site_config['home_info_msg'])){ echo '<span class="note">'.$this->startup->site_config['home_info_msg'].'</span>';}?>
 	<div id="info_div" style="display:none">
 		<h3>
 			<a href="javascript:void(0);" onclick="$('#upload_limits').slideDown();$(this).parent().remove();">
-				<img src="<?php echo $base_url?>img/icons/about_24.png" class="nb" alt="" /><?php echo $this->lang->line('home_upload_res'); ?>
+				<img src="<?=$base_url?>img/icons/about_24.png" class="nb" alt="" /><?=$this->lang->line('home_upload_res'); ?>
 			</a>
 		</h3>
 		<p>
 			<span style="display:none" id="upload_limits" rel="no_close" class="info">
-				<?php echo $this->lang->line('home_upload_limit', '<strong>'.intval($upload_num_limit).'</strong>', '<strong>'.intval($upload_limit).'</strong>'); ?>
+				<?=$this->lang->line('home_upload_limit', '<strong>'.intval($upload_num_limit).'</strong>', '<strong>'.intval($upload_limit).'</strong>'); ?>
 				
 				<?php if(trim($files_types) != '' and $files_types != '*'): ?>
 				
 					<br />
-					<?php echo $this->lang->line('home_upload_filetypes', '<strong>'.(($file_types_allow_deny) ? $this->lang->line('home_upload_filetypes_allow') : $this->lang->line('home_upload_filetypes_deny')).'</strong>'), '.', str_replace('|', ', .', $files_types); ?>
+					<?=$this->lang->line('home_upload_filetypes', '<strong>'.(($file_types_allow_deny) ? $this->lang->line('home_upload_filetypes_allow') : $this->lang->line('home_upload_filetypes_deny')).'</strong>'), '.', str_replace('|', ', .', $files_types); ?>
 					
 				<?php endif; ?>
 				
 				<?php if(trim($storage_limit) != '' and $storage_limit != '0'): ?>
 				
 					<br /><br />
-					<strong><?php echo $this->lang->line('home_limited_account_msg'); ?></strong>
+					<strong><?=$this->lang->line('home_limited_account_msg'); ?></strong>
 					<br />
-					<?php echo $this->lang->line('home_limited_remaining', '<strong>'.$storage_used.'</strong>', '<strong>'.$storage_limit.'</strong>'); ?>
+					<?=$this->lang->line('home_limited_remaining', '<strong>'.$storage_used.'</strong>', '<strong>'.$storage_limit.'</strong>'); ?>
 					 
 				<?php endif; ?>
 			</span>
@@ -46,28 +46,28 @@ else
 	<div id="flash" style="display:">
 		
 		<span class="alert">
-			<strong><?php echo $this->lang->line('home_error')?></strong><br />
-			<?php echo $this->lang->line('home_no_flash_required')?><br /><a href="http://www.adobe.com/shockwave/download/download.cgi?P1_Prod_Version=ShockwaveFlash"><?php echo $this->lang->line('home_no_flash_install')?></a>
+			<strong><?=$this->lang->line('home_error')?></strong><br />
+			<?=$this->lang->line('home_no_flash_required')?><br /><a href="http://www.adobe.com/shockwave/download/download.cgi?P1_Prod_Version=ShockwaveFlash"><?=$this->lang->line('home_no_flash_install')?></a>
 		</span>
 		
 		
 		<form enctype="multipart/form-data" action="<?=site_url('/upload/process/'.md5($this->functions->getRandId(32)).'/'.($this->session->userdata('id') ? $this->session->userdata('id') : 0 ))?>" method="post">
-			<h3><?php echo $this->lang->line('home_upload_file_text'); ?></h3>
+			<h3><?=$this->lang->line('home_upload_file_text'); ?></h3>
 			<p>
-				<span><?php echo $this->lang->line('home_no_flash_text'); ?></span>
+				<span><?=$this->lang->line('home_no_flash_text'); ?></span>
 				<input type="hidden" name="no_flash" value="1">
 		
-				<label for="file"><?php echo $this->lang->line('home_file_text'); ?></label>
+				<label for="file"><?=$this->lang->line('home_file_text'); ?></label>
 				<input type="file" name="Filedata">
 			
-				<label for="password"><?php echo $this->lang->line('home_password_text'); ?></label>
+				<label for="password"><?=$this->lang->line('home_password_text'); ?></label>
 				<input type="text" name="password" value="">
 			
-				<label for="description"><?php echo $this->lang->line('home_description_text'); ?></label>
+				<label for="description"><?=$this->lang->line('home_description_text'); ?></label>
 				<textarea name="description" rows="8" cols="40"></textarea>
 		
 				<br style="clear:both" />
-				<?php echo generateSubmitButton($this->lang->line('home_upload'), $base_url.'img/icons/up_16.png', 'green')?>
+				<?=generateSubmitButton($this->lang->line('home_upload'), $base_url.'img/icons/up_16.png', 'green')?>
 				<br style="clear:both" />
 			</p>
 		</form>
@@ -75,7 +75,7 @@ else
 	</div>
 	
 	<div id="uploader" style="display:none;">
-		<h3 style="padding-top:8px;"><?php echo $this->lang->line('home_select_files')?></h3><br />
+		<h3 style="padding-top:8px;"><?=$this->lang->line('home_select_files')?></h3><br />
 		<div style=" padding-left:12px;">
 			<div style="display: block; width:90px; height:22px; border: solid 1px #7FAAFF; background-color: #C5D9FF; padding: 2px; padding-top:6px; padding-left:6px;"><span id="spanButtonPlaceholder"></span></div>
 		</div>
@@ -84,49 +84,49 @@ else
 	
 	
 	<div id="files" style="display:none">
-		<h3 style="padding-top:8px;"><?php echo $this->lang->line('home_queued')?></h3>
+		<h3 style="padding-top:8px;"><?=$this->lang->line('home_queued')?></h3>
 		<div id="file_list">
 			<p>
-				<?php echo $this->lang->line('home_selected_files')?> (<span id="summary">0</span> <?php echo $this->lang->line('home_files')?>).<br />
+				<?=$this->lang->line('home_selected_files')?> (<span id="summary">0</span> <?=$this->lang->line('home_files')?>).<br />
 				<span class="alert" id="alert1" style="display:none">
-					<?php echo $this->lang->line('home_select_error_1')?><br />
-					<?php echo $this->lang->line('home_files_removed')?>.
+					<?=$this->lang->line('home_select_error_1')?><br />
+					<?=$this->lang->line('home_files_removed')?>.
 				</span>
 				<span class="alert" id="alert2" style="display:none">
-					<?php echo $this->lang->line('home_select_error_2')?><br />
-					<?php echo $this->lang->line('home_files_removed')?>.
+					<?=$this->lang->line('home_select_error_2')?><br />
+					<?=$this->lang->line('home_files_removed')?>.
 				</span>
 				<span class="alert" id="alert3" style="display:none">
-					<?php echo $this->lang->line('home_select_error_3')?><br />
-					<?php echo $this->lang->line('home_files_removed')?>.
+					<?=$this->lang->line('home_select_error_3')?><br />
+					<?=$this->lang->line('home_files_removed')?>.
 				</span>
 				<span class="alert" id="alert4" style="display:none">
-					<?php echo $this->lang->line('home_select_error_4')?> <strong><?php echo intval($upload_num_limit)?></strong> <?php echo $this->lang->line('home_files')?>.<br />
-					<?php echo $this->lang->line('home_select_error_5')?>.
+					<?=$this->lang->line('home_select_error_4')?> <strong><?=intval($upload_num_limit)?></strong> <?=$this->lang->line('home_files')?>.<br />
+					<?=$this->lang->line('home_select_error_5')?>.
 				</span>
 				<span class="alert" id="alert5" style="display:none">
-					<?php echo $this->lang->line('home_select_error_6')?>.<br />
-					<?php echo $this->lang->line('home_select_error_7')?>.
+					<?=$this->lang->line('home_select_error_6')?>.<br />
+					<?=$this->lang->line('home_select_error_7')?>.
 				</span>
 			</p>
 			<div class="float-right" style=" margin-bottom:1em">
-				<?php echo generateLinkButton($this->lang->line('home_upload'), 'javascript:void(0);', $base_url.'img/icons/up_16.png', 'green', array('onclick'=>'swfu.startUpload();'))?>
+				<?=generateLinkButton($this->lang->line('home_upload'), 'javascript:void(0);', $base_url.'img/icons/up_16.png', 'green', array('onclick'=>'swfu.startUpload();'))?>
 			</div>
 			<table border="0" style=" padding:0;width:98%;clear:both" id="file_list_table">
 				<tr>
-					<th style="width:470px" class="align-left"><?php echo $this->lang->line('home_table_1')?></th>
-					<th style="width:90px"><?php echo $this->lang->line('home_table_2')?></th>
-					<th style="width:85px"><?php echo $this->lang->line('home_table_3')?> <img title="Delete All?" src="<?php echo $base_url?>img/icons/delete_16.png" onclick="clearUploadQueue()" alt="" style="cursor:pointer" class="nb" /></th>
+					<th style="width:470px" class="align-left"><?=$this->lang->line('home_table_1')?></th>
+					<th style="width:90px"><?=$this->lang->line('home_table_2')?></th>
+					<th style="width:85px"><?=$this->lang->line('home_table_3')?> <img title="Delete All?" src="<?=$base_url?>img/icons/delete_16.png" onclick="clearUploadQueue()" alt="" style="cursor:pointer" class="nb" /></th>
 				</tr>
 			</table>
 			<div class="float-right">
-				<?php echo generateLinkButton($this->lang->line('home_upload'), 'javascript:void(0);', $base_url.'img/icons/up_16.png', 'green', array('onclick'=>'swfu.startUpload();')); ?>
+				<?=generateLinkButton($this->lang->line('home_upload'), 'javascript:void(0);', $base_url.'img/icons/up_16.png', 'green', array('onclick'=>'swfu.startUpload();')); ?>
 			</div>
 		</div>
 	</div>
 	
 	<input id="fid" type="hidden" />
-	<input id="uid" type="hidden" value="<?php echo (intval($this->session->userdata('id')) != 0 ? intval($this->session->userdata('id')) : 0 )?>" />
+	<input id="uid" type="hidden" value="<?=(intval($this->session->userdata('id')) != 0 ? intval($this->session->userdata('id')) : 0 )?>" />
 	<div id="filesHidden" style="display:none"></div>
 	
 	<script type="text/javascript">
@@ -139,21 +139,21 @@ else
 		var curFileId = '';
 		var pbUpd = 0;
 		var flashUploadStartTime = '';
-		var fileIcons = new Array(<?php echo $file_icons; ?>);
+		var fileIcons = new Array(<?=$file_icons; ?>);
 		
 		function ___getMaxUploadSize()
 		{
-			return '<?php echo intval($upload_limit); ?>';
+			return '<?=intval($upload_limit); ?>';
 		}
 		
 		function ___serverUrl()
 		{
-			return '<?php echo $server; ?>';
+			return '<?=$server; ?>';
 		}
 		
 		function ___getFilePipeString()
 		{
-			return '<?php echo $files_types; ?>';
+			return '<?=$files_types; ?>';
 		}
 		
 		function ___getFileIcon(icon)
@@ -170,7 +170,7 @@ else
 		
 		function ___getFileTypesAllowOrDeny()
 		{
-			return <?php echo intval($file_types_allow_deny); ?>;
+			return <?=intval($file_types_allow_deny); ?>;
 		}
 		
 		function ___toManyFilesError()
@@ -220,17 +220,17 @@ else
 		function ___upLang(key)
 		{
 			var lang = new Array();
-			lang['pc' ] 	= '<?php echo $this->lang->line('home_js_1')?>';
-			lang['kbr'] 	= '<?php echo $this->lang->line('home_js_2')?>';
-			lang['remain']	= '<?php echo $this->lang->line('home_js_3')?>';
-			lang['desc']	= '<?php echo $this->lang->line('home_js_4')?>';
-			lang['fp']  	= '<?php echo $this->lang->line('home_js_5')?>';
-			lang['sc']  	= '<?php echo $this->lang->line('home_js_6')?>';
-			lang['efd'] 	= '<?php echo $this->lang->line('home_js_7')?>';
-			lang['rm']  	= '<?php echo $this->lang->line('home_js_8')?>';
-			lang['ff1']  	= '<?php echo $this->lang->line('home_js_10')?>';
-			lang['ff2']  	= '<?php echo $this->lang->line('home_js_11')?>';
-			lang['ft']		= '<?php echo $this->lang->line('home_js_12')?>';
+			lang['pc' ] 	= '<?=$this->lang->line('home_js_1')?>';
+			lang['kbr'] 	= '<?=$this->lang->line('home_js_2')?>';
+			lang['remain']	= '<?=$this->lang->line('home_js_3')?>';
+			lang['desc']	= '<?=$this->lang->line('home_js_4')?>';
+			lang['fp']  	= '<?=$this->lang->line('home_js_5')?>';
+			lang['sc']  	= '<?=$this->lang->line('home_js_6')?>';
+			lang['efd'] 	= '<?=$this->lang->line('home_js_7')?>';
+			lang['rm']  	= '<?=$this->lang->line('home_js_8')?>';
+			lang['ff1']  	= '<?=$this->lang->line('home_js_10')?>';
+			lang['ff2']  	= '<?=$this->lang->line('home_js_11')?>';
+			lang['ft']		= '<?=$this->lang->line('home_js_12')?>';
 			
 			return lang[key];
 		}
@@ -239,10 +239,10 @@ else
 		{
 			var settings_object = { 
 				file_types : "*.*", 
-				file_types_description: "<?php echo $this->lang->line('home_js_9')?>", 
-				file_upload_limit : <?php echo intval($upload_num_limit)?>, 
-				file_size_limit : (<?php echo intval($upload_limit)?> * 1024),
-				file_queue_limit : <?php echo intval($upload_num_limit)?>, 
+				file_types_description: "<?=$this->lang->line('home_js_9')?>",
+				file_upload_limit : <?=intval($upload_num_limit)?>,
+				file_size_limit : (<?=intval($upload_limit)?> * 1024),
+				file_queue_limit : <?=intval($upload_num_limit)?>,
 				flash_url : ___baseUrl()+"flash/upload.swf", 
 				flash9_url: ___baseUrl()+"flash/upload9.swf", 
 				flash_width : "1px", 
@@ -346,7 +346,7 @@ else
 		function uploadDone(file)
 		{
 			syncFileProps(file);
-			$('#'+file.id+"-del").empty().html("<strong><?php echo $this->lang->line('home_upload_complete'); ?></strong>");
+			$('#'+file.id+"-del").empty().html("<strong><?=$this->lang->line('home_upload_complete'); ?></strong>");
 			$("#"+file.id+"-details").css('borderTop', 'none').show();
 			var stats = swfu.getStats();
 		

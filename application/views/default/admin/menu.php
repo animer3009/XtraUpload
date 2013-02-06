@@ -39,9 +39,9 @@ if(!isset($_SERVER['WINDIR'])){?>
 <? }?>
 
 <?php /* Config Links */ ?>
-<?php echo $this->xu_api->menus->getAdminMenu();?>
+<?=$this->xu_api->menus->getAdminMenu();?>
 
 <h3>Plugins...</h3>
 <ul class="sidemenu">
-	<?php echo $this->xu_api->menus->getPluginMenu();?>
+	<?=$this->xu_api->menus->getPluginMenu();?>
 </ul>

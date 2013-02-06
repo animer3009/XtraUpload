@@ -27,8 +27,8 @@ margin: 			0 0 4px 0;
 </head>
 <body>
 	<div id="content">
-		<h1><?php echo $heading; ?></h1>
-		<?php echo $message; ?>
+		<h1><?=$heading; ?></h1>
+		<?=$message; ?>
 	</div>
 </body>
 </html>

@@ -1,7 +1,7 @@
 <h2 style="vertical-align:middle"><img src="<?=base_url().'img/icons/user_32.png'?>" class="nb" alt="" /> User - Edit</h2><br />
 <?=$error?>
 <?=generateLinkButton('Manage Users', site_url('admin/user/home'), base_url().'img/icons/back_16.png')?><br />
-<form action='<?php echo site_url('admin/user/edit/'.$user->id)?>' method="post">
+<form action='<?=site_url('admin/user/edit/'.$user->id)?>' method="post">
 	<h3>Edit User: <?=$user->username?></h3>
     <p>
         <label style="font-weight:bold" for="username">Username</label>
@@ -16,7 +16,7 @@
 			foreach($groups->result() as $group)
 			{
 				?>
-				<option <?php if($group->id == $user->group){?> selected="selected"<?php }?> value="<?php echo $group->id?>"><?php echo ucwords($group->name)?></option>
+				<option <?php if($group->id == $user->group){?> selected="selected"<?php }?> value="<?=$group->id?>"><?=ucwords($group->name)?></option>
 				<?php
 			}
 			?>

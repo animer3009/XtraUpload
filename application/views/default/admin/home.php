@@ -1,5 +1,5 @@
-<h2><img src="<?php echo base_url().'img/other/admin_32.png'?>" class="nb" alt="" /><?php echo $this->lang->line('admin_home'); ?></h2>
-<h3 id="php_ini_header" ><?php echo $this->lang->line('admin_important_server_settings'); ?></h3>
+<h2><img src="<?=base_url().'img/other/admin_32.png'?>" class="nb" alt="" /><?=$this->lang->line('admin_home'); ?></h2>
+<h3 id="php_ini_header" ><?=$this->lang->line('admin_important_server_settings'); ?></h3>
 <?php
 
 $ini_list = array(
@@ -110,7 +110,7 @@ function renameINIResult($r, $n)
 <?php
 if($is_not_good)
 {
-	?><span class="alert"><?php echo $this->lang->line('admin_settings_alert'); ?></span><?php
+	?><span class="alert"><?=$this->lang->line('admin_settings_alert'); ?></span><?php
 }
 else
 {
@@ -132,43 +132,43 @@ if($this->startup->site_config['allow_version_check'])
 	if(XU_VERSION < $latest_version)
 	{
 		?>
-		<h3><?php echo $this->lang->line('admin_upgrade_available'); ?></h3>
-		<span class="alert"><?php echo $this->lang->line('admin_important_upgrade_available
-		'); ?>: <a href="http://xtrafile.com/files/"><?php echo $this->lang->line('admin_update_to'); ?> <strong><?php echo $this->functions->parseVersion($latest_version)?></strong></a></span>
+		<h3><?=$this->lang->line('admin_upgrade_available'); ?></h3>
+		<span class="alert"><?=$this->lang->line('admin_important_upgrade_available
+		'); ?>: <a href="http://xtrafile.com/files/"><?=$this->lang->line('admin_update_to'); ?> <strong><?=$this->functions->parseVersion($latest_version)?></strong></a></span>
 		<?php
 	}
 }
 ?>
 
-<h3><?php echo $this->lang->line('admin_stats'); ?></h3>
+<h3><?=$this->lang->line('admin_stats'); ?></h3>
 <table border="0" style="width:98%">
 <tr>
 	<td>
-		<strong><?php echo $this->lang->line('admin_number_of_uploads'); ?>:</strong> <em><?php echo $this->db->count_all('refrence');?></em>
+		<strong><?=$this->lang->line('admin_number_of_uploads'); ?>:</strong> <em><?=$this->db->count_all('refrence');?></em>
 	</td>
 	<td>
-		<strong><?php echo $this->lang->line('admin_total_disk_space_used'); ?>:</strong> <em><?php echo $this->functions->getFilesizePrefix($this->db->select_sum('size')->get('files')->row()->size)?></em>
-	</td>
-</tr>
-<tr>
-	<td>
-		<strong><?php echo $this->lang->line('admin_number_of_registered_users'); ?>:</strong> <em><?php echo $this->db->count_all('users');?></em>
-	</td>
-	<td>
-		<strong><?php echo $this->lang->line('admin_total_bandwidth_used'); ?>:</strong> <em><?php echo $this->functions->getFilesizePrefix($this->db->select_sum('sent')->get('downloads')->row()->sent)?></em>
+		<strong><?=$this->lang->line('admin_total_disk_space_used'); ?>:</strong> <em><?=$this->functions->getFilesizePrefix($this->db->select_sum('size')->get('files')->row()->size)?></em>
 	</td>
 </tr>
 <tr>
 	<td>
-		<strong><?php echo $this->lang->line('admin_number_of_admins'); ?>:</strong> <em><?php echo $this->db->select_sum('id', 'count')->get_where('users', array('group' => '2'))->row()->count;?></em>
+		<strong><?=$this->lang->line('admin_number_of_registered_users'); ?>:</strong> <em><?=$this->db->count_all('users');?></em>
 	</td>
 	<td>
-		<strong><?php echo $this->lang->line('admin_number_of_active_servers'); ?>:</strong> <em><?php echo $this->db->select_sum('id', 'count')->get_where('servers', array('status' => '1'))->row()->count?></em>
+		<strong><?=$this->lang->line('admin_total_bandwidth_used'); ?>:</strong> <em><?=$this->functions->getFilesizePrefix($this->db->select_sum('sent')->get('downloads')->row()->sent)?></em>
+	</td>
+</tr>
+<tr>
+	<td>
+		<strong><?=$this->lang->line('admin_number_of_admins'); ?>:</strong> <em><?=$this->db->select_sum('id', 'count')->get_where('users', array('group' => '2'))->row()->count;?></em>
+	</td>
+	<td>
+		<strong><?=$this->lang->line('admin_number_of_active_servers'); ?>:</strong> <em><?=$this->db->select_sum('id', 'count')->get_where('servers', array('status' => '1'))->row()->count?></em>
 	</td>
 </tr>
 </table>
 
-<h3><?php echo $this->lang->line('admin_server_stats'); ?></h3>
+<h3><?=$this->lang->line('admin_server_stats'); ?></h3>
 <table border="0" style="width:98%">
 	<? 
 	$servers = $this->db->get('servers');
@@ -188,11 +188,11 @@ if($this->startup->site_config['allow_version_check'])
 	        <td>
 				<h3 style="font-size:16px; padding:2px; margin:0"><img class="nb" src="<?=$base_url?>img/other/server_16.png" alt="" /> <a href="<?=site_url('admin/server/edit/'.$serv->id)?>"><?=ucfirst($serv->name)?></a> (<?=$serv->url?>)</h3>
 	            <div class="progress_border" style="margin-left:2px; width:99%;">
-	                <div class="progress_img_sliver" style="width:<?=round($used_space_percent)?>%;"><?=$used_space?> <?php echo $this->lang->line('admin_used'); ?></div>
-					<div class="progress_img_blank" style="width:<?=round($free_space_percent)?>%;"><?=$free_space?> <?php echo $this->lang->line('admin_free'); ?></div>
+	                <div class="progress_img_sliver" style="width:<?=round($used_space_percent)?>%;"><?=$used_space?> <?=$this->lang->line('admin_used'); ?></div>
+					<div class="progress_img_blank" style="width:<?=round($free_space_percent)?>%;"><?=$free_space?> <?=$this->lang->line('admin_free'); ?></div>
 	            </div>
 				<h4 style="padding:4px;margin-top:4px;">
-					<?php echo $this->lang->line('admin_total_disk_space'); ?>: <?=$total_space?><br />
+					<?=$this->lang->line('admin_total_disk_space'); ?>: <?=$total_space?><br />
 					Files on Server: <?=$serv->num_files?><br />
 				</h4>
 	        </td>
@@ -202,19 +202,19 @@ if($this->startup->site_config['allow_version_check'])
 	?>
 </table>
 
-<h3><?php echo $this->lang->line('admin_useful_information'); ?></h3>
+<h3><?=$this->lang->line('admin_useful_information'); ?></h3>
 <p> 
-	<?php echo $this->lang->line('admin_you_are_using_the'); ?> <a href="<?php echo site_url('admin/skin/view')?>"><strong><?php echo ucwords(str_replace('_', ' ', $this->startup->skin))?></strong> <?php echo $this->lang->line('admin_skin'); ?></a> <?php echo $this->lang->line('admin_with'); ?> <a href="<?php echo site_url('admin/extend/view')?>"><?php echo $this->db->get_where('extend', array('active' => 1))->num_rows()?> <?php echo $this->lang->line('admin_plugins'); ?></a>.<br />
-	<?php echo $this->lang->line('admin_this_is_xu_version'); ?> <strong><?php echo XU_VERSION_READ?></strong>. 
+	<?=$this->lang->line('admin_you_are_using_the'); ?> <a href="<?=site_url('admin/skin/view')?>"><strong><?=ucwords(str_replace('_', ' ', $this->startup->skin))?></strong> <?=$this->lang->line('admin_skin'); ?></a> <?=$this->lang->line('admin_with'); ?> <a href="<?=site_url('admin/extend/view')?>"><?=$this->db->get_where('extend', array('active' => 1))->num_rows()?> <?=$this->lang->line('admin_plugins'); ?></a>.<br />
+	<?=$this->lang->line('admin_this_is_xu_version'); ?> <strong><?=XU_VERSION_READ?></strong>.
 </p>
 
-<h3><?php echo $this->lang->line('admin_login_logger'); ?></h3>
+<h3><?=$this->lang->line('admin_login_logger'); ?></h3>
 <table border="0" style="width:98%">
 <tr>
-	<th><?php echo $this->lang->line('admin_user'); ?></th>
-	<th><?php echo $this->lang->line('admin_ip'); ?></th>
-	<th><?php echo $this->lang->line('admin_date'); ?></th>
-	<th><?php echo $this->lang->line('admin_valid'); ?></th>
+	<th><?=$this->lang->line('admin_user'); ?></th>
+	<th><?=$this->lang->line('admin_ip'); ?></th>
+	<th><?=$this->lang->line('admin_date'); ?></th>
+	<th><?=$this->lang->line('admin_valid'); ?></th>
 </tr>
 	<? 
 	$logins = $this->admin_logger->getLogs(5);
@@ -239,11 +239,11 @@ if($this->startup->site_config['allow_version_check'])
 				
 				if ($log->valid == 1) 
 				{
-					?><img src="<?php echo base_url().'img/icons/ok_16.png'?>" class="nb" alt="" /><?php
+					?><img src="<?=base_url().'img/icons/ok_16.png'?>" class="nb" alt="" /><?php
 				} 
 				else 
 				{
-					?><img src="<?php echo base_url().'img/icons/cancel_16.png'?>" class="nb" alt="" /><?php
+					?><img src="<?=base_url().'img/icons/cancel_16.png'?>" class="nb" alt="" /><?php
 				}
 				?>
 	        </td>

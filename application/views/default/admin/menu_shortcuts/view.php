@@ -57,7 +57,7 @@
 <br />
 <div style="float:right">
 	<form action="<?=site_url('admin/files/count')?>" method="post" style="padding:0; margin:0; border:0;">
-		Results Per Page: <input type="text" size="6" maxlength="6" name="fileCount" value="<?php echo $perPage?>" />
+		Results Per Page: <input type="text" size="6" maxlength="6" name="fileCount" value="<?=$perPage?>" />
 	</form>
 </div>
 <?=$pagination?>
