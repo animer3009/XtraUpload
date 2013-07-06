@@ -35,25 +35,24 @@ class Xu_menus_api
 	function Xu_menus_api()
 	{
 		$this->CI =& get_instance();
-		log_message('debug', "XtraUpload Menu API Class Initialized");
-		$this->init();
+
+        $this->store = new stdClass();
+        $this->store->main_menu = array();
+        $this->store->admin_menu = array();
+        $this->store->admin_menu_names = array();
+        $this->store->admin_menu_order = array();
+        $this->store->admin_menu_count = 0;
+        $this->store->plugin_menu = array();
+        $this->store->sub_menu = array();
+
+        log_message('debug', "XtraUpload Menu API Class Initialized");
+
 	}
 	
-	private function init()
-	{
-		$this->store = new stdClass();
-		$this->store->main_menu = array();
-		$this->store->admin_menu = array();
-		$this->store->admin_menu_names = array();
-		$this->store->admin_menu_order = array();
-		$this->store->admin_menu_count = 0;
-		$this->store->plugin_menu = array();
-		$this->store->sub_menu = array();
-	}
-	
-	function getMainMenu()
+	public function getMainMenu()
 	{
 		$html = '';
+
 		foreach($this->store->main_menu as $link => $arr)
 		{
 			if(((isset($item['login']) && $item['login'] == true) && $this->CI->session->userdata('id')) or !isset($item['login']))
@@ -66,10 +65,11 @@ class Xu_menus_api
 				$html .= '><a href="'.site_url($link).'"><img src="'.base_url().$arr['icon'].'" class="nb" alt="" /> '.$arr['text'].'</a></li>';
 			}
 		}
+
 		return $html;
 	}
 	
-	function addMainMenuLink($link, $text, $icon, $login=false)
+	public function addMainMenuLink($link, $text, $icon, $login=false)
 	{
 		$menu = $this->store->main_menu;
 		$menu[$link] = array(
@@ -80,28 +80,25 @@ class Xu_menus_api
 		$this->store->main_menu = $menu;
 	}
 	
-	
-	
-	function removeMainMenuLink($id, $link)
+	public function removeMainMenuLink($id, $link)
 	{
 		unset($this->store->main_menu[$link]);
 	}
 	
-	function addAdminMenu($name, $id='')
+	public function addAdminMenu($name, $id = null)
 	{
-		if($id == '')
-		{
+		if ($id === null) {
 			$id = $this->store->admin_menu_count;
 		}
 		
-		if(isset($this->store->admin_menu[$id]))
-		{
+		if (isset($this->store->admin_menu[$id])) {
 			return false;
 		}
 		
 		$this->store->admin_menu_names[$id] = $name;
 		
 		$count = count($this->store->admin_menu_order) - 1;
+
 		$this->store->admin_menu_order[$count] = $id;
 		$this->store->admin_menu[$id] = array();
 		$this->store->admin_menu_count++;
@@ -109,9 +106,9 @@ class Xu_menus_api
 		return $id;
 	}
 	
-	function getAdminMenuOrder($id='')
+	public function getAdminMenuOrder($id = null)
 	{
-		if($id != '')
+		if($id === null)
 		{
 			return $this->store->admin_menu_order[$id];
 		}
@@ -119,58 +116,58 @@ class Xu_menus_api
 		return $this->store->admin_menu_order;
 	}
 	
-	function putAdminMenuOrder($menu)
+	public function putAdminMenuOrder(array $menu)
 	{
 		$this->store->admin_menu_order = $menu;
 		ksort($this->store->admin_menu_order);
 	}
 	
-	function removeAdminMenu($id='')
+	public function removeAdminMenu($id = null)
 	{
-		if($id == '')
-		{
+		if($id === null) {
 			$id = $this->store->admin_menu_count;
 		}
 		
 		unset($this->store->admin_menu_names[$id], $this->store->admin_menu[$id]);
+
 		$this->store->admin_menu_count--;
 			
 		return $id;
 	}
 	
-	function getAdminMenu($id='')
+	public function getAdminMenu($id = null)
 	{
-		if($id != '')
-		{
-			$html = '<h3>'.$this->store->admin_menu_names[$id].'</h3><ul class="sidemenu">';
-			//sort($this->store->admin_menu);
-			foreach($this->store->admin_menu[$id] as $link => $arr)
-			{
-				$html .= '<li><a href="'.site_url($link).'"><img src="'.base_url().$arr['icon'].'" class="nb" alt="" /> '.$arr['text'].'</a></li>';
-			}
-			$html .= '</ul>';
-			return $html;
-		}
-		else
-		{
-			$html = '';
-			foreach($this->store->admin_menu_order as $index => $id)
-			{
-				$menu = $this->store->admin_menu[$id];
-				$html .= '<h3>'.$this->store->admin_menu_names[$id].'</h3><ul class="sidemenu">';
-				//sort($this->store->admin_menu);
-				foreach($menu as $link => $arr)
-				{
-					$html .= '<li><a href="'.site_url($link).'"><img src="'.base_url().$arr['icon'].'" class="nb" alt="" /> '.$arr['text'].'</a></li>';
-				}
-				$html .= '</ul>';
-			}
-			return $html;
-		}
-		
+        if ($id === null) {
+            $html = '';
+
+            foreach($this->store->admin_menu_order as $index => $id)
+            {
+                $menu = $this->store->admin_menu[$id];
+                $html .= '<h3>'.$this->store->admin_menu_names[$id].'</h3><ul class="sidemenu">';
+                //sort($this->store->admin_menu);
+                foreach($menu as $link => $arr)
+                {
+                    $html .= '<li><a href="'.site_url($link).'"><img src="'.base_url().$arr['icon'].'" class="nb" alt="" /> '.$arr['text'].'</a></li>';
+                }
+                $html .= '</ul>';
+            }
+
+            return $html;
+        }
+
+        $html = '<h3>'.$this->store->admin_menu_names[$id].'</h3><ul class="sidemenu">';
+
+        //sort($this->store->admin_menu);
+        foreach($this->store->admin_menu[$id] as $link => $arr)
+        {
+            $html .= '<li><a href="'.site_url($link).'"><img src="'.base_url().$arr['icon'].'" class="nb" alt="" /> '.$arr['text'].'</a></li>';
+        }
+        $html .= '</ul>';
+
+        return $html;
 	}
 	
-	function addAdminMenuLink($id, $link, $text, $icon)
+	public function addAdminMenuLink($id, $link, $text, $icon)
 	{
 		$menu = $this->store->admin_menu[$id];
 		$menu[$link] = array(
@@ -180,12 +177,12 @@ class Xu_menus_api
 		$this->store->admin_menu[$id] = $menu;
 	}
 	
-	function removeAdminMenuLink($id, $link)
+	public function removeAdminMenuLink($id, $link)
 	{
 		unset($this->store->admin_menu[$id][$link]);
 	}
 	
-	function getPluginMenu()
+	public function getPluginMenu()
 	{
 		$html = '';
 		//sort($this->store->admin_menu);
@@ -196,7 +193,7 @@ class Xu_menus_api
 		return $html;
 	}
 	
-	function addPluginMenuLink($link, $text, $icon)
+	public function addPluginMenuLink($link, $text, $icon)
 	{
 		$menu = $this->store->plugin_menu;
 		$menu[$link] = array(
@@ -206,12 +203,12 @@ class Xu_menus_api
 		$this->store->plugin_menu = $menu;
 	}
 	
-	function removePluginMenuLink($link)
+	public function removePluginMenuLink($link)
 	{
 		unset($this->store->plugin_menu[$link]);
 	}
 	
-	function getSubMenu()
+	public function getSubMenu()
 	{
 		$html = '';
 		foreach($this->store->sub_menu as $name => $menu)
@@ -238,9 +235,8 @@ class Xu_menus_api
 		return $html;
 	}
 	
-	function addSubMenuLink($cat, $link, $text, $icon, $login=false)
-
-	{
+	public function addSubMenuLink($cat, $link, $text, $icon, $login=false)
+    {
 		$menu = $this->store->sub_menu;
 		if(!isset($menu[$cat]))
 		{
@@ -265,4 +261,3 @@ class Xu_menus_api
 		return $this->store->$item;
 	}
 }
-?>

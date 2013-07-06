@@ -32,17 +32,14 @@ class Xu_embed_api
 	private $store;
 	private $CI;
 	
-	function Xu_embed_api()
+	public function __construct()
 	{
 		$this->CI =& get_instance();
-		log_message('debug', "XtraUpload Embed Code API Class Initialized");
-		$this->init();
-	}
-	
-	private function init()
-	{
-		$this->store = new stdClass();
-		$this->store->embed = array();
+
+        $this->store = new stdClass();
+        $this->store->embed = array();
+
+        log_message('debug', "XtraUpload Embed Code API Class Initialized");
 	}
 	
 	public function addEmbedType($type, $data)
@@ -59,8 +56,9 @@ class Xu_embed_api
 	{
 		if(!isset($this->store->embed[$type]) or !is_array($this->store->embed[$type]))
 		{
-			return false;	
+			return false;
 		}
+
 		return $this->store->embed[$type];
 	}
 	
@@ -74,4 +72,3 @@ class Xu_embed_api
 		$this->store = $store;
 	}
 }
-?>
