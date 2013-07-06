@@ -48,8 +48,7 @@ class Startup
 		define('CACHEPATH', APPPATH.'cache/');
 		
 		// Define Hard Coded Script Version
-		include('xu_ver.php');
-		define('XU_VERSION', $version);
+        define('XU_VERSION', include('xu_ver.php'));
 		
 		$this->CI =& get_instance();
 		

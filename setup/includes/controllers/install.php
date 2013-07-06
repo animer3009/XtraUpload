@@ -34,8 +34,7 @@ class Install extends CI_Controller
 	public function __construct()
 	{
 		parent::__construct();
-		include('../xu_ver.php');
-		$this->_db_version = $version;
+        $this->_db_version = include('../xu_ver.php');
 	}
 	
 	public function index()
