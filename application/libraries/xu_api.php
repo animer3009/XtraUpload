@@ -88,7 +88,7 @@ class Xu_api
      */
     private function apiDirectoryExists()
     {
-        return !is_dir($this->apiDirectory);
+        return !is_dir($this->getApiDirectory());
     }
 
     /**
