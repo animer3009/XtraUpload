@@ -29,11 +29,11 @@
 
 class Users extends CI_Model
 {
-    var $loggedin = false;
+    public $loggedin = false;
 
 	// ------------------------------------------------------------------------
 	
-    public function Users()
+    public function __construct()
     {
         // Call the Model constructor
         parent::__construct();
@@ -41,19 +41,17 @@ class Users extends CI_Model
     }
 	
 	// ------------------------------------------------------------------------
-	
-	/**
-	 * Users->getUserById()
-	 *
-	 * Load a user object by id
-	 *
-	 * @access	public
-	 * @param	string
-	 * @return	none
-	 */
-	public function getUserById($id)
+
+    /**
+     * Retrieve the User by ID
+     *
+     * @param int $id
+     * @return object
+     */
+    public function getUserById($id)
 	{
-		$query = $this->db->get_where('users', array('id' => $id));
+		$query = $this->db->get_where('users', array('id' => (int) $id));
+
 		return $query->row();
 	}
     
@@ -87,24 +85,23 @@ class Users extends CI_Model
     }
 	
 	// ------------------------------------------------------------------------
-	
-	/**
-	 * Users->getUsernameById()
-	 *
-	 * Get a username from a user id
-	 *
-	 * @access	public
-	 * @param	int
-	 * @return	none
-	 */
-	public function getUsernameById($id)
+
+    /**
+     * Retrieve Username By User ID
+     *
+     * @param int $id
+     * @return string
+     */
+    public function getUsernameById($id)
 	{
 		$query = $this->db->get_where('users', array('id' => $id));
-		if($query->num_rows() != '1')
+
+		if($query->num_rows() > 0)
 		{
-			return 'Anonymous';
+            return $query->row()->username;
 		}
-		return $query->row()->username;
+
+        return 'Anonymous';
 	}
 	
 	// ------------------------------------------------------------------------
@@ -115,92 +112,79 @@ class Users extends CI_Model
 	 * Log the user out
 	 *
 	 * @access	public
-	 * @return	none
+	 * @return	bool
 	 */
 	public function userLogout()
     {
+        // TODO: This should use unset_userdata to avoid messing up flash data.
 		$this->session->sess_destroy();
 		return true;
     }
 	
 	// ------------------------------------------------------------------------
-	
-	/**
-	 * Users->userUpdate()
-	 *
-	 * Update the user entry in the DB with new entries
-	 *
-	 * @access	public
-	 * @param	array
-	 * @return	none
-	 */
-	public function userUpdate($data)
+
+    /**
+     * Update the currently logged in user with an array of parameters.
+     *
+     * @param array $data
+     * @return bool
+     */
+    public function userUpdate($data)
 	{
 		$this->db->where('id', $this->session->userdata('id'));
-		$this->db->update('users', $data); 
-		return true;
+
+		return $this->db->update('users', $data);
 	}
 	
 	// ------------------------------------------------------------------------
-	
-	/**
-	 * Users->userUpdateForgot()
-	 *
-	 * Save a new password to the user account
-	 *
-	 * @access	public
-	 * @param	string
-	 * @param	string
-	 * @return	none
-	 */
-	public function userUpdateForgot($pass, $username)
+
+    /**
+     * Update the password of the username specified.
+     *
+     * @param string $pass
+     * @param string $username
+     * @return bool
+     */
+    public function userUpdateForgot($pass, $username)
 	{
 		$this->db->where('username', $username);
-		$this->db->update('users', array('password' => $pass)); 
-		return true;
+
+        return $this->db->update('users', array('password' => $pass));
 	}
 	
 	// ------------------------------------------------------------------------
-	
-	/**
-	 * Users->processLogin()
-	 *
-	 * Run a login attempt
-	 *
-	 * @access	public
-	 * @param	string
-	 * @param	string
-	 * @return	none
-	 */
-	public function processLogin($user, $pass)
+
+    /**
+     * Process a user login.
+     *
+     * @param string $username
+     * @param string $password
+     * @return bool
+     */
+    public function processLogin($username, $password)
 	{
-		// Check if user exists in DB 
-		$query = $this->db->get_where('users', array('username' => $user, 'status' => 1, 'password' => md5($this->config->config['encryption_key'].$pass)));
-		$num = $query->num_rows();
-		
-		// If there is a user
-		if($num == 1)
-		{
-			// Get user data and setup session
-			$userData = $query->row();
-			
-			$newdata = array(
-					   'username'  	=> $user,
-					   'id'			=> $userData->id,
-					   'group'		=> $userData->group,
-					   'email'     	=> $userData->email,
-					   'loggedin'	=> TRUE,
-					   'login'		=> TRUE,
-					   'ip_logged'	=> FALSE
-				   );
-	
-			$this->session->set_userdata($newdata);
-			return true;
-		}
-		else
-		{
-			return false;
-		}
+		$query = $this->db->get_where('users', array('username' => $username, 'status' => 1, 'password' => md5($this->config->config['encryption_key'].$password)));
+
+        if (!($this->num_rows() === 1)){
+            return false;
+        }
+
+        // Get user data and setup session
+        $userData = $query->row();
+
+        $this->session->set_userdata(
+            array(
+                'username'  	=> $username,
+                'id'			=> $userData->id,
+                'group'		    => $userData->group,
+                'email'     	=> $userData->email,
+                'loggedin'	    => TRUE,
+                'login'		    => TRUE,
+                'ip_logged' 	=> FALSE
+            )
+        );
+
+        return true;
 	}
 	
 	// ------------------------------------------------------------------------
@@ -223,41 +207,40 @@ class Users extends CI_Model
 	}
 	
 	// ------------------------------------------------------------------------
-	
-	/**
-	 * Users->newUser()
-	 *
-	 * Save the new user to the database and send them an email
-	 *
-	 * @access	public
-	 * @param	array
-	 * @param	bool
-	 * @return	none
-	 */
-	public function newUser($data, $pay=false)
+
+    /**
+     * Create a new user and send an email off.
+     *
+     * @param array $userData
+     * @param bool $hasPaid
+     * @return int
+     */
+    public function newUser(array $userData, $hasPaid = false)
 	{
-		
-		// save the new user to the DB
-		$this->db->insert('users', $data);
+		$this->db->insert('users', $userData);
+
 		$id = $this->db->insert_id();
+
+        // TODO: Refactor this into separate functions. SINGLE RESPONSIBILITY!
+        $to = $userData['email'];
+        $user = $this->db->get_where('users', array('id' => $id))->row();
 		
-		if(!$pay)
-		{
-			$to = $data['email'];
-			$user = $this->db->get_where('users', array('id' => $id))->row();
-			$group = $this->db->get_where('groups', array('id' => $user->group))->row();
-			$this->sendNewUserEmail($to, $user, $group);
+		if ($hasPaid)
+        {
+            $this->sendPayLinkEmail($to, $user, $id);
 		}
 		else
-		{
-			$to = $data['email'];
-			$user = $this->db->get_where('users', array('id' => $id))->row();
-			$this->sendPayLinkEmail($to, $user, $id);
+        {
+            $group = $this->db->get_where('groups', array('id' => $user->group))->row();
+            $this->sendNewUserEmail($to, $user, $group);
 		}
 		
 		return $id;
 	}
-	
+
+    // ------------------------------------------------------------------------
+
+    // TODO: Move this into a library for sending emails.
 	public function sendNewUserEmail($to, $user, $group)
 	{
 		// Load the email library
@@ -298,7 +281,8 @@ class Users extends CI_Model
 		// Send the email
 		$this->email->send();
 	}
-	
+
+    // TODO: Move this into a library for sending emails.
 	public function sendPayLinkEmail($to, $user, $id)
 	{
 		// Load the email library
