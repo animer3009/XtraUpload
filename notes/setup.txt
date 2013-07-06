@@ -1,0 +1,11 @@
+When accessing the home page before install, it crashes. Make it redirect to setup?
+
+CONFIG: DateTime must be configured.
+
+Requirements:
+Change permission checks with is_writable
+Figure out base php minimum. Will probably update to 5.4+
+GD
+Freetype
+SimpleXML
+FTP?
