@@ -129,14 +129,18 @@ else
 if($this->startup->site_config['allow_version_check'])
 {
 	$latest_version = @file_get_contents('http://xtrafile.com/xu_version.txt');
-	if(XU_VERSION < $latest_version)
-	{
-		?>
-		<h3><?=$this->lang->line('admin_upgrade_available'); ?></h3>
-		<span class="alert"><?=$this->lang->line('admin_important_upgrade_available
+
+    if(is_numeric($latest_version)) {
+        if(XU_VERSION < $latest_version)
+        {
+            ?>
+            <h3><?=$this->lang->line('admin_upgrade_available'); ?></h3>
+            <span class="alert"><?=$this->lang->line('admin_important_upgrade_available
 		'); ?>: <a href="http://xtrafile.com/files/"><?=$this->lang->line('admin_update_to'); ?> <strong><?=$this->functions->parseVersion($latest_version)?></strong></a></span>
-		<?php
-	}
+        <?php
+        }
+    }
+
 }
 ?>
 
