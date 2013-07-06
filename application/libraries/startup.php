@@ -32,17 +32,9 @@ class Startup
 	public $skin = '';
 	public $site_config = '';
 	public $group_config = '';
-	private $CI = '';
-	
-	/**
-	 * Startup()
-	 *
-	 * Runs before all other custom files, loading all required subsystems and settings.
-	 *
-	 * @access	public
-	 * @return	none
-	 */
-    public function Startup()
+	private $CI;
+
+    public function __construct()
     {
 		// Define the path to the cache folder
 		define('CACHEPATH', APPPATH.'cache/');
@@ -51,8 +43,6 @@ class Startup
         define('XU_VERSION', include('xu_ver.php'));
 		
 		$this->CI =& get_instance();
-		
-		//$this->CI->output->enable_profiler(TRUE);
 		
 		// Load the DB and session class
 		$this->CI->load->database();
@@ -122,8 +112,8 @@ class Startup
 		// Check if the cache file previously exists
 		if(file_exists(CACHEPATH . $skin_name))
 		{
-			// Dont wast time with the DB, load the cached version
-			$this->skin = $this->CI->security->xss_clean($this->CI->load->file(CACHEPATH . $skin_name , true));
+			// Don't waste time with the DB, load the cached version
+			$this->skin = $this->CI->security->xss_clean( $this->CI->load->file(CACHEPATH . $skin_name , true) );
 		}
 		else
 		{
@@ -161,11 +151,12 @@ class Startup
 		else
 		{
 			// Get config object from DB
-			$q = $this->CI->db->get('config');
-			foreach($q->result() as $row)
+			$settings = $this->CI->db->get('config');
+
+			foreach($settings->result() as $setting)
 			{
 				// load each value into a global scope, a public class var
-				$this->site_config[$row->name] = $row->value;
+				$this->site_config[$setting->name] = $setting->value;
 			}
 			
 			// Save the config object to cache for increased performance
@@ -175,32 +166,15 @@ class Startup
 	
 	// ------------------------------------------------------------------------
 
-	/**
-	 * Startup->getGroup()
-	 *
-	 * Loads user group for accessing user
-	 *
-	 * @access	public
-	 * @return	none
-	 */
-	public function getGroup($gid='')
+	public function getGroup($gid = null)
 	{
-		if($gid != '')
+		if(is_int($gid))
 		{
-			$this->group_config = $this->CI->db->get_where('groups', array('id' => intval($gid)))->row();
+			$this->group_config = $this->CI->db->get_where('groups', array('id' => $gid))->row();
 			return;
 		}
-		else
-		{
-			if($this->CI->session->userdata('group'))
-			{
-				$group = $this->CI->session->userdata('group');
-			}
-			else
-			{
-				$group = 1;
-			}
-		}
+
+        $group = $this->CI->session->userdata('group') ?: 1;
 		
 		// Encrypt the cache filename for security
 		$group_file_name = md5($this->CI->config->config['encryption_key'].'group_'.$group);
@@ -234,14 +208,15 @@ class Startup
 	private function runStartup()
 	{
 		$extend_file_name = md5($this->CI->config->config['encryption_key'].'extend');
+
 		if(file_exists(CACHEPATH . $extend_file_name))
 		{
-			$extend = unserialize(base64_decode($this->CI->load->file(CACHEPATH . $extend_file_name, true)));
+			$extensions = unserialize(base64_decode($this->CI->load->file(CACHEPATH . $extend_file_name, true)));
 			
 			// Open a known directory, and proceed to read its contents
-			foreach($extend as $app)
+			foreach($extensions as $extension)
 			{
-				$this->CI->load->extention($app);
+				$this->CI->load->extention($extension);
 			}
 		}
 	}
@@ -313,6 +288,7 @@ class Startup
 			$this->CI->xu_api->menus->addAdminMenuLink($menu_id, '/admin/menu_shortcuts/add/'.base64_encode($this->CI->uri->uri_string()), 'Add This Page', 'img/icons/add_16.png');
 			
 			$links = $this->CI->admin_menu_shortcuts_db->getShortcuts();
+
 			foreach($links->result() as $link)
 			{
 				$this->CI->xu_api->menus->addAdminMenuLink($menu_id, $link->link, $link->title, 'img/icons/link_16.png');
@@ -321,7 +297,7 @@ class Startup
 			$new_order = array();
 			$i=1;
 			$order = $this->CI->xu_api->menus->getAdminMenuOrder();
-			foreach ($order as $place => $id)
+			foreach ($order as $id)
 			{
 				if($id != $menu_id)
 				{
@@ -347,4 +323,3 @@ class Startup
 		$this->CI->xu_api->embed->addEmbedType('mp3', array('width' => '470', 'height' => '20', 'speed' => '50'));
 	}
 }
-?>
