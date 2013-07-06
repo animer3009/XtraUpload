@@ -7,7 +7,7 @@
 		<th>Description</th>
 		<th class="align-right" width="14%">Action</th>
 	</tr>
-	<?phpforeach($installed as $name => $plugin)
+	<?php foreach($installed as $name => $plugin)
 	{
 		?>			
 		<tr <?=alternator('class="odd"', 'class="even"')?>>
