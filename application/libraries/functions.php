@@ -60,9 +60,10 @@ class Functions
         return str_replace(',', '', $stats[$movingAverage]);
     }
 	
-	function genPass($length, $caps=true)
+	function genPass($length, $caps = true)
 	{
 		$password = "";
+
 		if(!$caps)
 		{
 			$vals = 'abchefghjkmnpqrstuvwxyz0123456789'; 
@@ -71,19 +72,21 @@ class Functions
 		{
 			$vals = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabchefghjkmnpqrstuvwxyz0123456789'; 
 		}
-		$length;
+
 		while (strlen($password) < $length) 
 		{
 			mt_getrandmax();
 			$num = rand() % strlen($vals);
 			$password .= substr($vals, $num+4, 1);
 		}
+
 		return $password;
 	}
 	
 	function checkLogin($send='/user/login')
 	{
 		$CI =& get_instance();
+
 		if(!$CI->session->userdata('id'))
 		{
 			redirect($send);
@@ -205,4 +208,3 @@ class Functions
 		return $version;
 	}
 }
-?>
