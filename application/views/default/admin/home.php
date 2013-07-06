@@ -170,8 +170,7 @@ if($this->startup->site_config['allow_version_check'])
 
 <h3><?=$this->lang->line('admin_server_stats'); ?></h3>
 <table border="0" style="width:98%">
-	<? 
-	$servers = $this->db->get('servers');
+	<?php 	$servers = $this->db->get('servers');
 	foreach($servers->result() as $serv)
 	{
 		if($serv->total_space == 0)
@@ -197,8 +196,7 @@ if($this->startup->site_config['allow_version_check'])
 				</h4>
 	        </td>
 	    </tr>
-    	<? 
-	}
+    	<?php 	}
 	?>
 </table>
 
@@ -216,8 +214,7 @@ if($this->startup->site_config['allow_version_check'])
 	<th><?=$this->lang->line('admin_date'); ?></th>
 	<th><?=$this->lang->line('admin_valid'); ?></th>
 </tr>
-	<? 
-	$logins = $this->admin_logger->getLogs(5);
+	<?php 	$logins = $this->admin_logger->getLogs(5);
 	foreach($logins->result() as $log)
 	{
 		?>
@@ -248,7 +245,6 @@ if($this->startup->site_config['allow_version_check'])
 				?>
 	        </td>
 	    </tr>
-    	<? 
-	}
+    	<?php 	}
 	?>
 </table>

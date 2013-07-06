@@ -16,7 +16,7 @@
 		<textarea name="descr" cols="60" rows="6"><?=$file->descr?></textarea>
 		
 		<label for="featured"><?=$this->lang->line('files_edit_featured'); ?></label>
-		<input type="checkbox" <? if($file->feature){?> checked="checked"<? }?> name="feature" value="1"  />
+		<input type="checkbox" <?php if($file->feature){?> checked="checked"<?php }?> name="feature" value="1"  />
 		<br /><br />
 		
 		<?=generateSubmitButton($this->lang->line('files_edit_editbutton'), base_url().'img/icons/edit_16.png')?>

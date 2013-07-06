@@ -75,7 +75,7 @@ else
 		
 		function ___upLang(key)
 		{
-			<? $this->lang->load('home');?>
+			<?php $this->lang->load('home');?>
 			var lang = new Array();
 			lang['pc' ] 	= '<?=$this->lang->line('home_js_1')?>';
 			lang['kbr'] 	= '<?=$this->lang->line('home_js_2')?>';

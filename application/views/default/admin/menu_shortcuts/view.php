@@ -21,7 +21,7 @@
 				Actions
 			</th>
 		</tr>
-		<? foreach($shortcuts->result() as $shortcut)
+		<?php foreach($shortcuts->result() as $shortcut)
 		{
 			?>			
 			<tr <?=alternator('class="odd"', 'class="even"')?>>
@@ -49,8 +49,7 @@
 					<a title="Delete This Shortcut" onclick="return confirm('Are you sure you want to delete this shortcut?')" href="<?=site_url('admin/menu_shortcuts/delete/'.$shortcut->id)?>"><img src="<?=base_url()?>img/icons/close_16.png" class="nb" alt="Delete" /></a>
 				</td>
 			</tr>
-			<? 
-		}
+			<?php 		}
 		?>
 	</table>
 </form>

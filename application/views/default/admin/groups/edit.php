@@ -41,7 +41,7 @@
 					foreach($real_type[$name] as $a_key => $a_val)
 					{
 						?>
-						<option <?php if($value == $a_key){?> selected="selected" <? }?>value="<?=$a_key?>"><?=$a_val?></option>
+						<option <?php if($value == $a_key){?> selected="selected" <?php }?>value="<?=$a_key?>"><?=$a_val?></option>
 						<?php
 					}
 					?>

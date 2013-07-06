@@ -37,7 +37,7 @@
 				Actions
 			</th>
 		</tr>
-		<? foreach($files->result() as $file)
+		<?php foreach($files->result() as $file)
 		{
 			$links = $this->files_db->getLinks('', $file);
 			?>			
@@ -67,8 +67,7 @@
 					<a title="Ban This File" onclick="return confirm('Are you sure you want to ban this file?')" href="<?=site_url('admin/files/ban/'.$file->file_id)?>"><img src="<?=base_url()?>img/icons/lock_16.png" class="nb" alt="Ban" /></a>
 				</td>
 			</tr>
-			<? 
-		}
+			<?php 		}
 		?>
 	</table>
 </form>

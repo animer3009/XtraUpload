@@ -29,7 +29,7 @@
 			Actions
 		</th>
 	</tr>
-	<? foreach($transactions->result() as $transaction)
+	<?php foreach($transactions->result() as $transaction)
 	{
 		$user = $this->db->select('username')->get_where('users', array('id' => intval($transaction->user)))->row();
 		$gate = $this->db->select('display_name')->get_where('gateways', array('id' => intval($transaction->gateway)))->row();
@@ -76,8 +76,7 @@
 				<a title="Delete Transaction" onclick="return confirm('Are you sure you want to delete this transaction?')" href="<?=site_url('admin/transactions/delete/'.$transaction->id)?>"><img src="<?=base_url()?>img/icons/close_16.png" class="nb" alt="Delete" /></a>
 			</td>
 		</tr>
-		<? 
-	}
+		<?php 	}
 	?>
 </table>
 <br />

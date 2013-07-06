@@ -41,7 +41,7 @@
 				Actions
 			</th>
 		</tr>
-		<? foreach($files->result() as $file)
+		<?php foreach($files->result() as $file)
 		{
 			$links = $this->files_db->getLinks('', $file);
 			?>			
@@ -73,8 +73,7 @@
 					</a>
 				</td>
 			</tr>
-			<? 
-		}
+			<?php 		}
 		?>
 	</table>
 </form>

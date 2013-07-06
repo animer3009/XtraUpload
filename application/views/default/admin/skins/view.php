@@ -73,7 +73,7 @@ $(document).ready(function(){
 		<th class="align-left" style="width:90%">Skin name</th>
 		<th style="text-align:center">Active?</th>
 	</tr>
-	<? foreach($skins->result() as $skin)
+	<?php foreach($skins->result() as $skin)
 	{
 		?>			
 		<tr <?=alternator('class="odd"', 'class="even"')?>>
@@ -118,7 +118,6 @@ $(document).ready(function(){
 			?>
 			</td>
 		</tr>
-		<? 
-	}
+		<?php 	}
 	?>
 </table>

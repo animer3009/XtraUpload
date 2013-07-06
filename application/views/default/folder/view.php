@@ -7,7 +7,7 @@
 		<th class="align-left"><?=$this->lang->line('folder_view_2')?></th>
 		<th><?=$this->lang->line('folder_view_3')?></th>
 	</tr>
-	<? foreach($folder_files->result() as $fileRef)
+	<?php foreach($folder_files->result() as $fileRef)
 	{
 		$file = $this->files_db->_getFileObject($fileRef->file_id);
 		$links = $this->files_db->getLinks('', $file);
@@ -19,8 +19,7 @@
 			</td>
 			<td><?=$this->functions->getFilesizePrefix($file->size)?></td>
 		</tr>
-		<? 
-	}
+		<?php 	}
 	?>
 </table>
 </div>

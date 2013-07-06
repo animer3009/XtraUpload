@@ -1,5 +1,5 @@
 <h2 style="vertical-align:middle"><img src="<?=base_url().'img/icons/security_32.png'?>" class="nb" alt="" /> <?=$this->lang->line('files_pass_header') ?></h2>
-<? if($error){?><span class="alert"><?=$this->lang->line('files_pass_1') ?></span><?php }?>
+<?php if($error){?><span class="alert"><?=$this->lang->line('files_pass_1') ?></span><?php }?>
 <form action="<?=site_url('files/get/'.$file->file_id.'/'.$file->link_name)?>" method="post">
 <h3 id="dlhere"><?=$this->lang->line('files_pass_2') ?></h3>
 <p>

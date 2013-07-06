@@ -7,7 +7,7 @@
 		<th>Description</th>
 		<th class="align-right" width="14%">Action</th>
 	</tr>
-	<? foreach($installed as $name => $plugin)
+	<?phpforeach($installed as $name => $plugin)
 	{
 		?>			
 		<tr <?=alternator('class="odd"', 'class="even"')?>>
@@ -59,7 +59,7 @@
 				
 			</td>
 		</tr>
-		<? 
+		<?php
 	}
 	?>
 </table>
@@ -71,7 +71,7 @@
 		<th>Description</th>
 		<th class="align-right" width="11%">Action</th>
 	</tr>
-	<? foreach($not_installed as $name => $plugin)
+	<?php foreach($not_installed as $name => $plugin)
 	{
 		?>			
 		<tr <?=alternator('class="odd"', 'class="even"')?>>
@@ -89,7 +89,6 @@
 				</a>
 			</td>
 		</tr>
-		<? 
-	}
+		<?php 	}
 	?>
 </table>

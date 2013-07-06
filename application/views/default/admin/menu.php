@@ -18,8 +18,7 @@
 	</li>
 </ul>
 
-<? 
-// I hate the COM, so if on a windows box dont show the CPU load
+<?php // I hate the COM, so if on a windows box dont show the CPU load
 $load = $this->functions->getServerLoad(0);
 if($load > 100)
 {
@@ -36,7 +35,7 @@ if(!isset($_SERVER['WINDIR'])){?>
 		<span><?=$load?>%</span>
 	</li>
 </ul>
-<? }?>
+<?php }?>
 
 <?php /* Config Links */ ?>
 <?=$this->xu_api->menus->getAdminMenu();?>

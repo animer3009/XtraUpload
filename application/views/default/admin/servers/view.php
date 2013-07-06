@@ -13,7 +13,7 @@
 		<th class="align-left">Used Space</th>
 		<th style="text-align:center">Actions</th>
 	</tr>
-	<? foreach($servers->result() as $server)
+	<?php foreach($servers->result() as $server)
 	{
 		?>			
 		<tr <?=alternator('class="odd"', 'class="even"')?>>
@@ -67,7 +67,6 @@
 				</a>
 			</td>
 		</tr>
-		<? 
-	}
+		<?php 	}
 	?>
 </table>

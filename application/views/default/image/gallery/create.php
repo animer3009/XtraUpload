@@ -63,6 +63,5 @@ function switchCheckboxes()
 	}
 }
 </script>
-<? 
-}
+<?php }
 ?>

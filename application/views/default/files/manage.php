@@ -88,7 +88,7 @@ $this->load->helper('string');
 			<input name="<?=$file->id?>_tags" id="<?=$file->id?>_tags" value="<?=$file->tags?>" size="35" maxlength="200" type="text" /><br />
             
             <label for="<?=$file->id?>_feat"><?=$this->lang->line('files_manage_13') ?></label>
-			<input name="<?=$file->id?>_feat" id="<?=$file->id?>_feat" <?php if($file->feature){?> checked="checked"<? }?> type="checkbox" value="1" /> <?=$this->lang->line('files_manage_14') ?><br /><br />
+			<input name="<?=$file->id?>_feat" id="<?=$file->id?>_feat" <?php if($file->feature){?> checked="checked"<?php }?> type="checkbox" value="1" /> <?=$this->lang->line('files_manage_14') ?><br /><br />
             
 			<?=generateLinkButton($this->lang->line('files_manage_15'), 'javascript:;', base_url().'img/icons/ok_16.png', 'green', array('onclick' => 'editFileProps(\''.$file->id.'\');'))?>
 			<?=generateLinkButton('Cancel Edit', 'javascript:;', base_url().'img/icons/close_16.png', 'red', array('onclick' => '$(\'#'.$file->id.'-edit\').hide();'))?><br /><br />

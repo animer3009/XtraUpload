@@ -16,7 +16,7 @@
 		<input type="text" name="url" value="<?=$server->url?>" size="50"/><br />
 	
 		<label>Is Active?</label>
-		<input type="checkbox" name="status" <? if($server->status){?>checked="checked" <? }?>value="1"/> Yes<br /><br />
+		<input type="checkbox" name="status" <?php if($server->status){?>checked="checked" <?php }?>value="1"/> Yes<br /><br />
 
 		<?=generateSubmitButton('Submit Changes', base_url().'img/icons/ok_16.png')?><br />
 	</p>

@@ -27,7 +27,7 @@
 	
 			<div id="footer-columns">	
 				<div class="col3">
-					<? if($this->startup->site_config['show_recent_uploads']){?>
+					<?php if($this->startup->site_config['show_recent_uploads']){?>
 						<h3><?=$this->lang->line('global_recently_uploaded_files')?></h3>
 						<ul class="col-list">
 						<?php 
@@ -45,7 +45,7 @@
 						}
 						?>
 						</ul>
-					<? }?>
+					<?php }?>
 				</div>
 		
 				<div class="col3-center">
@@ -110,6 +110,6 @@ $(document).ready(function()
 	}
 });
 </script>
-<? $this->load->view('_protected/global_footer');?>
+<?php $this->load->view('_protected/global_footer');?>
 </body>
 </html>

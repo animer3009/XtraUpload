@@ -9,7 +9,7 @@
 			Actions
 		</th>
 	</tr>
-	<? foreach($gates->result() as $gate)
+	<?php foreach($gates->result() as $gate)
 	{
 		?>			
 		<tr <?=alternator('class="odd"', 'class="even"')?>>
@@ -57,7 +57,6 @@
 				</a>
 			</td>
 		</tr>
-		<? 
-	}
+		<?php 	}
 	?>
 </table>
