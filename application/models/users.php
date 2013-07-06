@@ -165,7 +165,7 @@ class Users extends CI_Model
 	{
 		$query = $this->db->get_where('users', array('username' => $username, 'status' => 1, 'password' => md5($this->config->config['encryption_key'].$password)));
 
-        if (!($this->num_rows() === 1)){
+        if (!($query->num_rows() === 1)){
             return false;
         }
 
