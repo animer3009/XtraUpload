@@ -31,49 +31,102 @@ class Xu_api
 {
 	public $menus;
 	private $CI;
+    private $apiDirectory;
 	
-	public function __construct()
+	public function __construct($apiDirectory = null)
 	{
-		$this->CI =& get_instance();
-		log_message('debug', "XtraUpload API Class Initialized");
-		
-		$this->init();
+        if($apiDirectory !== null) {
+            $this->setApiDirectory($apiDirectory);
+        }
+
+        if($this->apiDirectoryExists()) {
+            show_error('COMPLETE FAIL, REUPLOAD FILES');
+        }
+
+        $this->CI =& get_instance();
+
+        $apiFiles = $this->determineApiFiles($this->getApiDirectory());
+
+        foreach($apiFiles as $class => $file)
+        {
+            $this->initializeApi($class, $file);
+        }
+
+        log_message('debug', "XtraUpload API Class Initialized");
 	}
-	
-	private function init()
-	{
-		$dir = APPPATH."libraries/api/";
-		$load = array();
-		
-		// Open a known directory, and proceed to read its contents
-		if (is_dir($dir)) 
-		{
-			if ($dh = opendir($dir)) 
-			{
-				while (($file = readdir($dh)) !== false) 
-				{
-					if(!is_dir($dir . $file) and substr($file, -8) == '_api.php')
-					{
-						$load[ucfirst(str_replace('.php', '', $file))] = $file;
-					}
-				}
-				closedir($dh);
-			}
-		}
-		else
-		{
-			show_error('COMPLETE FAIL, REUPLOAD FILES');
-		}
-		
-		if(!empty($load))
-		{
-			foreach($load as $class => $file)
-			{
-				$name = str_replace(array('_api', 'xu_', 'Xu_'), '', $class);
-				include_once($dir.$file);
-				$this->$name = new $class();
-			}
-		}
-	}
+
+    /**
+     * Determine the API files that can be loaded.
+     *
+     * @param $apiDirectory
+     * @return array
+     */
+    private function determineApiFiles($apiDirectory)
+    {
+        $fileList = array();
+
+        if ($dh = opendir($apiDirectory))
+        {
+            while (($file = readdir($dh)) !== false)
+            {
+                if (!is_dir($this->getApiDirectory() . $file) and substr($file, -8) == '_api.php')
+                {
+                    $fileList[ucfirst(str_replace('.php', '', $file))] = $file;
+                }
+            }
+
+            closedir($dh);
+        }
+
+        return $fileList;
+    }
+
+    /**
+     * Determine if the API directory exists.
+     *
+     * @return bool
+     */
+    private function apiDirectoryExists()
+    {
+        return !is_dir($this->apiDirectory);
+    }
+
+    /**
+     * Set the API directory to a path.
+     *
+     * @param $apiDirectory
+     */
+    private function setApiDirectory($apiDirectory)
+    {
+        $this->apiDirectory = $apiDirectory;
+    }
+
+    /**
+     * Return the API directory defined.
+     *
+     * @return string
+     */
+    public function getApiDirectory()
+    {
+        if($this->apiDirectory === null) {
+            return APPPATH."libraries/api/";
+        }
+
+        return $this->apiDirectory;
+    }
+
+    /**
+     * Initialize an API
+     *
+     * @param $class
+     * @param $file
+     */
+    private function initializeApi($class, $file)
+    {
+        $name = str_replace(array('_api', 'xu_', 'Xu_'), '', $class);
+
+        include_once($this->getApiDirectory() . $file);
+
+        $this->$name = new $class();
+    }
 }
-?>
