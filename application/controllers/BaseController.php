@@ -16,6 +16,10 @@ class BaseController extends CI_Controller
 
     protected function getLayout()
     {
+        if($this->layout === null) {
+            return $this->startup->skin.DIRECTORY_SEPARATOR.'layout';
+        }
+
         return $this->startup->skin.DIRECTORY_SEPARATOR.$this->layout;
     }
 
