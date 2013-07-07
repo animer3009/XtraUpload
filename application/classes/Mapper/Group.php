@@ -62,7 +62,7 @@ class Group
             'HasCaptchaOnDownload' => new PermissionEntity('HasCaptchaOnDownload', (int) $result->download_captcha === 1),
             'HasAutoDownload' => new PermissionEntity('HasAutoDownload', (int) $result->auto_download === 1),
             'MaxFilesInSessionUploadedLimit' => new PermissionEntity('MaxFilesInSessionUploadedLimit', (int) $result->upload_num_limit),
-            'FileStorageLimit' => new PermissionEntity('FileStorageLimit', (int) $result->storage_limit),
+            'FileStorageLimit' => new PermissionEntity('FileStorageLimit', new FileSize((int) $result->storage_limit, 'MB')),
             'HasSearchCapability' => new PermissionEntity('HasSearchCapability', (int) $result->can_search === 1),
             'HasFlashUploadCapability' => new PermissionEntity('HasFlashUploadCapability', (int) $result->can_flash_upload === 1),
             'HasUrlUploadCapability' => new PermissionEntity('HasUrlUploadCapability', (int) $result->can_url_upload === 1),
@@ -89,7 +89,7 @@ class Group
 
     public function findAvailablePackages()
     {
-        $groups = $this->db->get('groups')->result();
+        $groups = $this->db->get_where('groups', array('status' => 1))->result();
 
         return self::convertToEntities($groups);
     }
