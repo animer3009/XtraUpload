@@ -237,6 +237,7 @@ if(($setup_exists or $upgrade_exists) and ($_SERVER['HTTP_HOST'] != 'localhost' 
 	// Name of the "system folder"
 	define('SYSDIR', trim(strrchr(trim(BASEPATH, '/'), '/'), '/'));
 
+    define('VENDORPATH', realpath('./../').'/vendor/');
 
 	// The path to the "application" folder
 	if (is_dir($application_folder))
@@ -261,6 +262,7 @@ if(($setup_exists or $upgrade_exists) and ($_SERVER['HTTP_HOST'] != 'localhost' 
  * And away we go...
  *
  */
+require_once VENDORPATH.'autoload.php';
 require_once BASEPATH.'core/CodeIgniter.php';
 
 /* End of file index.php */

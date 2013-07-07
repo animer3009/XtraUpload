@@ -1,0 +1,25 @@
+{
+    "name": "xtrafile/xtraupload",
+    "minimum-stability": "dev",
+    "authors": [
+        {
+            "name": "Joel Larson",
+            "email": "joellarsonweb@gmail.com",
+            "homepage": "http://joellarson.me",
+            "role": "Developer"
+        },
+        {
+            "name": "Matthew Glinski",
+            "email": "matthewglinski@gmail.com",
+            "homepage": "http://mglinski.com",
+            "role": "Developer"
+        }
+    ],
+    "license": "Apache-2.0",
+    "autoload": {
+        "psr-0": {
+            "": "application/classes/"
+        },
+        "classmap": ["application/controllers/BaseController.php"]
+    }
+}
