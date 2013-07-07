@@ -41,7 +41,7 @@ class Subscription extends Entity
         $this->billingInterval = $interval;
     }
 
-    public function isRepeatedBilling()
+    public function getBillingInterval()
     {
         return $this->billingInterval;
     }
