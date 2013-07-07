@@ -27,37 +27,38 @@
 
 // ------------------------------------------------------------------------
 
-class Legal extends CI_Controller
+class Legal extends BaseController
 {
-	private $server = false;
-	
-	public function Legal()
+	protected $layout = 'layout';
+
+	public function __construct()
 	{
 		parent::__construct();
 		
 		$this->lang->load('legal');
 	}
 	
-	function index()
+	public function index()
 	{
-		return;	
+		show_404();
 	}
 	
-	function tos()
+	public function tos()
 	{
-		$data=array();
-		$data['site_name'] = $this->startup->site_config['sitename'];
-		$this->load->view($this->startup->skin.'/header', array('headerTitle' => $this->lang->line('legal_tos_headertitle')));
-		$this->load->view($this->startup->skin.'/legal/tos', $data);
-		$this->load->view($this->startup->skin.'/footer');
-		return;	
+        $this->render('legal/tos', array(
+            'layout' => array(
+                'headerTitle' => $this->lang->line('legal_tos_headertitle'),
+            ),
+            'site_name' => $this->startup->site_config['sitename']
+        ));
 	}
 	
-	function privacy()
+	public function privacy()
 	{
-		$this->load->view($this->startup->skin.'/header', array('headerTitle' => $this->lang->line('legal_privacy_headertitle')));
-		$this->load->view($this->startup->skin.'/legal/privacy');
-		$this->load->view($this->startup->skin.'/footer');
-		return;	
+        $this->render('legal/privacy', array(
+            'layout' => array(
+                'headerTitle' => $this->lang->line('legal_privacy_headertitle'),
+            )
+        ));
 	}
 }
