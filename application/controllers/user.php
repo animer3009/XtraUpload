@@ -27,9 +27,11 @@
 
 // ------------------------------------------------------------------------
 
-class User extends CI_Controller
+use Mapper\Group as GroupMapper;
+
+class User extends BaseController
 {
-	public function User()
+	public function __construct()
 	{
 		parent::__construct();
 		
@@ -60,11 +62,51 @@ class User extends CI_Controller
 	// ------------------------------------------------------------------------
 	
 	public function compare()
-	{		
-		$data['group1'] = $this->db->get_where('groups', array('id' => 1))->row();
-		$this->load->view($this->startup->skin.'/header', array('headerTitle' => $this->lang->line('user_compare_header')));
-		$this->load->view($this->startup->skin.'/user/compare', $data);
-		$this->load->view($this->startup->skin.'/footer');
+	{
+        $groupMapper = new GroupMapper();
+
+        $groups = $groupMapper->findAvailablePackages();
+
+        $groupsTable = array();
+
+        foreach($groups as $key => $group)
+        {
+            $groupsTable['Header'][$key] = $group->getName();
+            $groupsTable['Price'][$key] = $group->getSubscription()->getPrice();
+
+            $interval = $group->getSubscription()->getBillingInterval();
+
+            switch($interval)
+            {
+                case \Entity\Subscription::REPEAT_YEARLY:
+                    $groupsTable['BillingInterval'][$key] = "Yearly";
+                break;
+
+                case \Entity\Subscription::REPEAT_MONTHLY:
+                    $groupsTable['BillingInterval'][$key] = "Monthly";
+                break;
+
+                case \Entity\Subscription::REPEAT_NEVER:
+                    $groupsTable['BillingInterval'][$key] = "Never";
+                break;
+
+                default:
+                    $groupsTable['BillingInterval'][$key] = null;
+                break;
+            }
+
+            foreach($group->getPermissions() as $permission)
+            {
+                $groupsTable[$permission->getName()][$key] = $permission->getValue();
+            }
+        }
+
+        $this->render('user/compare', array(
+            'layout' => array(
+                'headerTitle' => $this->lang->line('user_compare_header'),
+            ),
+            'groupsTable' => $groupsTable,
+        ));
 	}
 
 	// ------------------------------------------------------------------------
