@@ -74,6 +74,6 @@ class Home extends Controller {
 	
 	function _getFileVersion()
 	{
-        return include('../xu_ver.php');
+        return include(APPPATH.'xu_ver.php');
 	}
 }
