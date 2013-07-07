@@ -37,7 +37,7 @@ class Home extends CI_Controller
 	 * @access	public
 	 * @return	none
 	 */	
-	public function Home()
+	public function __construct()
 	{
 		parent::__construct();
 		
@@ -97,6 +97,3 @@ class Home extends CI_Controller
 		$this->load->view($this->startup->skin.'/footer');
 	}
 }
-
-/* End of file home.php */
-/* Location: ./system/applicaton/controllers/home.php */
