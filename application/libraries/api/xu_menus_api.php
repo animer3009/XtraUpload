@@ -110,10 +110,10 @@ class Xu_menus_api
 	{
 		if($id === null)
 		{
-			return $this->store->admin_menu_order[$id];
+            return $this->store->admin_menu_order;
 		}
-		
-		return $this->store->admin_menu_order;
+        
+        return $this->store->admin_menu_order[$id];
 	}
 	
 	public function putAdminMenuOrder(array $menu)
