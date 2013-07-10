@@ -362,9 +362,9 @@ class Files_db extends CI_Model
 	
 	public function process_image($file, $type, $new, $prefix)
 	{
-		if(!is_dir('thumbstore/'.$prefix))
+		if(!is_dir('../thumbstore/'.$prefix))
 		{
-			mkdir('thumbstore/'.$prefix);
+			mkdir('../thumbstore/'.$prefix);
 		}
 		
 		$dimensions = getimagesize($file);
@@ -451,21 +451,21 @@ class Files_db extends CI_Model
 			
 			// Create file storage folder if it dosent exist
 			$prefix = substr($md5, 0, 2);
-			$new_path = 'filestore/'.$prefix.'/'.$file_id.'.'.basename($file).'._';
-			if(!is_dir('filestore/'.$prefix))
+			$new_path = FCPATH.'../filestore/'.$prefix.'/'.$file_id.'.'.basename($file).'._';
+			if(!is_dir(FCPATH.'../filestore/'.$prefix))
 			{
-				mkdir('filestore/'.$prefix);
+				mkdir(FCPATH.'../filestore/'.$prefix);
 			}
 			
 			// Was an image uploaded? If so, Process It! 
 			if($is_image and $size <= (15 * 1024 * 1024))
 			{
-				$new_image = 'thumbstore/'.$prefix.'/'.$file_id.'.'.basename($file);
+				$new_image = FCPATH.'../thumbstore/'.$prefix.'/'.$file_id.'.'.basename($file);
 				$this->process_image($file, $type, $new_image, $prefix);
 				$base = basename($file);
 				$base = substr($base,0,(strlen($base) - (1+strlen($type))));
 				$base = $base.'_thumb.'.$rType;
-				$new_image = 'thumbstore/'.$prefix.'/'.$file_id.'.'.$base;
+				$new_image = FCPATH.'../thumbstore/'.$prefix.'/'.$file_id.'.'.$base;
 			}
 			
 			// Move the file into its new home

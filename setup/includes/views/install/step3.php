@@ -1,23 +1,23 @@
 <?php 
 $dir = dirname(__FILE__);$dir = dirname($dir.'../');$dir = dirname($dir.'../');$dir = dirname($dir.'../');$dir = dirname($dir.'../');
 $dir = substr($dir, strlen($_SERVER['DOCUMENT_ROOT']));
-$servername = str_replace('\\', '/', 'http://'.$_SERVER['SERVER_NAME'].'/'.$dir);
+$servername = str_replace('\\', '/', 'http://'.$_SERVER['SERVER_NAME'].$dir);
 ?>
 <div style="margin:auto; text-align:center"><h1>Database and Config Details</h1></div>
 <div class="progressMenu">
 	<ul>
-		<li class="complete"><a href="index.php?c=install&m=step1"><img src="../img/icons/ok_16.png" border="0" alt="" /> Step 1</a></li>
+		<li class="complete"><a href="index.php?c=install&m=step1"><img src="../public/img/icons/ok_16.png" border="0" alt="" /> Step 1</a></li>
 		<li>&raquo;</li>
-		<li class="complete"><a href="index.php?c=install&m=step2"><img src="../img/icons/ok_16.png" border="0" alt="" /> Step 2</a></li>
+		<li class="complete"><a href="index.php?c=install&m=step2"><img src="../public/img/icons/ok_16.png" border="0" alt="" /> Step 2</a></li>
 		<li>&raquo;</li>
-		<li class="current"><img src="../img/icons/about_16.png" border="0" alt="" /> Step 3</li>
+		<li class="current"><img src="../public/img/icons/about_16.png" border="0" alt="" /> Step 3</li>
 		<li>&raquo;</li>
 		<li>Step 4</li>
 		<li>&raquo;</li>
 		<li> Step 5</li>
 	</ul>
 </div>
-<form id="form1" name="form1" method="post" enctype="multipart/form-data" action="index.php?c=install&m=step4">
+<form id="form1" name="form1" method="post" enctype="multipart/form-data" action="index.php?c=install&amp;m=step4">
 	<div class='centerbox'>
 		<div class='tableborder'>
 			<div class='maintitle'>Website Address </div>
@@ -61,7 +61,13 @@ $servername = str_replace('\\', '/', 'http://'.$_SERVER['SERVER_NAME'].'/'.$dir)
 							This is the key that will be used to encrypt sensitive data in XU
 						</div>
 					</td>
-					<td class='pformright'><input type='text' size="45" name='encryption_key'/></td>
+					<?php
+					$characters = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+					$result = '';
+					for ($i = 0; $i < 32; $i++)
+						$result .= $characters[mt_rand(0, 61)];
+					?>
+					<td class='pformright'><input type='text' size="45" name='encryption_key' value="<?=$result?>"/></td>
 				</tr>
 				<tr>
 					<td class='pformleftw'>
@@ -128,15 +134,15 @@ $servername = str_replace('\\', '/', 'http://'.$_SERVER['SERVER_NAME'].'/'.$dir)
 			<div align='center' class='pformstrip'  style='text-align:center; vertical-align:middle'>
 				<div style="float:left">
 					<span class="cssbutton">
-						<a class="buttonRed" href="index.php?c=install&m=step2">
-							<img src="../img/icons/back_16.png" border="0" alt="" /> Go Back
+						<a class="buttonRed" href="index.php?c=install&amp;m=step2">
+							<img src="../public/img/icons/back_16.png" border="0" alt="" /> Go Back
 						</a>
 					</span>
 				</div>
 				<div style="float:right">
 					<span class="cssbutton">
 						<a class="buttonGreen" href="javascript:document.form1.submit();" onclick="return $('#form1').validate().form();">
-							<img src="../img/icons/ok_16.png" border="0" alt="" /> Continue
+							<img src="../public/img/icons/ok_16.png" border="0" alt="" /> Continue
 						</a>
 					</span>
 				</div>

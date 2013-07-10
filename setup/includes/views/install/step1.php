@@ -1,7 +1,7 @@
 <div style="margin:auto; text-align:center"><h1>License Aggrement</h1></div>
 <div class="progressMenu">
 	<ul>
-		<li class="current"><img src="../img/icons/about_16.png" border="0" alt="" /> Step 1</li>
+		<li class="current"><img src="../public/img/icons/about_16.png" border="0" alt="" /> Step 1</li>
 		<li>&raquo;</li>
 		<li>Step 2</li>
 		<li>&raquo;</li>
@@ -228,14 +228,14 @@
 				<div style="float:left">
 					<span class="cssbutton">
 						<a class="buttonRed" href="index.php">
-							<img src="../img/icons/back_16.png" border="0" alt="" /> Go Back
+							<img src="../public/img/icons/back_16.png" border="0" alt="" /> Go Back
 						</a>
 					</span>
 				</div>
 				<div style="float:right">
 					<span class="cssbutton">
-						<a class="buttonGreen" href="index.php?c=install&m=step2">
-							<img src="../img/icons/ok_16.png" border="0" alt="" /> Continue
+						<a class="buttonGreen" href="index.php?c=install&amp;m=step2">
+							<img src="../public/img/icons/ok_16.png" border="0" alt="" /> Continue
 						</a>
 					</span>
 				</div>

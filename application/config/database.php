@@ -49,8 +49,8 @@ $active_group = 'default';
 $active_record = TRUE;
 
 $db['default']['hostname'] = 'localhost';
-$db['default']['username'] = 'xu';
-$db['default']['password'] = 'xu';
+$db['default']['username'] = 'root';
+$db['default']['password'] = 'nonboard';
 $db['default']['database'] = 'xu';
 $db['default']['dbdriver'] = 'mysqli';
 $db['default']['dbprefix'] = 'xu2_';

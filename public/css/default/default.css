@@ -48,7 +48,7 @@ a:hover
 /* headers */
 h1, h2, h3
 {
-	font-family: 'Trebuchet MS', Tahoma, Arial, Sans-serif;
+	font-family: 'Trebuchet MS', Tahoma, Arial, sans-serif;
 	color: #ABABAB;
 }
 
@@ -182,7 +182,7 @@ tr
 
 tr.odd
 {
-	background-color:none;
+	background-color: transparent;
 }
 
 tr.even

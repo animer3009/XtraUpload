@@ -63,8 +63,7 @@ span.download
 .pagination
 {
 	clear:left;
-	font-size:85%;
-	margin:0em 0pt;
+	margin:0 0;
 	padding-left:1em;
 	font-family:arial, helvetica, sans-serif;
 	font-size:110%;
@@ -104,7 +103,7 @@ span.download
 
 .pagination span.current
 {
-	background: #224FB7 none repeat scroll 0%;
+	background: #224FB7 none repeat scroll 0;
 	border:1px solid #2E6AB1;
 	color:#FFFFFF;
 	font-weight:bold;
@@ -121,8 +120,8 @@ div.bubble
 
 div.bubble blockquote
 {
-	margin: 0px;
-	padding: 0px;
+	margin: 0;
+	padding: 0;
 	font-size:12px;
 	border: 1px solid #c9c2c1;
 	background-color: #fff;
@@ -131,14 +130,14 @@ div.bubble blockquote
 div.bubble blockquote p
 {
 	margin: 10px;
-	padding: 0px;
+	padding: 0;
 }
 
 div.bubble cite
 {
 	position: relative;
-	margin: 0px;
-	padding: 7px 0px 0px 15px;
+	margin: 0;
+	padding: 7px 0 0 15px;
 	top: 6px;
 	font-style:normal;
 	background: transparent url(../images/tip.gif) no-repeat 20px 0;
@@ -165,7 +164,7 @@ div.bubble div.rounded blockquote p { margin: 0px 10px; }
 div.bubble cite.rounded
 {
 	position: relative;
-	margin: 0px;
+	margin: 0;
 	padding-left: 4px;
 	padding-top: 14px;
 	top: 10px;
@@ -217,8 +216,8 @@ div#pimped.bubble cite.rounded { background: transparent url(../images/tip-pimpe
 
 #facebox td
 {
-	padding-left: 0px;
-	padding-right: 0px;
+	padding-left: 0;
+	padding-right: 0;
 	border-left: none;
 	border-bottom: none;
 }
@@ -262,7 +261,7 @@ div#pimped.bubble cite.rounded { background: transparent url(../images/tip-pimpe
 }
 
 /* BUTTONS */
-span.cssbutton { clear:left; }
+span.cssButton { clear:left; }
 
 span.cssButton a, span.cssButton button
 {
@@ -372,7 +371,7 @@ span.cssButton a.buttonRed:active
 	text-align: left; 
 	color: #333; 
 	font-weight: bold; 
-	padding-top: 0pt; 
+	padding-top: 0;
 	line-height: 1.4;
 }
 
@@ -407,7 +406,7 @@ span.cssButton a.buttonRed:active
 	float:right;
 	color:#333; 
 	font-weight: bold; 
-	padding-top: 0pt; 
+	padding-top: 0;
 	line-height: 1.4;
 }
 
@@ -443,8 +442,8 @@ span.cssButton a.buttonRed:active
 {
 	position: fixed;
 	z-index:100;
-	top: 0px;
-	left: 0px;
+	top: 0;
+	left: 0;
 	height:100%;
 	width:100%;
 }
@@ -452,9 +451,6 @@ span.cssButton a.buttonRed:active
 .TB_overlayMacFFBGHack { background: url(../images/macFFBgHack.png) repeat; }
 
 .TB_overlayBG { background: url(../images/macFFBgHack.png) repeat; }
-
-* html #TB_overlay { /* ie6 hack */ position: absolute;  height: expression(document.body.scrollHeight > document.body.offsetHeight ? document.body.scrollHeight : document.body.offsetHeight + 'px');
-}
 
 #TB_window
 {
@@ -469,9 +465,6 @@ span.cssButton a.buttonRed:active
 	left:50%;
 }
 
-* html #TB_window { /* ie6 hack */ position: absolute; margin-top: expression(0 - parseInt(this.offsetHeight / 2) + (TBWindowMargin = document.documentElement && document.documentElement.scrollTop || document.body.scrollTop) + 'px');
-}
-
 #TB_window img#TB_Image
 {
 	display:block;
@@ -480,7 +473,7 @@ span.cssButton a.buttonRed:active
 	border-bottom: 1px solid #ccc;
 	border-top: 1px solid #666;
 	border-left: 1px solid #666;
-	padding: 0px;
+	padding: 0;
 }
 
 #TB_caption
@@ -548,7 +541,7 @@ span.cssButton a.buttonRed:active
 { 
 	margin-top:10px;
 	border:none;
-	padding:none;
+	padding: 0;
 	background: transparent;
 }
 
@@ -561,8 +554,6 @@ span.cssButton a.buttonRed:active
 	left: 0;
 	background-color:#fff;
 	border:none;
-	filter:alpha(opacity=0);
-	-moz-opacity: .999;
 	opacity: .999;
 	height:100%;
 	width:100%;
@@ -572,7 +563,6 @@ span.cssButton a.buttonRed:active
 {
 	clear:both;
 	border:none;
-	margin-bottom:-1px;
 	margin-top:1px;
 	margin-bottom:1px;
 }

@@ -1,15 +1,15 @@
 <div style="margin:auto; text-align:center"><h1>Complete!</h1></div>
 <div class="progressMenu">
 	<ul>
-		<li class="complete"><a href="index.php?c=install&m=step1"><img src="../img/icons/ok_16.png" border="0" alt="" /> Step 1</a></li>
+		<li class="complete"><a href="index.php?c=install&m=step1"><img src="../public/img/icons/ok_16.png" border="0" alt="" /> Step 1</a></li>
 		<li>&raquo;</li>
-		<li class="complete"><a href="index.php?c=install&m=step2"><img src="../img/icons/ok_16.png" border="0" alt="" /> Step 2</a></li>
+		<li class="complete"><a href="index.php?c=install&m=step2"><img src="../public/img/icons/ok_16.png" border="0" alt="" /> Step 2</a></li>
 		<li>&raquo;</li>
-		<li class="complete"><a href="index.php?c=install&m=step3"><img src="../img/icons/ok_16.png" border="0" alt="" /> Step 3</a></li>
+		<li class="complete"><a href="index.php?c=install&m=step3"><img src="../public/img/icons/ok_16.png" border="0" alt="" /> Step 3</a></li>
 		<li>&raquo;</li>
-		<li class="complete"><a href="index.php?c=install&m=step4"><img src="../img/icons/ok_16.png" border="0" alt="" /> Step 4</a></li>
+		<li class="complete"><a href="index.php?c=install&m=step4"><img src="../public/img/icons/ok_16.png" border="0" alt="" /> Step 4</a></li>
 		<li>&raquo;</li>
-		<li class="current"><img src="../img/icons/about_16.png" border="0" alt="" /> Step 5</li>
+		<li class="current"><img src="../public/img/icons/about_16.png" border="0" alt="" /> Step 5</li>
 	</ul>
 </div>
 <form id="form1" name="form1" method="post" enctype="multipart/form-data" action="step1.php?step=3">
@@ -42,7 +42,7 @@
 								<div style="float:right">
 									<span class="cssbutton">
 										<a class="buttonGreen" href="../" onclick="return $('#form1').validate().form();">
-											<img src="../img/icons/ok_16.png" border="0" alt="" /> Continue
+											<img src="../public/img/icons/ok_16.png" border="0" alt="" /> Continue
 										</a>
 									</span>
 								</div>

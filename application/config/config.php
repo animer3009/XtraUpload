@@ -14,7 +14,7 @@
 | path to your installation.
 |
 */
-$config['base_url']	= 'http://localhost/xu2/';
+$config['base_url']	= 'http://localhost/xu/public';
 
 /*
 |--------------------------------------------------------------------------
@@ -26,7 +26,7 @@ $config['base_url']	= 'http://localhost/xu2/';
 | variable so that it is blank.
 |
 */
-$config['index_page'] = '';
+$config['index_page'] = 'index.php';
 
 /*
 |--------------------------------------------------------------------------
@@ -106,7 +106,7 @@ $config['enable_hooks'] = FALSE;
 | http://codeigniter.com/user_guide/general/creating_libraries.html
 |
 */
-$config['subclass_prefix'] = 'XU_';
+$config['subclass_prefix'] = 'MY_';
 
 
 /*
@@ -224,7 +224,7 @@ $config['cache_path'] = '';
 | MUST set an encryption key.  See the user guide for info.
 |
 */
-$config['encryption_key'] = 's4cdv5fb6gn7hmoi7dv4s';
+$config['encryption_key'] = 'gmEuBtR0VNwTcoff1w44HHNTSwbjEk0B';
 
 /*
 |--------------------------------------------------------------------------
@@ -265,7 +265,7 @@ $config['sess_time_to_update']	= 300;
 | 'cookie_secure' =  Cookies will only be set if a secure HTTPS connection exists.
 |
 */
-$config['cookie_prefix']	= '091431fbba42197b22e460c407da7';
+$config['cookie_prefix']	= '29dd1c4b019c111e595a0add03a92';
 $config['cookie_domain']	= "";
 $config['cookie_path']		= "/";
 $config['cookie_secure']	= FALSE;
@@ -356,15 +356,6 @@ $config['rewrite_short_tags'] = FALSE;
 |
 */
 $config['proxy_ips'] = '';
-
-
-function __autoload($class)
-{
-    if($class === 'BaseController')
-    {
-        include_once(APPPATH.'controllers'.DIRECTORY_SEPARATOR.$class.EXT);
-    }
-}
 
 
 /* End of file config.php */

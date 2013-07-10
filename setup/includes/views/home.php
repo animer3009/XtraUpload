@@ -32,7 +32,7 @@
 							<div align='center'>
 								<span class="cssbutton">
 									<a class="buttonGreen" href="index.php?c=install&m=step1">
-										<img src="../img/icons/ok_16.png" border="0" alt="" /> Continue
+										<img src="../public/img/icons/ok_16.png" border="0" alt="" /> Continue
 									</a>
 								</span><br /><br /><br />
 							</div> 
