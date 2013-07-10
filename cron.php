@@ -19,7 +19,7 @@
 |
 */
 
-    define('CRON_CI_INDEX', './index.php');   // Your CodeIgniter main index.php file
+    define('CRON_CI_INDEX', './public/index.php');   // Your CodeIgniter main index.php file
     define('IN_CRON', TRUE);   // Test for this in your controllers if you only want them accessible via cron
 	define('RON_FLUSH_BUFFERS', TRUE);
 
