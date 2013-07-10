@@ -14,7 +14,7 @@
 | path to your installation.
 |
 */
-$config['base_url']	= 'http://localhost/xu/public';
+$config['base_url']	= 'setup/';
 
 /*
 |--------------------------------------------------------------------------
@@ -155,7 +155,7 @@ $config['permitted_uri_chars'] = 'a-z 0-9~%.:_\-';
 |
 */
 $config['allow_get_array']		= TRUE;
-$config['enable_query_strings'] = FALSE;
+$config['enable_query_strings'] = TRUE;
 $config['controller_trigger']	= 'c';
 $config['function_trigger']		= 'm';
 $config['directory_trigger']	= 'd'; // experimental not currently in use
@@ -224,7 +224,7 @@ $config['cache_path'] = '';
 | MUST set an encryption key.  See the user guide for info.
 |
 */
-$config['encryption_key'] = 'gmEuBtR0VNwTcoff1w44HHNTSwbjEk0B';
+$config['encryption_key'] = '';
 
 /*
 |--------------------------------------------------------------------------
@@ -265,7 +265,7 @@ $config['sess_time_to_update']	= 300;
 | 'cookie_secure' =  Cookies will only be set if a secure HTTPS connection exists.
 |
 */
-$config['cookie_prefix']	= '29dd1c4b019c111e595a0add03a92';
+$config['cookie_prefix']	= "";
 $config['cookie_domain']	= "";
 $config['cookie_path']		= "/";
 $config['cookie_secure']	= FALSE;
@@ -341,7 +341,7 @@ $config['time_reference'] = 'local';
 | in your view files.  Options are TRUE or FALSE (boolean)
 |
 */
-$config['rewrite_short_tags'] = FALSE;
+$config['rewrite_short_tags'] = TRUE;
 
 
 /*
@@ -359,4 +359,4 @@ $config['proxy_ips'] = '';
 
 
 /* End of file config.php */
-/* Location: ./application/config/config.php */
+/* Location: ./setup/includes/config/config.php */
