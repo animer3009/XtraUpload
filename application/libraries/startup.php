@@ -39,8 +39,8 @@ class Startup
     {
 
 	    $this->CI =& get_instance();
-	    $this->CI->output->enable_profiler(true);
-	    $this->CI->benchmark->mark('startup_time_start');
+	    //$this->CI->output->enable_profiler(true);
+	    //$this->CI->benchmark->mark('startup_time_start');
 
 	    if(isset($_SERVER['REQUEST_TIME']))
 	    {
