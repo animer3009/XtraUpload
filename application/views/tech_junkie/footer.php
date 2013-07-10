@@ -76,12 +76,7 @@
 						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 						
 						<?=$this->lang->line('global_valid')?> <a href="http://jigsaw.w3.org/css-validator/check/referer">CSS</a> |
-					   <a href="http://validator.w3.org/check/referer">XHTML</a> | 
-					   <a href="javascript:;" onclick="$('#debug').toggle('fast')"><?=$this->lang->line('global_debug')?></a>
-					   <span style="color:#FF0000; display:none" id="debug">
-						   <?=$this->lang->line('global_execution')?> <?=$this->benchmark->elapsed_time()?><br />
-						   <?=$this->lang->line('global_memory')?> <?=round(memory_get_usage() / 1024)?>KB
-					   </span>
+					   <a href="http://validator.w3.org/check/referer">XHTML</a>
 					</p> 				
 			</div>	
 			

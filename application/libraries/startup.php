@@ -32,17 +32,30 @@ class Startup
 	public $skin = '';
 	public $site_config = '';
 	public $group_config = '';
+	static public $request_time = '';
 	private $CI;
 
     public function __construct()
     {
+
+	    $this->CI =& get_instance();
+	    $this->CI->output->enable_profiler(true);
+	    $this->CI->benchmark->mark('startup_time_start');
+
+	    if(isset($_SERVER['REQUEST_TIME']))
+	    {
+		    self::$request_time = floor($_SERVER['REQUEST_TIME']);
+	    }
+	    else
+	    {
+		    self::$request_time = time();
+	    }
+
 		// Define the path to the cache folder
 		define('CACHEPATH', APPPATH.'cache/');
 		
 		// Define Hard Coded Script Version
         define('XU_VERSION', include(APPPATH.'xu_ver.php'));
-		
-		$this->CI =& get_instance();
 		
 		// Load the DB and session class
 		$this->CI->load->database();
@@ -53,7 +66,7 @@ class Startup
 		
 		// Setup group config object
 		$this->group_config = new stdClass();
-		
+
 		// Get the active skin name
 		$this->getSkin();
 		
@@ -75,7 +88,7 @@ class Startup
 		
 		// Readable XtraUpload Version String
 		define('XU_VERSION_READ', $this->CI->functions->parseVersion(XU_VERSION));
-		
+
 		// Load site menus
 		$this->setupMenu();
 		
@@ -84,14 +97,28 @@ class Startup
 		
 		// Load the global language bits, header, footer, and menu
 		$this->CI->lang->load('global');
-		
+
 		// load all custom startup files
 		$this->runStartup();
+
+	    //$this->CI->benchmark->mark('startup_time_end');
     }
-    
-	function __destruct() 
+
+	static function getRequestTime()
 	{
-		$this->CI->db->close();
+		if(self::$request_time === '')
+		{
+			if(isset($_SERVER['REQUEST_TIME']))
+			{
+				self::$request_time = floor($_SERVER['REQUEST_TIME']);
+			}
+			else
+			{
+				self::$request_time = time();
+			}
+		}
+
+		return self::$request_time;
 	}
 	
 	// ------------------------------------------------------------------------

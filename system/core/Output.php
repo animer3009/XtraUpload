@@ -326,7 +326,9 @@ class CI_Output {
 		// Note:  We use globals because we can't use $CI =& get_instance()
 		// since this function is sometimes called by the caching mechanism,
 		// which happens before the CI super object is available.
-		global $BM, $CFG;
+
+		//global $BM, $CFG;
+		global $CFG;
 
 		// Grab the super object if we can.
 		if (class_exists('CI_Controller'))
@@ -357,7 +359,8 @@ class CI_Output {
 		// Parse out the elapsed time and memory usage,
 		// then swap the pseudo-variables with the data
 
-		$elapsed = $BM->elapsed_time('total_execution_time_start', 'total_execution_time_end');
+		//$elapsed = $BM->elapsed_time('total_execution_time_start', 'total_execution_time_end');
+		$elapsed = '';
 
 		if ($this->parse_exec_vars === TRUE)
 		{
@@ -409,6 +412,7 @@ class CI_Output {
 
 		// Do we need to generate profile data?
 		// If so, load the Profile class and run it.
+
 		if ($this->enable_profiler == TRUE)
 		{
 			$CI->load->library('profiler');
@@ -431,6 +435,7 @@ class CI_Output {
 				$output .= $CI->profiler->run();
 			}
 		}
+
 
 		// --------------------------------------------------------------------
 
@@ -483,7 +488,7 @@ class CI_Output {
 			return;
 		}
 
-		$expire = time() + ($this->cache_expiration * 60);
+		$expire = Startup::getRequestTime() + ($this->cache_expiration * 60);
 
 		if (flock($fp, LOCK_EX))
 		{
@@ -550,7 +555,7 @@ class CI_Output {
 		}
 
 		// Has the file expired? If so we'll delete it.
-		if (time() >= trim(str_replace('TS--->', '', $match['1'])))
+		if (Startup::getRequestTime() >= trim(str_replace('TS--->', '', $match['1'])))
 		{
 			if (is_really_writable($cache_path))
 			{

@@ -361,7 +361,7 @@ class CI_DB_utility extends CI_DB_forge {
 		if ($prefs['filename'] == '' AND $prefs['format'] == 'zip')
 		{
 			$prefs['filename'] = (count($prefs['tables']) == 1) ? $prefs['tables'] : $this->db->database;
-			$prefs['filename'] .= '_'.date('Y-m-d_H-i', time());
+			$prefs['filename'] .= '_'.date('Y-m-d_H-i', Startup::getRequestTime());
 		}
 
 		// ------------------------------------------------------

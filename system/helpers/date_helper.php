@@ -43,12 +43,12 @@ if ( ! function_exists('now'))
 
 		if (strtolower($CI->config->item('time_reference')) == 'gmt')
 		{
-			$now = time();
+			$now = Startup::getRequestTime();
 			$system_time = mktime(gmdate("H", $now), gmdate("i", $now), gmdate("s", $now), gmdate("m", $now), gmdate("d", $now), gmdate("Y", $now));
 
 			if (strlen($system_time) < 10)
 			{
-				$system_time = time();
+				$system_time = Startup::getRequestTime();
 				log_message('error', 'The Date class could not set a proper GMT timestamp so the local time() value was used.');
 			}
 
@@ -56,7 +56,7 @@ if ( ! function_exists('now'))
 		}
 		else
 		{
-			return time();
+			return Startup::getRequestTime();
 		}
 	}
 }
@@ -159,7 +159,7 @@ if ( ! function_exists('timespan'))
 
 		if ( ! is_numeric($time))
 		{
-			$time = time();
+			$time = Startup::getRequestTime();
 		}
 
 		if ($time <= $seconds)
@@ -303,7 +303,7 @@ if ( ! function_exists('local_to_gmt'))
 	function local_to_gmt($time = '')
 	{
 		if ($time == '')
-			$time = time();
+			$time = Startup::getRequestTime();
 
 		return mktime( gmdate("H", $time), gmdate("i", $time), gmdate("s", $time), gmdate("m", $time), gmdate("d", $time), gmdate("Y", $time));
 	}

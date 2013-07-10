@@ -97,7 +97,7 @@ class CI_Session {
 		{
 			$this->sess_expiration = (60*60*24*365*2);
 		}
-		
+
 		// Set the cookie name
 		$this->sess_cookie_name = $this->cookie_prefix.$this->sess_cookie_name;
 
@@ -399,7 +399,7 @@ class CI_Session {
 	function sess_destroy()
 	{
 		// Kill the session DB row
-		if ($this->sess_use_database === TRUE AND isset($this->userdata['session_id']))
+		if ($this->sess_use_database === TRUE && isset($this->userdata['session_id']))
 		{
 			$this->CI->db->where('session_id', $this->userdata['session_id']);
 			$this->CI->db->delete($this->sess_table_name);
@@ -414,6 +414,9 @@ class CI_Session {
 					$this->cookie_domain,
 					0
 				);
+
+		// Kill session data
+		$this->userdata = array();
 	}
 
 	// --------------------------------------------------------------------
@@ -620,12 +623,12 @@ class CI_Session {
 	{
 		if (strtolower($this->time_reference) == 'gmt')
 		{
-			$now = time();
+			$now = Startup::getRequestTime();
 			$time = mktime(gmdate("H", $now), gmdate("i", $now), gmdate("s", $now), gmdate("m", $now), gmdate("d", $now), gmdate("Y", $now));
 		}
 		else
 		{
-			$time = time();
+			$time = Startup::getRequestTime();
 		}
 
 		return $time;
@@ -659,7 +662,7 @@ class CI_Session {
 			$cookie_data = $cookie_data.md5($cookie_data.$this->encryption_key);
 		}
 
-		$expire = ($this->sess_expire_on_close === TRUE) ? 0 : $this->sess_expiration + time();
+		$expire = ($this->sess_expire_on_close === TRUE) ? 0 : $this->sess_expiration + Startup::getRequestTime();
 
 		// Set the cookie
 		setcookie(
@@ -757,7 +760,7 @@ class CI_Session {
 			return;
 		}
 
-		srand(time());
+		srand(Startup::getRequestTime());
 		if ((rand() % 100) < $this->gc_probability)
 		{
 			$expire = $this->now - $this->sess_expiration;

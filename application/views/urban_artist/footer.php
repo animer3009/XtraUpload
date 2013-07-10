@@ -49,11 +49,7 @@
 		
 		<div id="footer-right">
 			<p class="align-right">
-				<a href="javascript:;" onclick="$('#debug').toggle('fast')"><?=$this->lang->line('global_debug')?></a>
-				<span style="color:#FF0000; display:none" id="debug">
-					<?=$this->lang->line('global_execution')?> <?=$this->benchmark->elapsed_time()?><br />
-					<?=$this->lang->line('global_memory')?> <?=round(memory_get_usage() / 1024)?>KB
-				</span>
+
 			</p>
 		</div>
 		

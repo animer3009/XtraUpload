@@ -52,7 +52,7 @@ class CI_Calendar {
 			$this->CI->lang->load('calendar');
 		}
 
-		$this->local_time = time();
+		$this->local_time = Startup::getRequestTime();
 
 		if (count($config) > 0)
 		{

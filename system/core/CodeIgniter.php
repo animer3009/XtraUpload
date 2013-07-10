@@ -33,7 +33,7 @@
  * @var string
  *
  */
-	define('CI_VERSION', '2.1.2');
+	define('CI_VERSION', '2.1.4');
 
 /**
  * CodeIgniter Branch (Core = TRUE, Reactor = FALSE)
@@ -121,14 +121,14 @@
  *  Instantiate the hooks class
  * ------------------------------------------------------
  */
-	$EXT =& load_class('Hooks', 'core');
+	//$EXT =& load_class('Hooks', 'core');
 
 /*
  * ------------------------------------------------------
  *  Is there a "pre_system" hook?
  * ------------------------------------------------------
  */
-	$EXT->_call_hook('pre_system');
+	//$EXT->_call_hook('pre_system');
 
 /*
  * ------------------------------------------------------
@@ -190,13 +190,13 @@
  *	Is there a valid cache file?  If so, we're done...
  * ------------------------------------------------------
  */
-	if ($EXT->_call_hook('cache_override') === FALSE)
-	{
+	//if ($EXT->_call_hook('cache_override') === FALSE)
+	//{
 		if ($OUT->_display_cache($CFG, $URI) == TRUE)
 		{
 			exit;
 		}
-	}
+	//}
 
 /*
  * -----------------------------------------------------
@@ -295,7 +295,7 @@
  *  Is there a "pre_controller" hook?
  * ------------------------------------------------------
  */
-	$EXT->_call_hook('pre_controller');
+	//$EXT->_call_hook('pre_controller');
 
 /*
  * ------------------------------------------------------
@@ -312,7 +312,7 @@
  *  Is there a "post_controller_constructor" hook?
  * ------------------------------------------------------
  */
-	$EXT->_call_hook('post_controller_constructor');
+	//$EXT->_call_hook('post_controller_constructor');
 
 /*
  * ------------------------------------------------------
@@ -368,24 +368,24 @@
  *  Is there a "post_controller" hook?
  * ------------------------------------------------------
  */
-	$EXT->_call_hook('post_controller');
+	//$EXT->_call_hook('post_controller');
 
 /*
  * ------------------------------------------------------
  *  Send the final rendered output to the browser
  * ------------------------------------------------------
  */
-	if ($EXT->_call_hook('display_override') === FALSE)
-	{
+	//if ($EXT->_call_hook('display_override') === FALSE)
+	//{
 		$OUT->_display();
-	}
+	//}
 
 /*
  * ------------------------------------------------------
  *  Is there a "post_system" hook?
  * ------------------------------------------------------
  */
-	$EXT->_call_hook('post_system');
+	//$EXT->_call_hook('post_system');
 
 /*
  * ------------------------------------------------------

@@ -82,7 +82,7 @@ class CI_DB_pdo_driver extends CI_DB {
 
 		$this->trans_enabled = FALSE;
 
-		$this->_random_keyword = ' RND('.time().')'; // database specific random keyword
+		$this->_random_keyword = ' RND('.Startup::getRequestTime().')'; // database specific random keyword
 	}
 
 	/**

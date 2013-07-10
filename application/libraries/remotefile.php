@@ -248,7 +248,7 @@ class CI_Remotefile
 			$p += strlen($string);
 			fwrite($fp, $string);
 			$string = NULL;
-			if($i % 10 == 0)
+			if($i % 50 == 0)
 			{
 				$this->CI->db->where('fid', $fid);
 				$this->CI->db->update('progress', array('progress' => $p, 'curr_time' => time()));
