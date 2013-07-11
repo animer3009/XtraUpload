@@ -95,4 +95,3 @@ class Admin_menu_shortcuts_db extends CI_Model
 		$this->db->delete('admin_menu_shortcuts', array('id' => $id));
 	}
 }
-?>

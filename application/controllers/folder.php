@@ -97,4 +97,3 @@ class Folder extends CI_Controller
 		$this->load->view($this->startup->skin.'/footer');
 	}
 }
-?>

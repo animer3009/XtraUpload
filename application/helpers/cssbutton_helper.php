@@ -239,6 +239,5 @@ if (! function_exists('generateSubmitButton'))
 		}
 		$buttonHTML .= ' '.$text.' </button></span>'."\n"; 
 		return $buttonHTML;
-	}	
+    }
 }
-?>

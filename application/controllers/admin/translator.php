@@ -776,4 +776,4 @@ class Translator extends CI_Controller {
 
 }
 
-?>
+

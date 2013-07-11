@@ -89,4 +89,3 @@ class Email extends CI_Controller
 		redirect('admin/email/view');
 	}
 }
-?>

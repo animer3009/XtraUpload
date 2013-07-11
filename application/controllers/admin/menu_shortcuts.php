@@ -141,4 +141,3 @@ class Menu_shortcuts extends CI_Controller
 		redirect('admin/menu_shortcuts/view');
 	}
 }
-?>

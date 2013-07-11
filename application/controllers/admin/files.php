@@ -333,4 +333,3 @@ class Files extends CI_Controller
 		}
 	}
 }
-?>

@@ -78,4 +78,3 @@ class Captcha extends CI_Controller
 		return $cap['image'];
 	}
 }
-?>

@@ -61,4 +61,3 @@ class Admin_logger extends CI_Model
 		return $query;	
 	}
 }
-?>

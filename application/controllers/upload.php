@@ -216,4 +216,3 @@ class Upload extends CI_Controller
 		echo 'OK';
 	}
 }
-?>

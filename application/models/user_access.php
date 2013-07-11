@@ -44,4 +44,3 @@ class user_access extends CI_Model
 		}
     }
 }
-?>

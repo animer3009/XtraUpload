@@ -80,4 +80,3 @@ class Server_cron
 	}
 	
 }
-?>

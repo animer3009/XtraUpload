@@ -568,4 +568,3 @@ if (! function_exists('_parse_attributes'))
 	}
 }
 
-?>

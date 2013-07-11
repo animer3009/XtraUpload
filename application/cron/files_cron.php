@@ -168,4 +168,3 @@ class Files_cron
 		@closedir ($temp);
 	}
 }
-?>
