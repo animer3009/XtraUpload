@@ -44,8 +44,12 @@ class Install extends CI_Controller
 	
 	public function step1()
 	{
+        $licensePath = ROOTPATH . "LICENSE.txt";
+
+        $license = is_readable($licensePath) ? file_get_contents($licensePath) : 'LICENSE MISSING';
+
 		$this->load->view('header');
-		$this->load->view('install/step1');
+		$this->load->view('install/step1', compact('license'));
 		$this->load->view('footer');
 	}
 	
