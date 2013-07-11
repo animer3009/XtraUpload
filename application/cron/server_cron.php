@@ -65,8 +65,8 @@ class Server_cron
 		    $load = 100;
 		}
 
-		$free_space = disk_free_space(dirname('../filestore/'));
-		$total_space = disk_total_space(dirname('../filestore/'));
+		$free_space = disk_free_space(dirname(path('filestore')));
+		$total_space = disk_total_space(dirname(path('filestore')));
 		
 		$data = array(
 			'free_space' => $free_space,

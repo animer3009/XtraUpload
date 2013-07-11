@@ -68,7 +68,7 @@ class Files_cron
 		$this->_pruneExpiredFiles();
 		
 		// delete file without a DB entry, IE: deleted or baned
-		$this->_pruneFolderFiles('../filestore');
+		$this->_pruneFolderFiles(path('filestore'));
 		
 		// clear temp folder
 		$this->_clearTemp();
@@ -86,7 +86,7 @@ class Files_cron
 				
 				if($this->debug)
 				{
-				    echo "DELETE DEBUG _pruneDatabaseFiles -> ".'../filestore/'.$file->prefix.'/'.$file->filename."<br />\n";
+				    echo "DELETE DEBUG _pruneDatabaseFiles -> ".path('filestore').$file->prefix.'/'.$file->filename."<br />\n";
 				}
 			}
 		}
@@ -111,7 +111,7 @@ class Files_cron
 			{
 			    if($this->debug)
 				{
-				    echo "DELETE DEBUG _pruneExpiredFiles -> ".$file->last_download." < ".(time() - (3600 * 24 * $group->file_expire))." -> ".'../filestore/'.$file->prefix.'/'.$file->filename."<br />\n";
+				    echo "DELETE DEBUG _pruneExpiredFiles -> ".$file->last_download." < ".(time() - (3600 * 24 * $group->file_expire))." -> ".path('filestore').$file->prefix.'/'.$file->filename."<br />\n";
 				}
 				
 				$this->CI->files_db->deleteFile($file->file_id, $file->secid, $file->link_name);
@@ -121,6 +121,8 @@ class Files_cron
 	
 	private function _pruneFolderFiles($dir)
 	{
+        $dir = rtrim($dir, '/');
+
 		$fh = @opendir($dir);
 		while ($file = @readdir($fh))
 		{
@@ -157,12 +159,12 @@ class Files_cron
 
 	private function _clearTemp()
 	{
-		$temp = @opendir('../temp/');
+		$temp = @opendir(path('temp'));
 		while ($file = @readdir($temp))
 		{
 			if (($file != 'index.php' && $file != 'index.html' && $file != '.DS_Store' && $file != '.htaccess' && !is_dir('./temp/' . $file)))
 			{
-				unlink('../temp/'.$file);
+				unlink(path('temp').$file);
 			}
 		}
 		@closedir ($temp);
