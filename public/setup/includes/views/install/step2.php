@@ -21,43 +21,28 @@
 			<td class='pformleftw'><span style="font-size:20px; font-weight:bold">Permission Checks</span></td>
 			<td class='pformright'>&nbsp;</td>
 		</tr>
-		<?php
-		$chmod = array();
-		$chmod['../../application/config/config.php'] = "0666";
-		$chmod['../../application/config/database.php'] = "0666";
-		$chmod['includes/config/config.php'] = "0666";
-		$chmod['includes/config/database.php'] = "0666";
-		$chmod['../../filestore'] = "0777";
-		$chmod['../../temp'] = "0777";
-		$chmod['../../application/cache'] = "0777";
-		$chmod['../../thumbstore'] = "0777";
-		$chmod['../../application/logs'] = "0777";
-		$is_chmod = true;
-		foreach($chmod as $file => $perm)
-		{
-			if(!is_writeable($file))
-			{
-				$is_chmod = false;
-				$pass_fail = '<font color="#FF0000" size="4"><b>Failed</b></font>';
-			}
-			else
-			{
-				$pass_fail = '<font color="#009900" size="4"><b>Passed</b></font>';
-			}
-		?>
+
+        <?php foreach($chmod as $filePath => $octet): ?>
+
 		  <tr>
 			<td class='pformleftw'>
 				<strong>
-					File: <?=$file?><br>
-					Permissions Required: <?=$perm?><br>
+					File: <?=$filePath?><br>
+					Permissions Required: <?=$octet?><br>
 				</strong>
 			</td>
-			<td class='pformright'><?=$pass_fail?></td>
+			<td class='pformright'>
+
+                <?php if(is_writable($filePath)): $is_chmod = false; ?>
+                    <b style="color:#009900;font-size:18px;">Passed</b>
+                <?php else: ?>
+                    <b style="color:#FF0000;font-size:18px;">Failed</b>
+                <?php endif; ?>
+
+			</td>
 		  </tr>
-		<?php 
-		}
-		
-		?>
+
+        <?php endforeach; ?>
 		<tr>
 			<td class='pformleftw'><span style="font-size:20px; font-weight:bold">Version Checks</span></td>
 			<td class='pformright'>&nbsp;</td>
@@ -65,38 +50,28 @@
 		<tr>
 			<td class='pformleftw'>
 				PHP Version<br>
-				Minimum Version: <strong>v5.2.1</strong><br>
+				Minimum Version: <strong>v5.3.3</strong><br>
 				Version Found: <strong>v<?php echo phpversion()?></strong>
 			</td>
-			<?php
-			if(( (int)str_replace('.', '', (string)phpversion()) < 521))
-			{
-				$is_chmod = false;
-				?>
-				<td class='pformright'>
-					<font color="#FF0000" size="4">
-						<strong>
-							Failed
-						</strong>
-					</font><br />
-					Please update php to the latest version in the <a href="http://php.net/downloads.php" target="_blank">v5.2 code branch</a>
-				</td>
-				<?php
-			}
-			else
-			{
-				?>
-				<td class='pformright'>
-					<font color="#009900" size="4"><strong>Passed</strong></font>
-				</td>
-				<?php
-			}
-			?>
+			<?php if(version_compare(phpversion(), '5.3.3', '>')): ?>
+                <td class='pformright'>
+                    <font color="#009900" size="4"><strong>Passed</strong></font>
+                </td>
+			<?php else: $is_chmod = false; ?>
+                <td class='pformright'>
+                    <font color="#FF0000" size="4">
+                        <strong>
+                            Failed
+                        </strong>
+                    </font><br />
+                    Please update PHP to the latest version in the <a href="http://php.net/downloads.php" target="_blank">v5.3 code branch</a>
+                </td>
+			<?php endif; ?>
 		</tr>
 		
 		<tr>
 			<?php
-			if (function_exists('gd_info')) 
+			if (extension_loaded('gd'))
 			{
 				$ver_info = gd_info();
 				preg_match('/\d/', $ver_info['GD Version'], $match);
@@ -179,7 +154,7 @@
 		</tr>
 		<tr>
 			<?php
-			if (function_exists('simplexml_load_file'))
+			if (extension_loaded('simplexml'))
 			{
 				$fts = 'Yes';
 			}
@@ -219,7 +194,7 @@
 		</tr>
 		<tr>
 			<?php
-			if (defined('FTP_ASCII'))
+			if (extension_loaded('ftp'))
 			{
 				$fts = 'Yes';
 			}
