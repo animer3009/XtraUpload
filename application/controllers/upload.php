@@ -126,7 +126,7 @@ class Upload extends CI_Controller
 		}
 		
 		
-		$config['upload_path'] = '../temp/';
+		$config['upload_path'] = path('temp');
 		$config['allowed_types'] = $this->startup->group_config->files_types;
 		$config['max_size']	= (1024 * intval($this->startup->group_config->upload_size_limit));
 		$this->load->library('upload', $config);	
@@ -216,4 +216,3 @@ class Upload extends CI_Controller
 		echo 'OK';
 	}
 }
-?>

@@ -58,4 +58,3 @@ $lang['global_password'] = "Password:";
 $lang['global_login'] = "Login";
 $lang['global_forgot_pass'] = "Forgot Your Password?";
 $lang['global_new_user'] = "New? Register Here!";
-?>

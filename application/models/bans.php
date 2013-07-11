@@ -120,4 +120,3 @@ class Bans extends CI_Model
 		}
 	}
 }
-?>

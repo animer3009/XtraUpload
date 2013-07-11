@@ -131,4 +131,3 @@ class Skin extends CI_Controller
 		return false;
 	}
 }
-?>

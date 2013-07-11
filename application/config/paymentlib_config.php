@@ -13,4 +13,4 @@ $config['payment_lib_button_path'] = 'buttons';
 // What is the default currency?
 $config['payment_lib_currency_code'] = 'USD';
 
-?>
+

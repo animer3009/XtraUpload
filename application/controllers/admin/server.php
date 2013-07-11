@@ -285,4 +285,3 @@ class Server extends CI_Controller
 		redirect('admin/server/view');
 	}
 }
-?>

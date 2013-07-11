@@ -74,4 +74,3 @@ class Remote_server_xml_rpc
 		}
 	}
 }
-?>

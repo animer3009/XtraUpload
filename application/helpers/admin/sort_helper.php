@@ -60,4 +60,3 @@ function getSortArrow($item, $sort, $dir)
 		}
 	}
 }
-?>

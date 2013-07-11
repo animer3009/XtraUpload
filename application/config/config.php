@@ -357,6 +357,12 @@ $config['rewrite_short_tags'] = FALSE;
 */
 $config['proxy_ips'] = '';
 
+function __autoload($className)
+{
+    if($className === 'BaseController') {
+        require APPPATH.'controllers'.DIRECTORY_SEPARATOR.$className.EXT;
+    }
+}
 
 /* End of file config.php */
 /* Location: ./application/config/config.php */

@@ -341,4 +341,3 @@ class CI_Remotefile
 		return $fname;
 	}
 }
-?>

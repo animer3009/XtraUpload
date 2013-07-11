@@ -166,4 +166,3 @@ class Config extends CI_Controller
 		return true;
     }
 }
-?>

@@ -53,4 +53,3 @@ class Admin_access extends CI_Model
 		}
     }
 }
-?>

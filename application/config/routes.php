@@ -52,4 +52,3 @@ $route['admin'] = "admin/home";
 $route['admin/api/charts'] = "api/charts";
 
 
-?>

@@ -103,4 +103,3 @@ class Transactions_db extends CI_Model
 		$this->db->delete('transaction', array('id' => $id));
 	}
 }
-?>

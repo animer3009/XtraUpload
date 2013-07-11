@@ -49,5 +49,3 @@
 chdir(dirname(CRON_CI_INDEX));
 require(CRON_CI_INDEX);           // Main CI index.php file
 echo "\n\n";
-
-?>

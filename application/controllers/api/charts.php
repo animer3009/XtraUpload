@@ -93,4 +93,3 @@ class Charts extends CI_Controller
 		$this->load->view($this->startup->skin.'/api/charts/uploads_weekly', array('width' => $width, 'height' => $height));
 	}
 }
-?>

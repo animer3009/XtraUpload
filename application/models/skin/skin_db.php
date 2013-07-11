@@ -59,4 +59,3 @@ class Skin_db extends CI_Model
 		$this->db->delete('skin', array('name' => $file));
 	}
 }
-?>

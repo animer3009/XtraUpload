@@ -917,4 +917,3 @@ class User extends CI_Controller
 		return $cap['image'];
 	}
 }
-?>
