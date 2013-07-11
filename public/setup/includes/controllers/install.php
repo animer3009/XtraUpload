@@ -44,15 +44,41 @@ class Install extends CI_Controller
 	
 	public function step1()
 	{
+        $licensePath = ROOTPATH . "LICENSE.txt";
+
+        $license = is_readable($licensePath) ? file_get_contents($licensePath) : 'LICENSE MISSING';
+
 		$this->load->view('header');
-		$this->load->view('install/step1');
+		$this->load->view('install/step1', compact('license'));
 		$this->load->view('footer');
 	}
 	
 	public function step2()
 	{
+        $chmod = array();
+        $chmod['../../application/config/config.php'] = "0666";
+        $chmod['../../application/config/database.php'] = "0666";
+        $chmod['includes/config/config.php'] = "0666";
+        $chmod['includes/config/database.php'] = "0666";
+        $chmod['../../filestore'] = "0777";
+        $chmod['../../temp'] = "0777";
+        $chmod['../../application/cache'] = "0777";
+        $chmod['../../thumbstore'] = "0777";
+        $chmod['../../application/logs'] = "0777";
+
+        // This is for making the chmod array into full paths.
+        foreach($chmod as $filePath => $octet) {
+            unset($chmod[$filePath]);
+
+            $absoluteFilePath = realpath($filePath);
+
+            $chmod[$absoluteFilePath] = $octet;
+        }
+
+        $is_chmod = true;
+
 		$this->load->view('header');
-		$this->load->view('install/step2');
+		$this->load->view('install/step2', compact('chmod', 'is_chmod'));
 		$this->load->view('footer');
 	}
 	

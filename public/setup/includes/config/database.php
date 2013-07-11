@@ -50,9 +50,9 @@ $active_record = TRUE;
 
 $db['default']['hostname'] = 'localhost';
 $db['default']['username'] = 'root';
-$db['default']['password'] = 'nonboard';
-$db['default']['database'] = 'xu';
-$db['default']['dbdriver'] = 'mysqli';
+$db['default']['password'] = 'password';
+$db['default']['database'] = 'xtraupload';
+$db['default']['dbdriver'] = 'mysql';
 $db['default']['dbprefix'] = 'xu2_';
 $db['default']['pconnect'] = TRUE;
 $db['default']['db_debug'] = TRUE;
