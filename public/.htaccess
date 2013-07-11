@@ -1,16 +1,36 @@
-RewriteEngine on
+# Apache configuration file
+# http://httpd.apache.org/docs/current/mod/quickreference.html
 
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
+# Note: ".htaccess" files are an overhead for each request. This logic should
+# be placed in your Apache config whenever possible.
+# http://httpd.apache.org/docs/current/howto/htaccess.html
 
-RewriteCond $1 !^(index\.php|images|img|css|js|robots\.txt)
-RewriteRule (.*) index.php?/$1 [L] 
+# Turning on the rewrite engine is necessary for the following rules and
+# features. "+FollowSymLinks" must be enabled for this to work symbolically.
 
-#php_flag register_globals Off
-#php_flag magic_quotes_gpc Off
-#php_value post_max_size 1000M
-#php_value upload_max_filesize 250M
-#php_value max_execution_time 600
-#php_value max_input_time 600
-#php_value memory_limit 320M
-#php_flag short_open_tag On
+<IfModule mod_rewrite.c>
+	Options +FollowSymLinks
+	RewriteEngine On
+</IfModule>
+
+# For all files not found in the file system, reroute the request to the
+# "index.php" front controller, keeping the query string intact
+
+<IfModule mod_rewrite.c>
+	RewriteCond %{REQUEST_FILENAME} !-f
+	RewriteCond %{REQUEST_FILENAME} !-d
+	RewriteRule ^(.*)$ index.php/$1 [L]
+</IfModule>
+
+
+# Note: These configurations are only for use when editing the php.ini is
+# not available.
+
+# php_flag register_globals Off
+# php_flag magic_quotes_gpc Off
+# php_flag short_open_tag On
+# php_value post_max_size 1000M
+# php_value upload_max_filesize 250M
+# php_value max_execution_time 600
+# php_value max_input_time 600
+# php_value memory_limit 320M
