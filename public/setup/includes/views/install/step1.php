@@ -1,4 +1,4 @@
-<div style="margin:auto; text-align:center"><h1>License Aggrement</h1></div>
+<div style="margin:auto; text-align:center"><h1>License Agreement</h1></div>
 <div class="progressMenu">
 	<ul>
 		<li class="current"><img src="../img/icons/about_16.png" border="0" alt="" /> Step 1</li>
@@ -18,7 +18,7 @@
 			Welcome to XtraUpload Installer
 		</div>
 		<div class='pformstrip'>
-			XtraUpload License Aggreement Below
+			XtraUpload License Agreement Below
 		</div>
 		
 		<table width='100%' border='0' cellpadding='0' cellspacing='0' align='center'>
@@ -28,7 +28,7 @@
 				</td>
 				<td width="88%">
 					<p class="style2">
-						You must aggree to the XtraUpload License before installing XtraUpload.<br />
+						You must agree to the XtraUpload License before installing XtraUpload.<br />
 						By Installing XtraUpload, regardless if you read the License, you are bound by it.
 					</p>
 					An online copy of this license can be found at <a href="http://xtrafile.com/docs/license">http://xtrafile.com/docs/license</a><br />
@@ -36,7 +36,7 @@
 					<textarea name="textarea" readonly="readonly" cols="80" rows="15" wrap="off" id="textarea"><?=$license?></textarea>
 					<p>
 						<strong>
-							By clicking the &quot;Continue&quot; button below and/or installing/upgrading/using XtraUpload you hearby agree to and are bound by the above license aggrement, including Section 10: ammendments to the Apache License v2.0. 
+							By clicking the &quot;Continue&quot; button below and installing, updating, or using XtraUpload, you hereby agree to and are bound by the above license agreement; including Section 10: amendments to the Apache License v2.0.
 						</strong>
 					</p>
 				</td>
