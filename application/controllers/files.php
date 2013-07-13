@@ -679,12 +679,12 @@ class Files extends CI_Controller
 		$this->load->helper('captcha');
 		
 		$vals = array(
-			'img_path'	=> './temp/',
+			'img_path'	=> './captcha/',
 			'word'		=> $this->users->genPass(3, false),
 			'img_width'	=> 70,
 			'img_height' => 20,
-			'img_url'	=> base_url().'temp/',
-			'fonts' => array('MyriadWebPro-Bold.ttf')
+			'img_url'	=> base_url().'captcha/',
+			'fonts' => array('NotoSans-Bold.ttf')
 		);
 		
 		$cap = create_captcha($vals);
