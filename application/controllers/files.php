@@ -597,7 +597,8 @@ class Files extends CI_Controller
 		
 		if($file->direct and !$this1->startup->group_config->auto_download)
 		{
-			$this1->files_db->editPremiumBandwith($file->file_id, $dl_obj->bandwidth);
+			// INCOMPLETE TODO:
+			//$this1->files_db->editPremiumBandwith($file->file_id, $dl_obj->bandwidth, 0);
 		}
 		
 		$this1->db->insert('downloads', $data);
