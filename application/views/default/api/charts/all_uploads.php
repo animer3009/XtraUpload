@@ -1,2 +1,45 @@
-<?php $rand = rand();?>
-var chart<?=$rand?> = new FusionCharts("<?=$base_url?>flash/charts/Pie3D.swf", "ChartId", "<?=$height?>", "<?=$width?>", "0", "0");chart<?=$rand?>.setDataXML("<chart caption='All Uploads' showPercentageValues='0'><set label='Anonymous' value='<?=$this->db->get_where('refrence', array('user' => '0'))->num_rows()?>' /><set label='Registered' value='<?=$this->db->get_where('refrence', array('user !=' => '0'))->num_rows()?>' /></chart>");chart<?=$rand?>.render("chart_data");
+<?php
+$registered = $this->db->get_where('refrence', array('user' => '0'))->num_rows();
+$anonym = $this->db->get_where('refrence', array('user !=' => '0'))->num_rows();
+?>
+$('#chart_data').html('');
+	var jsondata = [
+		{
+			a: <?=$anonym?>,
+			User: 'Anonymous'
+		},
+		{
+			a: <?=$registered?>,
+			User: 'Registered'
+		}
+	];
+	var data = polyjs.data({
+		data: jsondata
+	});
+	polyjs.chart({
+		title: 'All Uploads',
+		width: <?=$height?>,
+		height: <?=$width?>,
+		dom: 'chart_data',
+		layers: [
+			{
+				data: data,
+				type: 'bar',
+				y: 'a',
+				color: "User"
+			}
+		],
+		coord: {
+			type: 'polar'
+		},
+		guides: {
+			y: {
+				padding: 0,
+				position: 'none'
+			},
+			x: {
+				padding: 0,
+				position: 'none'
+			}
+		}
+	});

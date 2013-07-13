@@ -1,4 +1,4 @@
-<script type="text/javascript" src="<?=$base_url?>/js/charts.js"></script>
+<script type="text/javascript" src="<?=$base_url?>/js/polychart2.js"></script>
 <h2 style="vertical-align:middle"><img src="<?=base_url().'img/icons/chart_32.png'?>" class="nb" alt="" /> Site Stats</h2>
 <h3>Information</h3>
 <p>
@@ -37,12 +37,12 @@ Here you can view a graphical representation of many site stats including weekly
 </div>
 
 <h3 id="chart_name">Please select a Chart</h3>
-<p id="chart_data"></p>
+<p id="chart_data" style="background: #fff; width:600px; height:300px"></p>
 <script type="text/javascript">
 function getChart(chartUrl)
 {
 	$('#chart_data').html('<img src="<?=$base_url?>images/loading.gif" class="nb" />');
-	$.ajax({type: 'GET', url: chartUrl+'/r_'+rand(1,999999999), cache: true, dataType: 'script'}); 
+	$.getScript(chartUrl);
 	$('#chart_name').html('Your Requested Chart');
 }
 
