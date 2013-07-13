@@ -48,14 +48,14 @@
 $active_group = 'default';
 $active_record = TRUE;
 
-$db['default']['hostname'] = '127.0.0.1';
+$db['default']['hostname'] = 'localhost';
 $db['default']['username'] = 'root';
-$db['default']['password'] = 'password';
-$db['default']['database'] = 'xtraupload';
+$db['default']['password'] = '';
+$db['default']['database'] = 'xu2';
 $db['default']['dbdriver'] = 'mysqli';
 $db['default']['dbprefix'] = 'xu2_';
-$db['default']['pconnect'] = FALSE;
-$db['default']['db_debug'] = FALSE;
+$db['default']['pconnect'] = TRUE;
+$db['default']['db_debug'] = TRUE;
 $db['default']['cache_on'] = FALSE;
 $db['default']['cachedir'] = '';
 $db['default']['char_set'] = 'utf8';

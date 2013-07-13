@@ -102,17 +102,20 @@
  *  Set a liberal script execution time limit
  * ------------------------------------------------------
  */
-	if (function_exists("set_time_limit") == TRUE AND @ini_get("safe_mode") == 0)
-	{
-		@set_time_limit(300);
-	}
+	//if (function_exists("set_time_limit") == TRUE AND @ini_get("safe_mode") == 0)
+	//{
+	//	@set_time_limit(300);
+	//}
 
 /*
  * ------------------------------------------------------
  *  Start the timer... tick tock tick tock...
  * ------------------------------------------------------
  */
-	$BM =& load_class('Benchmark', 'core');
+/**
+ *
+ */
+$BM =& load_class('Benchmark', 'core');
 	$BM->mark('total_execution_time_start');
 	$BM->mark('loading_time:_base_classes_start');
 

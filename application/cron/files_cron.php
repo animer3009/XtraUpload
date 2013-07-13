@@ -128,7 +128,7 @@ class Files_cron
 		{
 			if (($file != '..' && $file != '.' && $file != 'index.php' && $file != 'index.html' && $file != '.DS_Store' && $file != '.htaccess'))
 			{
-				if(is_dir($dir . '/' . $file) and $file != '.svn')
+				if(is_dir($dir . '/' . $file) and $file != '.svn' and $file != '.git')
 				{
 					$this->_pruneFolderFiles($dir.'/'.$file);
 				}

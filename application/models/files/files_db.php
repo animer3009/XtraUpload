@@ -538,20 +538,38 @@ class Files_db extends CI_Model
 	
 	public function deleteFile($id, $secid)
 	{
+		$file_obj = $this->_getFileObject($id);
 		$fid = $this->db->select('link_id')->get_where('refrence', array('file_id' => $id, 'secid' => $secid));
 		$file = $fid->row();
 		
 		$files = $this->db->get_where('refrence', array('link_id' => $file->link_id))->num_rows();
 		if($files == 1)
 		{
-			$realfile = $this->db->get_where('files', array('id' => $file->link_id))->row();
+			$realfile = $this->db->select('id')->get_where('files', array('id' => $file->link_id))->row();
 			$this->db->delete('files', array('id' => $realfile->id));
+			$this->_deleteSystemFile($file_obj);
 		}
 		$this->db->delete('refrence', array('file_id' => $id));
+	}
+
+	private function _deleteSystemFile($file)
+	{
+		if(!empty($file->thumb))
+		{
+			unlink($file->thumb);
+		}
+
+		if(!empty($file->thumb))
+		{
+			unlink($file->thumb);
+		}
+
+		@unlink($file);
 	}
 	
 	public function deleteFileUser($id, $user)
 	{
+		$file_obj = $this->_getFileObject($id);
 		if($this->db->select('id')->get_where('refrence', array('file_id' => $id, 'user' => $user))->num_rows() == 1)
 		{
 			$fid = $this->db->select('link_id')->get_where('refrence', array('file_id' => $id, 'user' => $user));
@@ -560,8 +578,9 @@ class Files_db extends CI_Model
 			$files = $this->db->get_where('refrence', array('link_id' => $file->link_id))->num_rows();
 			if($files == 1)
 			{
-				$realfile = $this->db->get_where('files', array('id' => $file->link_id))->row();
+				$realfile = $this->db->select('id')->get_where('files', array('id' => $file->link_id))->row();
 				$this->db->delete('files', array('id' => $realfile->id));
+				$this->_deleteSystemFile($file_obj);
 			}
 			$this->db->delete('refrence', array('file_id' => $id));
 		}
@@ -569,6 +588,7 @@ class Files_db extends CI_Model
 	
 	public function deleteFileAdmin($id)
 	{
+		$file_obj = $this->_getFileObject($id);
 		$fid = $this->db->select('link_id')->join('files', 'refrence.link_id = files.id')->get_where('refrence', array('file_id' => $id));
 		if($fid->num_rows() >= 1)
 		{
@@ -577,8 +597,9 @@ class Files_db extends CI_Model
 			$files = $this->db->get_where('refrence', array('link_id' => $file->link_id))->num_rows();
 			if($files == 1)
 			{
-				$realfile = $this->db->get_where('files', array('id' => $file->link_id))->row();
+				$realfile = $this->db->select('id')->get_where('files', array('id' => $file->link_id))->row();
 				$this->db->delete('files', array('id' => $realfile->id));
+				$this->_deleteSystemFile($file_obj);
 			}
 			$this->db->delete('refrence', array('file_id' => $id));
 		}
