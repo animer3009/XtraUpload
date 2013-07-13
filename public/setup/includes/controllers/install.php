@@ -60,12 +60,12 @@ class Install extends CI_Controller
         $chmod['../../application/config/database.php'] = "0666";
         $chmod['includes/config/config.php'] = "0666";
         $chmod['includes/config/database.php'] = "0666";
-        $chmod['../../filestore'] = "0777";
-        $chmod['../../temp'] = "0777";
-        $chmod['../../application/cache'] = "0777";
-        $chmod['../../thumbstore'] = "0777";
-        $chmod['../../application/logs'] = "0777";
-        $chmod['../../public/captcha'] = "0777";
+        $chmod['../../filestore'] = "0666";
+        $chmod['../../temp'] = "0666";
+        $chmod['../../application/cache'] = "0666";
+        $chmod['../../thumbstore'] = "0666";
+        $chmod['../../application/logs'] = "0666";
+        $chmod['../../public/captcha'] = "0666";
 
         // This is for making the chmod array into full paths.
         foreach($chmod as $filePath => $octet) {
