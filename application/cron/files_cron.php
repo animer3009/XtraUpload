@@ -126,7 +126,7 @@ class Files_cron
 		$fh = @opendir($dir);
 		while ($file = @readdir($fh))
 		{
-			if (($file != '..' && $file != '.' && $file != 'index.php' && $file != 'index.html' && $file != '.DS_Store' && $file != '.htaccess'))
+			if (($file != '..' && $file != '.' && $file != 'index.php' && $file != '.gitignore' && $file != 'index.html' && $file != '.DS_Store' && $file != '.htaccess'))
 			{
 				if(is_dir($dir . '/' . $file) and $file != '.svn' and $file != '.git')
 				{
@@ -162,7 +162,7 @@ class Files_cron
 		$temp = @opendir(path('temp'));
 		while ($file = @readdir($temp))
 		{
-			if (($file != 'index.php' && $file != 'index.html' && $file != '.DS_Store' && $file != '.htaccess' && !is_dir('./temp/' . $file)))
+			if (($file != 'index.php' && $file != '.gitignore' && $file != 'index.html' && $file != '.DS_Store' && $file != '.htaccess' && !is_dir('./temp/' . $file)))
 			{
 				unlink(path('temp').$file);
 			}

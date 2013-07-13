@@ -86,7 +86,7 @@ $(document).ready(function(){
 					<?php
 				}
 				?>
-				<a href="<?=$base_url?>system/application/views/<?=$skin->name?>/<?=$skin->name?>.png" onclick="return false;" target="_blank" class="preview">
+				<a href="<?=$base_url?>images/themes/<?=$skin->name?>.png" onclick="return false;" target="_blank" class="preview">
 					<?=ucwords(str_replace('_', ' ', $skin->name))?>
 				</a>
 			</td>
