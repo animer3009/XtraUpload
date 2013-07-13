@@ -65,6 +65,7 @@ class Install extends CI_Controller
         $chmod['../../application/cache'] = "0777";
         $chmod['../../thumbstore'] = "0777";
         $chmod['../../application/logs'] = "0777";
+        $chmod['../../public/captcha'] = "0777";
 
         // This is for making the chmod array into full paths.
         foreach($chmod as $filePath => $octet) {
