@@ -169,4 +169,19 @@ class Files_cron
 		}
 		@closedir ($temp);
 	}
+
+
+
+	private function _clearCaptchas()
+	{
+		$temp = @opendir(path('temp'));
+		while ($file = @readdir($temp))
+		{
+			if (($file != 'index.php' && $file != '.gitignore' && $file != 'index.html' && $file != '.DS_Store' && $file != '.htaccess' && !is_dir('./temp/' . $file)))
+			{
+				unlink(path('temp').$file);
+			}
+		}
+		@closedir ($temp);
+	}
 }

@@ -174,6 +174,8 @@ class Files extends CI_Controller
 			$this->get($id, $name, $error);
 			return false;
 		}
+
+		$file = $this->files_db->_getFileObject($id);
 		
 		// Is file Password Protected?
 		if(!empty($file->pass) and ($this->input->post('pass') != $file->pass))
