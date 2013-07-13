@@ -57,6 +57,6 @@ $(document).ready(function()
 	}
 });
 </script>
-<?php$this->load->view('_protected/global_footer');?>
+<?php $this->load->view('_protected/global_footer');?>
 </body>
 </html>
