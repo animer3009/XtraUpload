@@ -72,6 +72,9 @@ class Files_cron
 		
 		// clear temp folder
 		$this->_clearTemp();
+
+		// clear temp folder
+		$this->_clearCaptchas();
 	}
 	
 	private function _pruneDatabaseFiles()
@@ -174,12 +177,17 @@ class Files_cron
 
 	private function _clearCaptchas()
 	{
-		$temp = @opendir(path('temp'));
+		$now = time();
+		$temp = @opendir(path('public/captcha'));
 		while ($file = @readdir($temp))
 		{
-			if (($file != 'index.php' && $file != '.gitignore' && $file != 'index.html' && $file != '.DS_Store' && $file != '.htaccess' && !is_dir('./temp/' . $file)))
+			if (($file != 'index.php' && $file != '.gitignore' && $file != 'index.html' && $file != '.DS_Store' && $file != '.htaccess' && !is_dir('./public/captcha/' . $file)))
 			{
-				unlink(path('temp').$file);
+				$split = explode('.', $file);
+				$time = $split[0];
+
+				if($time + 7200 < $now)
+				unlink(path('public/captcha').$file);
 			}
 		}
 		@closedir ($temp);
